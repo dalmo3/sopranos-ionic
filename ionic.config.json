@@ -1,0 +1,7 @@
+{
+  "name": "sopranos-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
