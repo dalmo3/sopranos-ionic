@@ -33,9 +33,13 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import RealmProvider from './database/RealmProvider';
+import RealmApolloProvider from './database/RealmApolloProvider';
 
 const App: React.FC = () => (
   <IonApp>
+  <RealmProvider>
+    <RealmApolloProvider>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -60,6 +64,8 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
+        </RealmApolloProvider>
+      </RealmProvider>
   </IonApp>
 );
 
