@@ -28,13 +28,11 @@ const RealmApolloProvider: FC = ({ children }) => {
   useEffect(() => {
     const cache = new InMemoryCache();
     const initApollo = async () => {
-      console.log('this runs?1');
       await persistCache({
         cache,
         storage: capacitorStorage,
       });
       setClient(createApolloClient(id, user, cache));
-      console.log('this runs?2');
     };
     initApollo();
   }, [id, user]);
@@ -50,7 +48,7 @@ function createApolloClient(
 ) {
   const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${realmAppId}/graphql`;
   const httpLink = new HttpLink({ uri: graphql_url });
-  console.log(user)
+  // console.log(user)
   const authorizationHeaderLink = setContext(async (_, { headers }) => ({
     headers: {
       ...headers,

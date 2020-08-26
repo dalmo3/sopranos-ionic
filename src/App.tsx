@@ -35,11 +35,13 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import RealmProvider from './database/RealmProvider';
 import RealmApolloProvider from './database/RealmApolloProvider';
+import StitchApolloProvider from './database/StitchApolloProvider';
+import StitchProvider from './database/StitchProvider';
 
 const App: React.FC = () => (
   <IonApp>
-  <RealmProvider>
-    <RealmApolloProvider>
+  <StitchProvider>
+    <StitchApolloProvider>
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
@@ -64,8 +66,8 @@ const App: React.FC = () => (
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
-        </RealmApolloProvider>
-      </RealmProvider>
+        </StitchApolloProvider>
+      </StitchProvider>
   </IonApp>
 );
 

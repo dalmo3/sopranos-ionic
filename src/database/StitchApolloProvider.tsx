@@ -6,8 +6,9 @@ import {
   HttpLink,
   InMemoryCache,
   ApolloProvider,
+  createHttpLink,
 } from '@apollo/client';
-import { setContext } from 'apollo-link-context';
+import { setContext } from '@apollo/client/link/context';
 import { PersistentStorage } from 'apollo-cache-persist/types';
 
 import { Plugins } from '@capacitor/core';
@@ -31,13 +32,13 @@ const StitchApolloProvider: React.FC = ({ children }) => {
   );
   React.useEffect(() => {
     const initApollo = async () => {
-      console.log('this runs?1');
+      // console.log('this runs?1');
       await persistCache({
         cache,
         storage: capacitorStorage,
       });
       setClient(createApolloClient(id, user, cache));
-      console.log('this runs?2');
+      // console.log('this runs?2');
     };
     initApollo();
   }, [id, user]);
@@ -53,7 +54,7 @@ function createApolloClient(
   cache: InMemoryCache
 ) {
   const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${realmAppId}/graphql`;
-  const httpLink = new HttpLink({ uri: graphql_url });
+  const httpLink = createHttpLink({ uri: graphql_url });
   const authorizationHeaderLink = setContext(async (_, { headers }) => ({
     headers: {
       ...headers,

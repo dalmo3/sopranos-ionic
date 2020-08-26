@@ -21,7 +21,7 @@ const MakeTestQuery: React.FC = () => {
   });
   // console.log(comp);
 
-  let { loading, error, data } = useGetFixturesQuery({
+  const { loading, error, data } = useGetFixturesQuery({
     variables: {
       q: {
         // Id_in: comp.data?.competition?.fixtures
