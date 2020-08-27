@@ -6,7 +6,8 @@ import {
   useGetFixturesQuery,
 } from '../database/graphql-operations';
 import { Competition, Fixture } from '../database/types';
-import { IonText } from '@ionic/react';
+import { IonContent, IonText } from '@ionic/react';
+import FixturesTable from './FixtureTable';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
@@ -26,7 +27,7 @@ const MakeTestQuery: React.FC = () => {
       q: {
         // Id_in: comp.data?.competition?.fixtures
         // HomeTeamName: 'Kapiti Coast United',
-        HomeTeamName: 'KCU Sopranos',
+        // HomeTeamName: 'KCU Sopranos',
         // HomeTeamName: 'KCU Thirds',
         // HomeScore: "2",
       },
@@ -41,13 +42,18 @@ const MakeTestQuery: React.FC = () => {
   // console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
-  if (error) return <IonText>Error fetching... `${error.message}`</IonText>
-  if (!data) return <IonText>Loading ...</IonText>;
+  if (error) return <IonText>Error fetching... `${error.message}`</IonText>;
+  if (!data?.fixtures) return <IonText>Loading ...</IonText>;
   return (
-    <IonText>
-      {error && `Error fetching... ${error}`}
-      {data && JSON.stringify(data)}
-    </IonText>
+    <>
+      <IonText>
+        {error && `Error fetching... ${error}`}
+        {/* {data && JSON.stringify(data.fixtures)} */}
+      </IonText>
+      <IonContent>
+        <FixturesTable fixtures={data.fixtures as Fixture[] } />
+      </IonContent>
+    </>
   );
 };
 

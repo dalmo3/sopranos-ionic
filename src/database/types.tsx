@@ -1,8 +1,8 @@
 
-export interface FixturesProps extends React.Props<Fixture[]> {
+export interface FixturesProps {
   fixtures: Fixture[];
 }
-export interface FixtureProps extends React.Props<Fixture> {
+export interface FixtureProps  {
   fixture: Fixture;
 }
 

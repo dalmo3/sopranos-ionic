@@ -5,7 +5,7 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from '@apollo/client';
-import { setContext } from 'apollo-link-context';
+import { setContext } from '@apollo/client/link/context';
 import { persistCache } from 'apollo-cache-persist';
 import { useRealmProvider, IRealmProvider } from './RealmProvider';
 import { Plugins } from '@capacitor/core';
