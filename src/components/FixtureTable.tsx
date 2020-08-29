@@ -34,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.action.hover,
     },
   },
+  ground: {
+    fontSize: '0.8rem',
+    fontWeight: 'bold',
+    color: theme.palette.grey[500]
+  }
 }));
 
 const FixturesTable: React.FC<FixturesProps> = (props) => {
@@ -54,12 +59,15 @@ const FixturesTable: React.FC<FixturesProps> = (props) => {
             <TableCell align="center" className={classes.scoreDash}></TableCell>
             <TableCell className={classes.awayScore}></TableCell>
             <TableCell width="40%">Away</TableCell>
+            <TableCell width="40%">Ground</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {sortFixturesByDate(fixtures).map((fixture) => {
             return (
-              <TableRow key={fixture.Id}>
+              <TableRow key={fixture.Id}
+              
+              className={classes.rowBackground}>
                 <TableCell align="right">{fixture.Date}</TableCell>
                 <TableCell align="right">{fixture.HomeTeamName}</TableCell>
                 <TableCell align="right" className={classes.homeScore}>
@@ -72,6 +80,7 @@ const FixturesTable: React.FC<FixturesProps> = (props) => {
                   {fixture.AwayScore}
                 </TableCell>
                 <TableCell>{fixture.AwayTeamName}</TableCell>
+                <TableCell className={classes.ground}>{fixture.VenueName}</TableCell>
               </TableRow>
             );
           })}

@@ -6,8 +6,10 @@ import {
   useGetFixturesQuery,
 } from '../database/graphql-operations';
 import { Competition, Fixture } from '../database/types';
-import { IonContent, IonText } from '@ionic/react';
+import { IonContent, IonLoading, IonText } from '@ionic/react';
 import FixturesTable from './FixtureTable';
+import FixtureList from './FixtureList';
+import FixtureGrid from './FixtureGrid';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
@@ -25,6 +27,15 @@ const MakeTestQuery: React.FC = () => {
   const { loading, error, data } = useGetFixturesQuery({
     variables: {
       q: {
+        OR: [
+          {
+            HomeTeamName: 'KCU Sopranos',
+          },
+          {
+            AwayTeamName: 'KCU Sopranos',
+          },
+        ],
+        // HomeTeamName: 'KCU Sopranos',
         // Id_in: comp.data?.competition?.fixtures
         // HomeTeamName: 'Kapiti Coast United',
         // HomeTeamName: 'KCU Sopranos',
@@ -37,13 +48,31 @@ const MakeTestQuery: React.FC = () => {
     // fetchPolicy: "network-only"
     // notifyOnNetworkStatusChange: true
   });
+  const [showLoading, setShowLoading] = React.useState(true);
+
+  setTimeout(() => {
+    setShowLoading(false);
+  }, 2000);
 
   console.log('loading? ', loading);
   // console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
-  if (error) return <IonText>Error fetching... `${error.message}`</IonText>;
-  if (!data?.fixtures) return <IonText>Loading ...</IonText>;
+  if (error) {
+    console.log(error)
+    return <IonText>Error fetching... `${error.message}`</IonText>;
+  }
+  if (!data?.fixtures)
+    return (
+      <IonLoading
+        // cssClass='my-custom-class'
+        showBackdrop={false}
+        isOpen={showLoading}
+        onDidDismiss={() => setShowLoading(false)}
+        message={'Please wait...'}
+        duration={5000}
+      />
+    );
   return (
     <>
       <IonText>
@@ -51,7 +80,9 @@ const MakeTestQuery: React.FC = () => {
         {/* {data && JSON.stringify(data.fixtures)} */}
       </IonText>
       <IonContent>
-        <FixturesTable fixtures={data.fixtures as Fixture[] } />
+        <FixtureGrid fixtures={data.fixtures as Fixture[]} />
+        {/* <FixtureList fixtures={data.fixtures as Fixture[] } /> */}
+        {/* <FixturesTable fixtures={data.fixtures as Fixture[] } /> */}
       </IonContent>
     </>
   );
