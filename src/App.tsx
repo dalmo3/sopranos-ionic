@@ -2,12 +2,20 @@ import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
   IonIcon,
   IonLabel,
+  IonMenuButton,
+  IonPage,
   IonRouterOutlet,
+  IonSplitPane,
   IonTabBar,
   IonTabButton,
-  IonTabs
+  IonTabs,
+  IonToolbar,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
@@ -37,37 +45,57 @@ import RealmProvider from './database/RealmProvider';
 import RealmApolloProvider from './database/RealmApolloProvider';
 import StitchApolloProvider from './database/StitchApolloProvider';
 import StitchProvider from './database/StitchProvider';
+import Menu from './components/Menu';
 
 const App: React.FC = () => (
   <IonApp>
-  <StitchProvider>
-    <StitchApolloProvider>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-        </StitchApolloProvider>
-      </StitchProvider>
+    <StitchProvider>
+      <StitchApolloProvider>
+        <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonPage id="main">
+            <IonHeader>
+              <IonToolbar>
+                sssssssssssssssssss
+                <IonButtons>
+                  <IonMenuButton />
+                </IonButtons>
+              </IonToolbar>
+            </IonHeader>
+            <IonContent>
+              <IonTabs>
+                <IonRouterOutlet>
+                  <Route path="/tab1" component={Tab1} exact={true} />
+                  <Route path="/tab2" component={Tab2} exact={true} />
+                  <Route path="/tab3" component={Tab3} />
+                  <Route
+                    path="/"
+                    render={() => <Redirect to="/tab1" />}
+                    exact={true}
+                  />
+                </IonRouterOutlet>
+                <IonTabBar slot="bottom">
+                  <IonTabButton tab="tab1" href="/tab1">
+                    <IonIcon icon={triangle} />
+                    <IonLabel>Tab 1</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="tab2" href="/tab2">
+                    <IonIcon icon={ellipse} />
+                    <IonLabel>Tab 2</IonLabel>
+                  </IonTabButton>
+                  <IonTabButton tab="tab3" href="/tab3">
+                    <IonIcon icon={square} />
+                    <IonLabel>Tab 3</IonLabel>
+                  </IonTabButton>
+                </IonTabBar>
+              </IonTabs>
+            </IonContent>
+          </IonPage>
+          </IonSplitPane>
+        </IonReactRouter>
+      </StitchApolloProvider>
+    </StitchProvider>
   </IonApp>
 );
 
