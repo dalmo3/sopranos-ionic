@@ -7,6 +7,7 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
+  NormalizedCacheObject,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { PersistentStorage } from 'apollo-cache-persist/types';
@@ -27,9 +28,10 @@ const capacitorStorage = {
 const StitchApolloProvider: React.FC = ({ children }) => {
   const { id, user } = useStitchProvider();
   const cache = new InMemoryCache();
-  const [client, setClient] = React.useState(
-    createApolloClient(id, user, cache)
-  );
+  const [client, setClient] = React.useState<
+    ApolloClient<NormalizedCacheObject>
+  >(createApolloClient(id,user,cache));
+
   React.useEffect(() => {
     const initApollo = async () => {
       // console.log('this runs?1');
@@ -40,10 +42,15 @@ const StitchApolloProvider: React.FC = ({ children }) => {
       setClient(createApolloClient(id, user, cache));
       // console.log('this runs?2');
     };
-    initApollo();
+    //@ts-ignore Type definitions for StitchUser are missing the ['auth'] property, that contain the accessToken
+    if (user?.auth) initApollo();
   }, [id, user]);
 
-  return <ApolloProvider client={client}>{children}</ApolloProvider>;
+  return  <ApolloProvider client={client}>{children}</ApolloProvider>
+  // client ? (
+  // ) : (
+    // <>{children}</>
+  // );
 };
 export default StitchApolloProvider;
 
@@ -59,7 +66,7 @@ function createApolloClient(
     headers: {
       ...headers,
       //@ts-ignore Type definitions for StitchUser are missing the ['auth'] property, that contain the accessToken
-      Authorization: `Bearer ${user.auth.activeUserAuthInfo.accessToken}`,
+      Authorization: `Bearer ${user?.auth?.activeUserAuthInfo.accessToken}`,
     },
   }));
 
