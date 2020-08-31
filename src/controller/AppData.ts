@@ -1,11 +1,9 @@
 import { Plugins } from '@capacitor/core';
+import User from './User';
 const { Storage } = Plugins;
 
 interface IAppData {
-  user: {
-    name: string;
-    favouriteTeams: string[];
-  };
+  user: User;
 }
 
 export default class AppData {
@@ -19,10 +17,9 @@ export default class AppData {
       AppData.instance = new AppData();
     }
     return AppData.instance;
-
   }
   constructor() {
-      this.initAppData();
+    this.initAppData();
   }
 
   public isReady = false;
@@ -33,23 +30,23 @@ export default class AppData {
   private async initAppData() {
     const storedData = await this.getStoredData();
     if (storedData.value) {
-      this.data = JSON.parse(storedData.value);
+      this._data = JSON.parse(storedData.value);
     } else {
       this.setStoredData();
     }
     this.isReady = true;
   }
 
-  private data: IAppData = {
-    user: {
-      name: 'anonymous',
-      favouriteTeams: [],
-    },
+  private _data: IAppData = {
+    user: new User('anonymous', []),
   };
-  public get appData() {
-    return this.data;
+  public get data() {
+    return this._data;
   }
 
+  public get user() {
+    return this._data.user;
+  }
   private getStoredData() {
     return Storage.get({
       key: this.APP_ID,
@@ -58,7 +55,7 @@ export default class AppData {
   private setStoredData() {
     return Storage.set({
       key: this.APP_ID,
-      value: JSON.stringify(this.data),
+      value: JSON.stringify(this._data),
     });
   }
 }
