@@ -46,6 +46,9 @@ import RealmApolloProvider from './database/RealmApolloProvider';
 import StitchApolloProvider from './database/StitchApolloProvider';
 import StitchProvider from './database/StitchProvider';
 import Menu from './components/Menu';
+import AppData from './controller/AppData'
+
+const d = new AppData()
 
 const App: React.FC = () => (
   <IonApp>
@@ -55,14 +58,6 @@ const App: React.FC = () => (
         <IonSplitPane contentId="main">
           <Menu />
           <IonPage id="main">
-            <IonHeader>
-              <IonToolbar>
-                sssssssssssssssssss
-                <IonButtons>
-                  <IonMenuButton />
-                </IonButtons>
-              </IonToolbar>
-            </IonHeader>
             <IonContent>
               <IonTabs>
                 <IonRouterOutlet>

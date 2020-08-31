@@ -3,7 +3,6 @@ import { useStitchProvider, IStitchProvider } from './StitchProvider';
 import { persistCache } from 'apollo-cache-persist';
 import {
   ApolloClient,
-  HttpLink,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
