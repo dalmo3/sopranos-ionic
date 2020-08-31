@@ -1,5 +1,14 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonText } from '@ionic/react';
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonText,
+  IonButtons,
+  IonMenuButton,
+} from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import MakeTestQuery from '../components/MakeTestQuery';
@@ -9,6 +18,9 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
           <IonTitle>Tab 1</IonTitle>
         </IonToolbar>
       </IonHeader>
