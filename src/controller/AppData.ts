@@ -18,6 +18,7 @@ export default class AppData {
     }
     return AppData.instance;
   }
+  
   constructor() {
     this.initAppData();
   }
@@ -30,7 +31,11 @@ export default class AppData {
   private async initAppData() {
     const storedData = await this.getStoredData();
     if (storedData.value) {
-      this._data = JSON.parse(storedData.value);
+      const parsedData = JSON.parse(storedData.value);
+      this._data = {
+        ...parsedData,
+        user: new User(parsedData.user)
+      }
     } else {
       this.setStoredData();
     }
@@ -38,7 +43,7 @@ export default class AppData {
   }
 
   private _data: IAppData = {
-    user: new User('anonymous', []),
+    user: new User({name:'anonymous', favouriteTeams:[]}),
   };
   public get data() {
     return this._data;

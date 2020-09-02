@@ -1,7 +1,7 @@
 import React, { createContext, FC, useContext } from 'react';
 import AppData from './AppData';
 
-const data = new AppData();
+const data = AppData.getInstance();
 const AppDataContext = createContext(data);
 export const useAppData = () => useContext(AppDataContext);
 
