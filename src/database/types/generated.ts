@@ -1,12 +1,4 @@
 
-export interface FixturesProps {
-  fixtures: Fixture[];
-}
-export interface FixtureProps  {
-  fixture: Fixture;
-}
-
-
 // GRAPHQL
 
 export type Maybe<T> = T | null;

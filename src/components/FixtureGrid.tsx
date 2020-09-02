@@ -1,9 +1,9 @@
 import { IonList, IonItem, IonCol, IonGrid, IonRow } from '@ionic/react';
 import React, { FC } from 'react';
-import { FixturesProps, Fixture, FixtureProps } from '../database/types';
+import {  Fixture } from '../database/types/generated';
 import SingleFixture from './SingleFixture';
 
-const FixtureGrid: React.FC<FixturesProps> = (props) => {
+const FixtureGrid: React.FC<{fixtures: Fixture[]}> = (props) => {
   const { fixtures } = props;
 
   return (

@@ -9,7 +9,7 @@ import {
 import { Maybe } from 'graphql/jsutils/Maybe';
 import moment from 'moment';
 import React, { FC } from 'react';
-import { FixturesProps, Fixture, FixtureProps } from '../database/types';
+import { Fixture } from '../database/types/generated';
 
 const FixtureDate: FC<{ dateString: string }> = (props) => {
   const { dateString } = props;
@@ -33,7 +33,7 @@ const FixtureDate: FC<{ dateString: string }> = (props) => {
   );
 };
 
-const SingleFixture: FC<FixtureProps> = (props) => {
+const SingleFixture: FC<{fixture: Fixture}> = (props) => {
   const { fixture } = props;
 
   return (
