@@ -1,12 +1,27 @@
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonText } from '@ionic/react';
-import React, { FC } from 'react'
+import {
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle,
+  IonContent,
+  IonText,
+  IonButton,
+  IonSelect,IonSelectOption, IonItem, IonLabel
+} from '@ionic/react';
+import { EDEADLK } from 'constants';
+import React, { FC } from 'react';
 import { useAppData } from '../controller/AppDataProvider';
-import './SettingsPage.css'
+import './SettingsPage.css';
 
 const SettingsPage: FC = () => {
-  
-  const { user } = useAppData()
-
+  const { user } = useAppData();
+  console.log(user)
+  const handleSelection = (teams: string[]) => {
+    user.favouriteTeams = teams;
+    console.log(user)
+}
   return (
     <IonPage>
       <IonHeader>
@@ -18,12 +33,26 @@ const SettingsPage: FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonText>
-          Hello, {user.name}!
-        </IonText>
+        <IonText>Hello, {user.name}!</IonText>
+        <IonText>Favourite Teams:</IonText>
+        {user?.favouriteTeams?.join(', ')}
+      </IonContent>
+      <IonContent>
+          <IonItem>
+            <IonLabel>Pets</IonLabel>
+        {/* <IonButton>Select</IonButton> */}
+        <IonSelect
+          value={user.favouriteTeams}
+          multiple={true}
+          onIonChange={e => handleSelection(e.detail.value)}>
+          <IonSelectOption value="aaa">aaa</IonSelectOption >
+          <IonSelectOption value="b">b</IonSelectOption >
+          <IonSelectOption value="c">c</IonSelectOption >
+        </IonSelect>
+          </IonItem>
       </IonContent>
     </IonPage>
   );
 };
 
-export default SettingsPage
+export default SettingsPage;
