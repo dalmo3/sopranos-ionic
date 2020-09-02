@@ -1,27 +1,26 @@
 import * as Apollo from '@apollo/client';
 import * as Types from './types';
 
-
 export const GetAllCompetitionsDocument = Apollo.gql`
-    query GetAllCompetitions {
-  competition {
-    Grades {
+  query GetAllCompetitions {
+    competition {
+      Grades {
+        Id
+      }
       Id
+      Name
+      OrganisationId
+      Provider
+      SeasonId
+      SportId
+      SportName
+      _id
+      firstFixtureDate
+      fixtures
+      lastResultDate
     }
-    Id
-    Name
-    OrganisationId
-    Provider
-    SeasonId
-    SportId
-    SportName
-    _id
-    firstFixtureDate
-    fixtures
-    lastResultDate
   }
-}
-    `;
+`;
 
 /**
  * __useGetAllCompetitionsQuery__
@@ -207,15 +206,38 @@ export const GetFixturesByIdsDocument = Apollo.gql`
  *   },
  * });
  */
-export function useGetFixturesByIdsQuery(baseOptions?: Apollo.QueryHookOptions<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>) {
-  return Apollo.useQuery<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>(GetFixturesByIdsDocument, baseOptions);
+export function useGetFixturesByIdsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    Types.GetFixturesByIdsQuery,
+    Types.GetFixturesByIdsQueryVariables
+  >
+) {
+  return Apollo.useQuery<
+    Types.GetFixturesByIdsQuery,
+    Types.GetFixturesByIdsQueryVariables
+  >(GetFixturesByIdsDocument, baseOptions);
 }
-export function useGetFixturesByIdsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>) {
-    return Apollo.useLazyQuery<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>(GetFixturesByIdsDocument, baseOptions);
-  }
-export type GetFixturesByIdsQueryHookResult = ReturnType<typeof useGetFixturesByIdsQuery>;
-export type GetFixturesByIdsLazyQueryHookResult = ReturnType<typeof useGetFixturesByIdsLazyQuery>;
-export type GetFixturesByIdsQueryResult = Apollo.QueryResult<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>;
+export function useGetFixturesByIdsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    Types.GetFixturesByIdsQuery,
+    Types.GetFixturesByIdsQueryVariables
+  >
+) {
+  return Apollo.useLazyQuery<
+    Types.GetFixturesByIdsQuery,
+    Types.GetFixturesByIdsQueryVariables
+  >(GetFixturesByIdsDocument, baseOptions);
+}
+export type GetFixturesByIdsQueryHookResult = ReturnType<
+  typeof useGetFixturesByIdsQuery
+>;
+export type GetFixturesByIdsLazyQueryHookResult = ReturnType<
+  typeof useGetFixturesByIdsLazyQuery
+>;
+export type GetFixturesByIdsQueryResult = Apollo.QueryResult<
+  Types.GetFixturesByIdsQuery,
+  Types.GetFixturesByIdsQueryVariables
+>;
 
 export const GetFixturesDocument = Apollo.gql`
     query GetFixtures($q: FixtureQueryInput) {
@@ -284,12 +306,33 @@ export const GetFixturesDocument = Apollo.gql`
  *   },
  * });
  */
-export function useGetFixturesQuery(baseOptions?: Apollo.QueryHookOptions<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>) {
-        return Apollo.useQuery<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>(GetFixturesDocument, baseOptions);
-      }
-export function useGetFixturesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>) {
-          return Apollo.useLazyQuery<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>(GetFixturesDocument, baseOptions);
-        }
+export function useGetFixturesQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    Types.GetFixturesQuery,
+    Types.GetFixturesQueryVariables
+  >
+) {
+  return Apollo.useQuery<
+    Types.GetFixturesQuery,
+    Types.GetFixturesQueryVariables
+  >(GetFixturesDocument, baseOptions);
+}
+export function useGetFixturesLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    Types.GetFixturesQuery,
+    Types.GetFixturesQueryVariables
+  >
+) {
+  return Apollo.useLazyQuery<
+    Types.GetFixturesQuery,
+    Types.GetFixturesQueryVariables
+  >(GetFixturesDocument, baseOptions);
+}
 export type GetFixturesQueryHookResult = ReturnType<typeof useGetFixturesQuery>;
-export type GetFixturesLazyQueryHookResult = ReturnType<typeof useGetFixturesLazyQuery>;
-export type GetFixturesQueryResult = Apollo.QueryResult<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>;
+export type GetFixturesLazyQueryHookResult = ReturnType<
+  typeof useGetFixturesLazyQuery
+>;
+export type GetFixturesQueryResult = Apollo.QueryResult<
+  Types.GetFixturesQuery,
+  Types.GetFixturesQueryVariables
+>;
