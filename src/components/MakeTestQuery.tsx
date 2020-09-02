@@ -5,7 +5,7 @@ import {
   useGetFixturesByIdsQuery,
   useGetFixturesQuery,
 } from '../database/graphql-operations';
-import { Competition, Fixture } from '../database/types';
+import { Competition, Fixture } from '../database/types/generated';
 import { IonContent, IonLoading, IonText } from '@ionic/react';
 import FixturesTable from './FixtureTable';
 import FixtureList from './FixtureList';
