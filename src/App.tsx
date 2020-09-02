@@ -41,8 +41,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import RealmProvider from './database/RealmProvider';
-import RealmApolloProvider from './database/RealmApolloProvider';
 import StitchApolloProvider from './database/StitchApolloProvider';
 import StitchProvider from './database/StitchProvider';
 import Menu from './components/Menu';
