@@ -1,8 +1,8 @@
 import { IonList, IonItem, IonLabel } from '@ionic/react';
-import React from 'react'
-import { FixturesProps, Fixture } from '../database/types';
+import React, { FC } from 'react'
+import { Fixture } from '../database/types/generated';
 
-const FixtureList: React.FC<FixturesProps> = (props) => {
+const FixtureList: FC<{fixtures: Fixture[]}> = (props) => {
   const fixtures = props.fixtures;
 
   return(
