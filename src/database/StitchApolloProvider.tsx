@@ -21,7 +21,6 @@ const capacitorStorage = {
   getItem: async (key: string) => (await Storage.get({ key })).value,
   setItem: (key: string, data: any) =>
     Storage.set({ key, value: data as string }),
-  // setItem: (key: string, data: PersistedData<{ value: string | null; }>) => Storage.set({ key, value: data as string }),
   removeItem: (key: string) => Storage.remove({ key }),
 };
 
@@ -34,27 +33,20 @@ const StitchApolloProvider: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     const initApollo = async () => {
-      // console.log('this runs?1');
       await persistCache({
         cache,
         storage: capacitorStorage,
       });
       setClient(createApolloClient(id, user, cache));
-      // console.log('this runs?2');
     };
     //@ts-ignore Type definitions for StitchUser are missing the ['auth'] property, that contain the accessToken
     if (user?.auth) initApollo();
   }, [id, user]);
 
   return  <ApolloProvider client={client}>{children}</ApolloProvider>
-  // client ? (
-  // ) : (
-    // <>{children}</>
-  // );
 };
 export default StitchApolloProvider;
 
-// TODO: Implement createApolloClient()
 function createApolloClient(
   realmAppId: string,
   user: IStitchProvider['user'],
@@ -81,7 +73,6 @@ function createApolloClient(
 
   return new ApolloClient({
     link: authorizationHeaderLink.concat(httpLink),
-    // link: httpLink,
     cache,
   });
 }
