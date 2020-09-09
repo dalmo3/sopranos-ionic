@@ -1,6 +1,7 @@
-import { gql } from "@apollo/client";
+import * as Apollo from '@apollo/client';
+import { gql } from '@apollo/client';
 
-export const USER_DATA = gql`
+export const GetUserData = gql`
   query userData {
     User {
       name @client
@@ -8,3 +9,19 @@ export const USER_DATA = gql`
     }
   }
 `;
+
+export type UserData = {
+  __typename?: 'UserData';
+  User: {
+    name: string;
+    favouriteTeams: string[];
+  };
+};
+
+export function useGetUserDataQuery(
+  baseOptions?: Apollo.QueryHookOptions<UserData>
+) {
+  return Apollo.useQuery<UserData>(GetUserData, baseOptions);
+}
+
+export type GetUserDataQueryResult = Apollo.QueryResult<UserData>;

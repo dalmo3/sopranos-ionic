@@ -14,7 +14,7 @@ import { setContext } from '@apollo/client/link/context';
 import { PersistentStorage } from 'apollo-cache-persist/types';
 
 import { Plugins } from '@capacitor/core';
-import { USER_DATA } from './localData';
+import { GetUserData } from './localData';
 
 const { Storage } = Plugins;
 
@@ -27,8 +27,6 @@ const capacitorStorage = {
 };
 
 const cache = new InMemoryCache();
-
-
 
 const StitchApolloProvider: React.FC = ({ children }) => {
   const { id, user } = useStitchProvider();
@@ -48,12 +46,12 @@ const StitchApolloProvider: React.FC = ({ children }) => {
     if (user?.auth) initApollo();
 
     cache.writeQuery({
-      query: USER_DATA,
+      query: GetUserData,
       data: {
         User: {
           name: 'none',
-          favouriteTeams: []
-        }
+          favouriteTeams: [],
+        },
       },
     });
   }, [id, user]);
