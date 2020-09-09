@@ -1,8 +1,9 @@
 import * as Apollo from '@apollo/client';
+import { gql } from '@apollo/client';
 import * as Types from './types/generated';
 
 
-export const GetAllCompetitionsDocument = Apollo.gql`
+export const GetAllCompetitionsDocument = gql`
     query GetAllCompetitions {
   competition {
     Grades {
@@ -71,7 +72,7 @@ export type GetAllCompetitionsQueryResult = Apollo.QueryResult<
   Types.GetAllCompetitionsQueryVariables
 >;
 
-export const GetCompetitionByIdDocument = Apollo.gql`
+export const GetCompetitionByIdDocument = gql`
     query GetCompetitionById($Id: String!) {
   competition(query: {Id: $Id}) {
     Grades {
@@ -141,7 +142,7 @@ export type GetCompetitionByIdQueryResult = Apollo.QueryResult<
   Types.GetCompetitionByIdQueryVariables
 >;
 
-export const GetFixturesByIdsDocument = Apollo.gql`
+export const GetFixturesByIdsDocument = gql`
     query GetFixturesByIds($Ids: [String]) {
   fixtures(query: {Id_in: $Ids}) {
     Address
@@ -217,7 +218,7 @@ export type GetFixturesByIdsQueryHookResult = ReturnType<typeof useGetFixturesBy
 export type GetFixturesByIdsLazyQueryHookResult = ReturnType<typeof useGetFixturesByIdsLazyQuery>;
 export type GetFixturesByIdsQueryResult = Apollo.QueryResult<Types.GetFixturesByIdsQuery, Types.GetFixturesByIdsQueryVariables>;
 
-export const GetFixturesDocument = Apollo.gql`
+export const GetFixturesDocument = gql`
     query GetFixtures($q: FixtureQueryInput) {
   fixtures(query: $q) {
     Address
