@@ -44,6 +44,7 @@ import './theme/variables.css';
 import StitchApolloProvider from './database/StitchApolloProvider';
 import StitchProvider from './database/StitchProvider';
 import Menu from './components/Menu';
+import SettingsPage from './pages/SettingsPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -59,6 +60,7 @@ const App: React.FC = () => (
                   <Route path="/tab1" component={Tab1} exact={true} />
                   <Route path="/tab2" component={Tab2} exact={true} />
                   <Route path="/tab3" component={Tab3} />
+                  <Route path="/settings" component={SettingsPage} />
                   <Route
                     path="/"
                     render={() => <Redirect to="/tab1" />}
