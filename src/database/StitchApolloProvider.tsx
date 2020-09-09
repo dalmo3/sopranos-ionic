@@ -61,7 +61,16 @@ function createApolloClient(
   cache: InMemoryCache
 ) {
   const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${realmAppId}/graphql`;
-  const httpLink = createHttpLink({ uri: graphql_url });
+  const customFetch = (input: RequestInfo, init?: RequestInit | undefined) => {
+    return user.isLoggedIn
+      ? fetch(input, init)
+      : Promise.reject(new Response());
+  };
+  const httpLink = createHttpLink({
+    // uri: user.isLoggedIn? graphql_url: undefined,
+    uri: graphql_url,
+    fetch: customFetch,
+  });
   const authorizationHeaderLink = setContext(async (_, { headers }) => ({
     headers: {
       ...headers,
