@@ -8,11 +8,13 @@ import {
   ApolloProvider,
   createHttpLink,
   NormalizedCacheObject,
+  gql,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { PersistentStorage } from 'apollo-cache-persist/types';
 
 import { Plugins } from '@capacitor/core';
+import { USER_DATA } from './localData';
 
 const { Storage } = Plugins;
 
@@ -24,12 +26,15 @@ const capacitorStorage = {
   removeItem: (key: string) => Storage.remove({ key }),
 };
 
+const cache = new InMemoryCache();
+
+
+
 const StitchApolloProvider: React.FC = ({ children }) => {
   const { id, user } = useStitchProvider();
-  const cache = new InMemoryCache();
   const [client, setClient] = React.useState<
     ApolloClient<NormalizedCacheObject>
-  >(createApolloClient(id,user,cache));
+  >(createApolloClient(id, user, cache));
 
   React.useEffect(() => {
     const initApollo = async () => {
@@ -41,9 +46,19 @@ const StitchApolloProvider: React.FC = ({ children }) => {
     };
     //@ts-ignore Type definitions for StitchUser are missing the ['auth'] property, that contain the accessToken
     if (user?.auth) initApollo();
+
+    cache.writeQuery({
+      query: USER_DATA,
+      data: {
+        User: {
+          name: 'none',
+          favouriteTeams: []
+        }
+      },
+    });
   }, [id, user]);
 
-  return  <ApolloProvider client={client}>{children}</ApolloProvider>
+  return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
 export default StitchApolloProvider;
 
