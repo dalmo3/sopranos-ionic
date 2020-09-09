@@ -53,14 +53,6 @@ const App: React.FC = () => (
         <IonSplitPane contentId="main">
           <Menu />
           <IonPage id="main">
-            <IonHeader>
-              <IonToolbar>
-                sssssssssssssssssss
-                <IonButtons>
-                  <IonMenuButton />
-                </IonButtons>
-              </IonToolbar>
-            </IonHeader>
             <IonContent>
               <IonTabs>
                 <IonRouterOutlet>
