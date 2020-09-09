@@ -12,33 +12,34 @@ const stitchAppClientWeb: StitchAppClient = Stitch.initializeDefaultAppClient(
   REALM_APP_ID
 );
 
-const StitchContext = React.createContext<IStitchProvider | void>(undefined);
-
 export interface IStitchProvider {
   id: string;
   user: StitchUser;
   // logIn: (email: string, password: string) => Promise<void>;
-  // anonLogIn: () => Promise<void>;
+  anonLogIn: () => Promise<void>;
   // logOut: () => Promise<void>;
   // registerUser(email: string, password: string): Promise<void>;
 }
+
+const StitchContext = React.createContext({} as IStitchProvider);
 
 const StitchProvider: React.FC = ({ children }) => {
   // Keep track of the current user in local state
   // const appRef = React.useRef(realmWebApp);
   // const [user, setUser] = React.useState(realmWebApp.currentUser);
   const [user, setUser] = React.useState({} as IStitchProvider['user']);
+  console.log('StitchUser', user);
 
   // Anonymous login immediately upon app start
+  
+  const anonLogIn = async () => {
+    const user = await stitchAppClientWeb.auth.loginWithCredential(
+      new AnonymousCredential()
+    );
+    setUser(user);
+  };
   React.useEffect(() => {
-    const anonLogin = async () => {
-      const user = await stitchAppClientWeb.auth.loginWithCredential(
-        new AnonymousCredential()
-      );
-
-      setUser(user);
-    };
-    anonLogin();
+    anonLogIn();
   }, []);
 
   // Let logged in users log out
@@ -53,7 +54,7 @@ const StitchProvider: React.FC = ({ children }) => {
     id: REALM_APP_ID,
     user,
     // logIn,
-    // anonLogIn,
+    anonLogIn,
     // logOut,
     // registerUser,
   };

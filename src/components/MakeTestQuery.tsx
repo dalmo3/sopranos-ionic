@@ -21,64 +21,73 @@ const MakeTestQuery: React.FC = () => {
     variables: {
       Id: '566058906',
     },
+    notifyOnNetworkStatusChange: true,
   });
   // console.log(comp);
 
   const { loading, error, data } = useGetFixturesQuery({
     variables: {
       q: {
-        OR: [
-          {
-            HomeTeamName: 'KCU Sopranos',
-          },
-          {
-            AwayTeamName: 'KCU Sopranos',
-          },
-        ],
+        // OR: [
+        //   {
+        //     HomeTeamName: 'KCU Sopranos',
+        //   },
+        //   {
+        //     AwayTeamName: 'KCU Sopranos',
+        //   },
+        // ],
         // HomeTeamName: 'KCU Sopranos',
         // Id_in: comp.data?.competition?.fixtures
         // HomeTeamName: 'Kapiti Coast United',
         // HomeTeamName: 'KCU Sopranos',
-        // HomeTeamName: 'KCU Thirds',
+        HomeTeamName: 'KCU Thirds',
         // HomeScore: "2",
       },
     },
+    notifyOnNetworkStatusChange: true,
     // pollInterval: 0
     // skip: !comp.data?.competition?.fixtures,
-    // fetchPolicy: "network-only"
-    // notifyOnNetworkStatusChange: true
+    // fetchPolicy: "cache-only"
+    onCompleted: (d) => {
+      console.log('completed, data:', d)
+    },
+    onError: (e) => {
+      console.error('query error', e)
+    }
   });
-  const [showLoading, setShowLoading] = React.useState(true);
+  // const [showLoading, setShowLoading] = React.useState(true);
 
-  setTimeout(() => {
-    setShowLoading(false);
-  }, 2000);
+  // setTimeout(() => {
+  //   setShowLoading(false);
+  // }, 2000);
 
   console.log('loading? ', loading);
-  // console.log('data? ', data)
+  console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
-  if (error) {
-    console.log(error)
-    return <IonText>Error fetching... `${error.message}`</IonText>;
-  }
+  // if (error) {
+  //   console.log(error);
+  //   return <IonText>Error fetching... `${error.message}`</IonText>;
+  // }
   if (!data?.fixtures)
     return (
+      <>
       <IonLoading
         // cssClass='my-custom-class'
         showBackdrop={false}
-        isOpen={showLoading}
-        onDidDismiss={() => setShowLoading(false)}
+        isOpen={loading}
+        // onDidDismiss={() => setShowLoading(false)}
         message={'Please wait...'}
-        duration={5000}
-      />
+        duration={10000}
+        />
+        <IonText>
+          {error && `Error fetching... ${error}`}
+          {/* {data && JSON.stringify(data.fixtures)} */}
+        </IonText>
+        </>
     );
   return (
     <>
-      <IonText>
-        {error && `Error fetching... ${error}`}
-        {/* {data && JSON.stringify(data.fixtures)} */}
-      </IonText>
       <IonContent>
         <FixtureGrid fixtures={data.fixtures as Fixture[]} />
         {/* <FixtureList fixtures={data.fixtures as Fixture[] } /> */}

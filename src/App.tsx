@@ -49,7 +49,7 @@ import SettingsPage from './pages/SettingsPage';
 
 const App: React.FC = () => (
   <IonApp>
-    <AppDataProvider>
+    {/* <AppDataProvider> */}
       <StitchProvider>
         <StitchApolloProvider>
           <IonReactRouter>
@@ -90,7 +90,7 @@ const App: React.FC = () => (
           </IonReactRouter>
         </StitchApolloProvider>
       </StitchProvider>
-    </AppDataProvider>
+    {/* </AppDataProvider> */}
   </IonApp>
 );
 

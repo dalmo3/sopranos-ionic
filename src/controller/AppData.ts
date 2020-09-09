@@ -43,7 +43,7 @@ export default class AppData {
   }
 
   private _data: IAppData = {
-    user: new User({name:'anonymous', favouriteTeams:[]}),
+    user: new User({name:'none', favouriteTeams:[]}),
   };
   public get data() {
     return this._data;

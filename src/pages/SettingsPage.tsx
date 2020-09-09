@@ -12,16 +12,24 @@ import {
 } from '@ionic/react';
 import { EDEADLK } from 'constants';
 import React, { FC } from 'react';
-import { useAppData } from '../controller/AppDataProvider';
+// import { useAppData } from '../controller/AppDataProvider';
+import User from '../controller/User';
+import { useLocalData } from '../database/localData/useLocalData';
 import './SettingsPage.css';
 
 const SettingsPage: FC = () => {
-  const { user } = useAppData();
-  console.log(user)
+
+  const s = useLocalData()
+  console.log('useLocalData', s)
+  const user = new User({name:'anonymous', favouriteTeams:[]})
+  // const { user } = useAppData();
+  // console.log(user)
   const handleSelection = (teams: string[]) => {
     user.favouriteTeams = teams;
     console.log(user)
 }
+
+  
   return (
     <IonPage>
       <IonHeader>
