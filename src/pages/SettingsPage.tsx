@@ -13,6 +13,7 @@ import {
 } from '@ionic/react';
 import './Tab1.css';
 import {
+  DEFAULT_USER_DATA,
   GetUserData,
   GetUserDataQueryResult,
   useGetUserDataQuery,
@@ -20,24 +21,20 @@ import {
 } from '../database/localData';
 import { useApolloClient } from '@apollo/client';
 
-
-
-
-
 const Settings: FC = () => {
   const { data } = useGetUserDataQuery();
-
   const client = useApolloClient()
 
   const handleSelection = (data: UserData | undefined, favouriteTeams: string[]) => {
     // data?.User.favouriteTeams = teams;
-    // console.log(teams);
+    console.log('handleSelection', data);
     client.writeQuery({
       query: GetUserData,
       data: {
         User: {
+          // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams
+          favouriteTeams: ['1']
         }
       }
     })
@@ -49,16 +46,17 @@ const Settings: FC = () => {
       <IonText>Hello, {data?.User.name}</IonText>
       <IonText>Favourite Teams:</IonText>
       {data?.User.favouriteTeams?.join(', ')}
-
+      {data && 
       <IonSelect
-        value={data?.User.favouriteTeams}
-        multiple={true}
-        onIonChange={(e) => handleSelection(data, e.detail.value)}
+      value={data.User.favouriteTeams}
+      multiple={true}
+      onIonChange={(e) => handleSelection(data, e.detail.value)}
       >
         <IonSelectOption value="aaa">aaa</IonSelectOption>
         <IonSelectOption value="b">b</IonSelectOption>
         <IonSelectOption value="c">c</IonSelectOption>
       </IonSelect>
+    }
     </IonContent>
   );
 };
