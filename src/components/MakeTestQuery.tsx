@@ -54,12 +54,12 @@ const MakeTestQuery: React.FC = () => {
     setShowLoading(false);
   }, 2000);
 
-  console.log('loading? ', loading);
+  // console.log('loading? ', loading);
   // console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
   if (error) {
-    console.log(error)
+    // console.log(error)
     return <IonText>Error fetching... `${error.message}`</IonText>;
   }
   if (!data?.fixtures)

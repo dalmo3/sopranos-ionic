@@ -72,7 +72,6 @@ function createApolloClient(
       : Promise.reject(new Response());
   };
   const httpLink = createHttpLink({
-    // uri: user.isLoggedIn? graphql_url: undefined,
     uri: graphql_url,
     fetch: customFetch,
   });
