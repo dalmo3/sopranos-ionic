@@ -1,6 +1,12 @@
 import * as Apollo from '@apollo/client';
 import { gql } from '@apollo/client';
 
+export const DEFAULT_USER_DATA: UserData = {
+  User: {
+    name: 'anonymous',
+    favouriteTeams: [],
+  },
+};
 
 export type UserData = {
   __typename?: 'UserData';
@@ -26,4 +32,3 @@ export function useGetUserDataQuery(
 ) {
   return Apollo.useQuery<UserData>(GetUserData, baseOptions);
 }
-
