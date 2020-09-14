@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   useGetAllCompetitionsQuery,
   useGetCompetitionByIdQuery,
-  useGetFixturesByIdsQuery,
+  // useGetFixturesByIdsQuery,
   useGetFixturesQuery,
 } from '../database/graphql-operations';
 import { Competition, Fixture } from '../database/types/generated';
@@ -13,7 +13,7 @@ import FixtureGrid from './FixtureGrid';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
-// import { ScrollView } from 'react-native';
+// import { ScrollView } from 'react-native'; 
 
 const MakeTestQuery: React.FC = () => {
   // const { loading, error, data } = useGetAllCompetitionsQuery();

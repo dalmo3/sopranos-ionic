@@ -1,15 +1,18 @@
-schema: src/database/schema.graphql
-documents: src/database/operations.graphql
+schema: src/database/graphql-sources/schema.graphql
+documents: src/database/graphql-sources/operations.graphql
 overwrite: true
 generates:
-  src/types.ts:
+  src/database/types/generated.ts:
     plugins:
       - typescript
       - typescript-operations
-  src/graphql-operations.ts:
+    config:
+      namingConvention:
+        enumValues: keep
+  src/database/graphql-operations.tsx:
     preset: import-types
     presetConfig:
-      typesPath: ../types
+      typesPath: ./types/generated
     plugins:
       - typescript-react-apollo
     config:

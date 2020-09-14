@@ -1,3 +1,6 @@
+
+// GRAPHQL
+
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
@@ -222,26 +225,24 @@ export type CompetitionQueryInput = {
 };
 
 export enum CompetitionSortByInput {
-  SEASONID_DESC = 'SEASONID_DESC',
-  NAME_ASC = 'NAME_ASC',
-  NAME_DESC = 'NAME_DESC',
-  PROVIDER_DESC = 'PROVIDER_DESC',
-  _ID_DESC = '_ID_DESC',
-  SEASONID_ASC = 'SEASONID_ASC',
-  SPORTNAME_ASC = 'SPORTNAME_ASC',
-  SPORTNAME_DESC = 'SPORTNAME_DESC',
-  ORGANISATIONID_ASC = 'ORGANISATIONID_ASC',
-  FIRSTFIXTUREDATE_ASC = 'FIRSTFIXTUREDATE_ASC',
-  FIRSTFIXTUREDATE_DESC = 'FIRSTFIXTUREDATE_DESC',
-  LASTRESULTDATE_ASC = 'LASTRESULTDATE_ASC',
-  ID_ASC = 'ID_ASC',
-  PROVIDER_ASC = 'PROVIDER_ASC',
-  SPORTID_DESC = 'SPORTID_DESC',
-  LASTRESULTDATE_DESC = 'LASTRESULTDATE_DESC',
-  ID_DESC = 'ID_DESC',
-  ORGANISATIONID_DESC = 'ORGANISATIONID_DESC',
-  SPORTID_ASC = 'SPORTID_ASC',
-  _ID_ASC = '_ID_ASC'
+  SeasonidDesc = 'SEASONID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  ProviderDesc = 'PROVIDER_DESC',
+  SeasonidAsc = 'SEASONID_ASC',
+  SportnameAsc = 'SPORTNAME_ASC',
+  SportnameDesc = 'SPORTNAME_DESC',
+  OrganisationidAsc = 'ORGANISATIONID_ASC',
+  FirstfixturedateAsc = 'FIRSTFIXTUREDATE_ASC',
+  FirstfixturedateDesc = 'FIRSTFIXTUREDATE_DESC',
+  LastresultdateAsc = 'LASTRESULTDATE_ASC',
+  IdAsc = 'ID_ASC',
+  ProviderAsc = 'PROVIDER_ASC',
+  SportidDesc = 'SPORTID_DESC',
+  LastresultdateDesc = 'LASTRESULTDATE_DESC',
+  IdDesc = 'ID_DESC',
+  OrganisationidDesc = 'ORGANISATIONID_DESC',
+  SportidAsc = 'SPORTID_ASC',
 }
 
 export type CompetitionUpdateInput = {
@@ -744,84 +745,82 @@ export type FixtureQueryInput = {
 };
 
 export enum FixtureSortByInput {
-  ROUNDNAME_ASC = 'ROUNDNAME_ASC',
-  LATITUDE_ASC = 'LATITUDE_ASC',
-  VENUENAMEABBR_ASC = 'VENUENAMEABBR_ASC',
-  GRADEID_ASC = 'GRADEID_ASC',
-  AWAYTEAMNAME_DESC = 'AWAYTEAMNAME_DESC',
-  HOMEORGANISATIONID_DESC = 'HOMEORGANISATIONID_DESC',
-  HOMESCORE_DESC = 'HOMESCORE_DESC',
-  HOMETEAMID_ASC = 'HOMETEAMID_ASC',
-  GRADESORTORDER_DESC = 'GRADESORTORDER_DESC',
-  _ID_DESC = '_ID_DESC',
-  HOMEORGANISATIONLOGO_ASC = 'HOMEORGANISATIONLOGO_ASC',
-  AWAYSCORE_DESC = 'AWAYSCORE_DESC',
-  ROUNDNAME_DESC = 'ROUNDNAME_DESC',
-  LOCATIONLNG_ASC = 'LOCATIONLNG_ASC',
-  ID_DESC = 'ID_DESC',
-  AWAYORGANISATIONNAME_ASC = 'AWAYORGANISATIONNAME_ASC',
-  RESULTSTATUS_DESC = 'RESULTSTATUS_DESC',
-  HOMETEAMNAME_DESC = 'HOMETEAMNAME_DESC',
-  AWAYORGANISATIONID_ASC = 'AWAYORGANISATIONID_ASC',
-  LATITUDE_DESC = 'LATITUDE_DESC',
-  VENUENAME_DESC = 'VENUENAME_DESC',
-  VENUENAMEABBR_DESC = 'VENUENAMEABBR_DESC',
-  MATCHDAY_DESC = 'MATCHDAY_DESC',
-  AWAYORGANISATIONID_DESC = 'AWAYORGANISATIONID_DESC',
-  SECTIONSORTORDER_ASC = 'SECTIONSORTORDER_ASC',
-  MATCHDAY_ASC = 'MATCHDAY_ASC',
-  HOMETEAMID_DESC = 'HOMETEAMID_DESC',
-  LOCATIONLNG_DESC = 'LOCATIONLNG_DESC',
-  VENUENAME_ASC = 'VENUENAME_ASC',
-  STATUS_DESC = 'STATUS_DESC',
-  HOMETEAMNAME_ASC = 'HOMETEAMNAME_ASC',
-  AWAYSCORE_ASC = 'AWAYSCORE_ASC',
-  GRADENAME_ASC = 'GRADENAME_ASC',
-  AWAYORGANISATIONLOGO_DESC = 'AWAYORGANISATIONLOGO_DESC',
-  AWAYTEAMID_DESC = 'AWAYTEAMID_DESC',
-  PROVIDER_DESC = 'PROVIDER_DESC',
-  STATUS_ASC = 'STATUS_ASC',
-  AWAYORGANISATIONLOGO_ASC = 'AWAYORGANISATIONLOGO_ASC',
-  HOMEORGANISATIONID_ASC = 'HOMEORGANISATIONID_ASC',
-  MATCHSUMMARY_ASC = 'MATCHSUMMARY_ASC',
-  COMPETITIONID_ASC = 'COMPETITIONID_ASC',
-  DATE_DESC = 'DATE_DESC',
-  HOMEORGANISATIONLOGO_DESC = 'HOMEORGANISATIONLOGO_DESC',
-  PROVIDER_ASC = 'PROVIDER_ASC',
-  SPORTNAME_DESC = 'SPORTNAME_DESC',
-  ID_ASC = 'ID_ASC',
-  LOCATIONLAT_ASC = 'LOCATIONLAT_ASC',
-  LOCATIONLAT_DESC = 'LOCATIONLAT_DESC',
-  FROM_DESC = 'FROM_DESC',
-  SECTIONID_ASC = 'SECTIONID_ASC',
-  SECTIONID_DESC = 'SECTIONID_DESC',
-  ROUND_DESC = 'ROUND_DESC',
-  SPORTID_DESC = 'SPORTID_DESC',
-  LONGITUDE_DESC = 'LONGITUDE_DESC',
-  TO_DESC = 'TO_DESC',
-  HOMESCORE_ASC = 'HOMESCORE_ASC',
-  GRADENAME_DESC = 'GRADENAME_DESC',
-  _ID_ASC = '_ID_ASC',
-  ADDRESS_DESC = 'ADDRESS_DESC',
-  AWAYTEAMNAME_ASC = 'AWAYTEAMNAME_ASC',
-  MATCHSUMMARY_DESC = 'MATCHSUMMARY_DESC',
-  COMPETITIONID_DESC = 'COMPETITIONID_DESC',
-  HOMEORGANISATIONNAME_DESC = 'HOMEORGANISATIONNAME_DESC',
-  LONGITUDE_ASC = 'LONGITUDE_ASC',
-  GRADESORTORDER_ASC = 'GRADESORTORDER_ASC',
-  AWAYTEAMID_ASC = 'AWAYTEAMID_ASC',
-  DATE_ASC = 'DATE_ASC',
-  FROM_ASC = 'FROM_ASC',
-  SPORTID_ASC = 'SPORTID_ASC',
-  SPORTNAME_ASC = 'SPORTNAME_ASC',
-  ADDRESS_ASC = 'ADDRESS_ASC',
-  AWAYORGANISATIONNAME_DESC = 'AWAYORGANISATIONNAME_DESC',
-  RESULTSTATUS_ASC = 'RESULTSTATUS_ASC',
-  GRADEID_DESC = 'GRADEID_DESC',
-  HOMEORGANISATIONNAME_ASC = 'HOMEORGANISATIONNAME_ASC',
-  ROUND_ASC = 'ROUND_ASC',
-  SECTIONSORTORDER_DESC = 'SECTIONSORTORDER_DESC',
-  TO_ASC = 'TO_ASC'
+  RoundnameAsc = 'ROUNDNAME_ASC',
+  LatitudeAsc = 'LATITUDE_ASC',
+  VenuenameabbrAsc = 'VENUENAMEABBR_ASC',
+  GradeidAsc = 'GRADEID_ASC',
+  AwayteamnameDesc = 'AWAYTEAMNAME_DESC',
+  HomeorganisationidDesc = 'HOMEORGANISATIONID_DESC',
+  HomescoreDesc = 'HOMESCORE_DESC',
+  HometeamidAsc = 'HOMETEAMID_ASC',
+  GradesortorderDesc = 'GRADESORTORDER_DESC',
+  HomeorganisationlogoAsc = 'HOMEORGANISATIONLOGO_ASC',
+  AwayscoreDesc = 'AWAYSCORE_DESC',
+  RoundnameDesc = 'ROUNDNAME_DESC',
+  LocationlngAsc = 'LOCATIONLNG_ASC',
+  IdDesc = 'ID_DESC',
+  AwayorganisationnameAsc = 'AWAYORGANISATIONNAME_ASC',
+  ResultstatusDesc = 'RESULTSTATUS_DESC',
+  HometeamnameDesc = 'HOMETEAMNAME_DESC',
+  AwayorganisationidAsc = 'AWAYORGANISATIONID_ASC',
+  LatitudeDesc = 'LATITUDE_DESC',
+  VenuenameDesc = 'VENUENAME_DESC',
+  VenuenameabbrDesc = 'VENUENAMEABBR_DESC',
+  MatchdayDesc = 'MATCHDAY_DESC',
+  AwayorganisationidDesc = 'AWAYORGANISATIONID_DESC',
+  SectionsortorderAsc = 'SECTIONSORTORDER_ASC',
+  MatchdayAsc = 'MATCHDAY_ASC',
+  HometeamidDesc = 'HOMETEAMID_DESC',
+  LocationlngDesc = 'LOCATIONLNG_DESC',
+  VenuenameAsc = 'VENUENAME_ASC',
+  StatusDesc = 'STATUS_DESC',
+  HometeamnameAsc = 'HOMETEAMNAME_ASC',
+  AwayscoreAsc = 'AWAYSCORE_ASC',
+  GradenameAsc = 'GRADENAME_ASC',
+  AwayorganisationlogoDesc = 'AWAYORGANISATIONLOGO_DESC',
+  AwayteamidDesc = 'AWAYTEAMID_DESC',
+  ProviderDesc = 'PROVIDER_DESC',
+  StatusAsc = 'STATUS_ASC',
+  AwayorganisationlogoAsc = 'AWAYORGANISATIONLOGO_ASC',
+  HomeorganisationidAsc = 'HOMEORGANISATIONID_ASC',
+  MatchsummaryAsc = 'MATCHSUMMARY_ASC',
+  CompetitionidAsc = 'COMPETITIONID_ASC',
+  DateDesc = 'DATE_DESC',
+  HomeorganisationlogoDesc = 'HOMEORGANISATIONLOGO_DESC',
+  ProviderAsc = 'PROVIDER_ASC',
+  SportnameDesc = 'SPORTNAME_DESC',
+  LocationlatAsc = 'LOCATIONLAT_ASC',
+  LocationlatDesc = 'LOCATIONLAT_DESC',
+  FromDesc = 'FROM_DESC',
+  SectionidAsc = 'SECTIONID_ASC',
+  SectionidDesc = 'SECTIONID_DESC',
+  RoundDesc = 'ROUND_DESC',
+  SportidDesc = 'SPORTID_DESC',
+  LongitudeDesc = 'LONGITUDE_DESC',
+  ToDesc = 'TO_DESC',
+  HomescoreAsc = 'HOMESCORE_ASC',
+  GradenameDesc = 'GRADENAME_DESC',
+  IdAsc = '_ID_ASC',
+  AddressDesc = 'ADDRESS_DESC',
+  AwayteamnameAsc = 'AWAYTEAMNAME_ASC',
+  MatchsummaryDesc = 'MATCHSUMMARY_DESC',
+  CompetitionidDesc = 'COMPETITIONID_DESC',
+  HomeorganisationnameDesc = 'HOMEORGANISATIONNAME_DESC',
+  LongitudeAsc = 'LONGITUDE_ASC',
+  GradesortorderAsc = 'GRADESORTORDER_ASC',
+  AwayteamidAsc = 'AWAYTEAMID_ASC',
+  DateAsc = 'DATE_ASC',
+  FromAsc = 'FROM_ASC',
+  SportidAsc = 'SPORTID_ASC',
+  SportnameAsc = 'SPORTNAME_ASC',
+  AddressAsc = 'ADDRESS_ASC',
+  AwayorganisationnameDesc = 'AWAYORGANISATIONNAME_DESC',
+  ResultstatusAsc = 'RESULTSTATUS_ASC',
+  GradeidDesc = 'GRADEID_DESC',
+  HomeorganisationnameAsc = 'HOMEORGANISATIONNAME_ASC',
+  RoundAsc = 'ROUND_ASC',
+  SectionsortorderDesc = 'SECTIONSORTORDER_DESC',
+  ToAsc = 'TO_ASC'
 }
 
 export type FixtureUpdateInput = {
@@ -1003,16 +1002,16 @@ export type GroundQueryInput = {
 };
 
 export enum GroundSortByInput {
-  LAT_DESC = 'LAT_DESC',
-  LON_ASC = 'LON_ASC',
-  LON_DESC = 'LON_DESC',
-  NAME_ASC = 'NAME_ASC',
-  NAME_DESC = 'NAME_DESC',
-  _ID_ASC = '_ID_ASC',
-  ADDRESS_ASC = 'ADDRESS_ASC',
-  ADDRESS_DESC = 'ADDRESS_DESC',
-  LAT_ASC = 'LAT_ASC',
-  _ID_DESC = '_ID_DESC'
+  LatDesc = 'LAT_DESC',
+  LonAsc = 'LON_ASC',
+  LonDesc = 'LON_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  IdAsc = '_ID_ASC',
+  AddressAsc = 'ADDRESS_ASC',
+  AddressDesc = 'ADDRESS_DESC',
+  LatAsc = 'LAT_ASC',
+  IdDesc = '_ID_DESC'
 }
 
 export type GroundUpdateInput = {
@@ -1365,14 +1364,12 @@ export type OrganisationQueryInput = {
 };
 
 export enum OrganisationSortByInput {
-  _ID_DESC = '_ID_DESC',
-  ID_ASC = 'ID_ASC',
-  ID_DESC = 'ID_DESC',
-  NAME_ASC = 'NAME_ASC',
-  NAME_DESC = 'NAME_DESC',
-  PROVIDER_ASC = 'PROVIDER_ASC',
-  PROVIDER_DESC = 'PROVIDER_DESC',
-  _ID_ASC = '_ID_ASC'
+  IdDesc = '_ID_DESC',
+  IdAsc = 'ID_ASC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  ProviderAsc = 'PROVIDER_ASC',
+  ProviderDesc = 'PROVIDER_DESC',
 }
 
 export type OrganisationUpdateInput = {
@@ -1550,14 +1547,12 @@ export type TeamQueryInput = {
 };
 
 export enum TeamSortByInput {
-  _ID_DESC = '_ID_DESC',
-  NAME_ASC = 'NAME_ASC',
-  NAME_DESC = 'NAME_DESC',
-  ORGANISATION_ASC = 'ORGANISATION_ASC',
-  ORGANISATION_DESC = 'ORGANISATION_DESC',
-  ID_ASC = 'ID_ASC',
-  ID_DESC = 'ID_DESC',
-  _ID_ASC = '_ID_ASC'
+  IdDesc = '_ID_DESC',
+  NameAsc = 'NAME_ASC',
+  NameDesc = 'NAME_DESC',
+  OrganisationAsc = 'ORGANISATION_ASC',
+  OrganisationDesc = 'ORGANISATION_DESC',
+  IdAsc = 'ID_ASC',
 }
 
 export type TeamUpdateInput = {
@@ -1602,6 +1597,7 @@ export type GetAllCompetitionsQuery = (
   )> }
 );
 
+
 export type GetCompetitionByIdQueryVariables = Exact<{
   Id: Scalars['String'];
 }>;
@@ -1618,6 +1614,22 @@ export type GetCompetitionByIdQuery = (
     )>>> }
   )> }
 );
+
+
+
+export type GetFixturesByIdsQueryVariables = Exact<{
+  Ids?: Maybe<Array<Maybe<Scalars['String']>>>;
+}>;
+
+
+export type GetFixturesByIdsQuery = (
+  { __typename?: 'Query' }
+  & { fixtures: Array<Maybe<(
+    { __typename?: 'Fixture' }
+    & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayOrganisationName' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'From' | 'GradeId' | 'GradeName' | 'GradeSortOrder' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeOrganisationName' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'InGame' | 'IsSuperForm' | 'Latitude' | 'LocationLat' | 'LocationLng' | 'Longitude' | 'MatchSummary' | 'Provider' | 'PublishResults' | 'PublishTeamsheetOnWidget' | 'PublishVenue' | 'ResultStatus' | 'Round' | 'RoundName' | 'SectionId' | 'SectionSortOrder' | 'SportId' | 'SportName' | 'Status' | 'To' | 'VenueName' | 'VenueNameAbbr' | '_id' | 'competitionId' | 'matchDay'>
+  )>> }
+);
+
 
 export type GetFixturesQueryVariables = Exact<{
   q?: Maybe<FixtureQueryInput>;
