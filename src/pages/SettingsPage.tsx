@@ -64,7 +64,10 @@ const Settings: FC = () => {
   const FavouriteTeams: FC<{ teams: Team[] }> = ({ teams }) => {
     console.log('fav teams', teams);
     return (
-      <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
+      <IonReorderGroup
+        disabled={false}
+        onIonItemReorder={(e) => doReorder(e, teams)}
+      >
         {teams.map((team) => {
           return (
             <IonItem key={team.Id}>
@@ -77,16 +80,14 @@ const Settings: FC = () => {
     );
   };
 
-  const doReorder = (event: CustomEvent) => {
-    console.log(event);
-    const clone = [...data!.User.favouriteTeams];
+  const doReorder = (event: CustomEvent, teams: Team[]) => {
     client.writeQuery({
       query: GetUserData,
       data: {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams: event.detail.complete(clone),
+          favouriteTeams: event.detail.complete(teams.map((t) => t.Id)),
         },
       },
     });
