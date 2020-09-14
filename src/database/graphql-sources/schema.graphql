@@ -22,240 +22,240 @@ type CompetitionGrade {
 }
 
 input CompetitionGradeInsertInput {
-  Id: String
-  IsPlayoff: Boolean
   NrdProvincialUnionId: Int
   Order: Int
   Provider: Int
+  Id: String
+  IsPlayoff: Boolean
 }
 
 input CompetitionGradeQueryInput {
-  NrdProvincialUnionId_nin: [Int]
-  IsPlayoff: Boolean
-  Order_gte: Int
-  Provider_gte: Int
-  OR: [CompetitionGradeQueryInput!]
-  NrdProvincialUnionId_ne: Int
-  Provider_lte: Int
-  Id: String
-  Id_nin: [String]
-  Provider: Int
-  Order_exists: Boolean
-  Id_gte: String
-  NrdProvincialUnionId_lte: Int
-  Id_ne: String
-  Id_lte: String
-  Order_lt: Int
-  NrdProvincialUnionId_in: [Int]
-  NrdProvincialUnionId: Int
-  NrdProvincialUnionId_gt: Int
-  AND: [CompetitionGradeQueryInput!]
-  Provider_in: [Int]
-  Provider_nin: [Int]
-  Order_ne: Int
-  Id_gt: String
-  Id_exists: Boolean
-  Order_lte: Int
-  IsPlayoff_ne: Boolean
-  Order_in: [Int]
-  Provider_exists: Boolean
-  Provider_lt: Int
-  NrdProvincialUnionId_gte: Int
-  Provider_ne: Int
-  Order_nin: [Int]
-  Provider_gt: Int
-  Id_in: [String]
-  Order_gt: Int
-  Id_lt: String
   Order: Int
+  Provider_ne: Int
+  NrdProvincialUnionId_gte: Int
+  Id_gt: String
+  NrdProvincialUnionId_lte: Int
+  Order_in: [Int]
+  AND: [CompetitionGradeQueryInput!]
+  Id_exists: Boolean
+  Id_ne: String
+  Id_gte: String
+  Id_nin: [String]
+  NrdProvincialUnionId_gt: Int
+  Order_ne: Int
+  Provider_gte: Int
+  IsPlayoff: Boolean
+  NrdProvincialUnionId_nin: [Int]
+  NrdProvincialUnionId: Int
+  Provider_in: [Int]
+  Provider_lt: Int
+  Provider_nin: [Int]
   NrdProvincialUnionId_lt: Int
+  Provider_exists: Boolean
+  Order_lt: Int
+  IsPlayoff_ne: Boolean
+  OR: [CompetitionGradeQueryInput!]
+  Order_exists: Boolean
+  Id_lte: String
+  NrdProvincialUnionId_in: [Int]
+  Order_nin: [Int]
+  Provider_lte: Int
+  Provider_gt: Int
+  Order_gte: Int
   NrdProvincialUnionId_exists: Boolean
+  Id_in: [String]
   IsPlayoff_exists: Boolean
+  NrdProvincialUnionId_ne: Int
+  Id_lt: String
+  Id: String
+  Provider: Int
+  Order_gt: Int
+  Order_lte: Int
 }
 
 input CompetitionGradeUpdateInput {
-  NrdProvincialUnionId_inc: Int
-  Provider: Int
-  Id: String
-  NrdProvincialUnionId_unset: Boolean
+  Order: Int
   Order_inc: Int
-  Order_unset: Boolean
   Id_unset: Boolean
   IsPlayoff_unset: Boolean
-  IsPlayoff: Boolean
-  Provider_inc: Int
-  NrdProvincialUnionId: Int
-  Order: Int
+  NrdProvincialUnionId_unset: Boolean
   Provider_unset: Boolean
+  Provider_inc: Int
+  IsPlayoff: Boolean
+  Order_unset: Boolean
+  Id: String
+  NrdProvincialUnionId: Int
+  NrdProvincialUnionId_inc: Int
+  Provider: Int
 }
 
 input CompetitionInsertInput {
+  SportId: String
   OrganisationId: String
   _id: ObjectId
+  Grades: [CompetitionGradeInsertInput]
+  Name: String
+  Provider: Int
+  SportName: String
   Id: String
   firstFixtureDate: String
-  lastResultDate: String
   fixtures: [String]
-  Provider: Int
-  Name: String
-  SportName: String
-  SportId: String
+  lastResultDate: String
   SeasonId: String
-  Grades: [CompetitionGradeInsertInput]
 }
 
 input CompetitionQueryInput {
-  firstFixtureDate_gt: String
-  OrganisationId_in: [String]
-  SeasonId_in: [String]
-  firstFixtureDate_exists: Boolean
-  SportId_nin: [String]
-  SeasonId_lte: String
-  Grades_exists: Boolean
-  SportId_exists: Boolean
-  SportName_gt: String
-  fixtures_in: [String]
-  Id_ne: String
-  firstFixtureDate_lte: String
-  SportId_gte: String
-  SportId_lt: String
-  SportName_ne: String
-  SeasonId_ne: String
-  Id_nin: [String]
-  Name_lt: String
-  OrganisationId_gt: String
-  Grades: [CompetitionGradeQueryInput]
-  Id_in: [String]
-  Provider_exists: Boolean
-  Provider_nin: [Int]
-  SportId: String
-  SportId_ne: String
-  OrganisationId_lt: String
-  SportName_exists: Boolean
-  _id_lt: ObjectId
-  _id_gt: ObjectId
-  fixtures_nin: [String]
-  SportId_lte: String
-  Provider_gte: Int
-  lastResultDate_gte: String
-  Grades_in: [CompetitionGradeQueryInput]
-  SportName_gte: String
-  Name_gt: String
-  firstFixtureDate: String
-  SeasonId: String
-  fixtures_exists: Boolean
-  Id_exists: Boolean
+  SportId_gt: String
   Name: String
-  Name_nin: [String]
-  _id: ObjectId
-  SeasonId_nin: [String]
+  OrganisationId_gt: String
+  SportId_lte: String
+  Provider_in: [Int]
+  Id_in: [String]
+  _id_exists: Boolean
+  Provider_gte: Int
+  SportName_ne: String
+  SeasonId_gt: String
+  Id_gte: String
+  Name_ne: String
+  Id_lt: String
   AND: [CompetitionQueryInput!]
   OrganisationId_ne: String
-  SportId_gt: String
-  SeasonId_gte: String
-  Grades_nin: [CompetitionGradeQueryInput]
-  Id_gte: String
-  lastResultDate_in: [String]
-  SportName_lt: String
   SportId_in: [String]
-  Id_lt: String
+  Provider_nin: [Int]
+  firstFixtureDate: String
   lastResultDate_lte: String
-  Name_in: [String]
-  Provider_in: [Int]
-  lastResultDate_nin: [String]
-  lastResultDate_lt: String
-  Id_gt: String
-  SportName_lte: String
-  _id_nin: [ObjectId]
-  Provider_lte: Int
-  Name_lte: String
-  lastResultDate: String
-  fixtures: [String]
-  Provider_ne: Int
-  OrganisationId_exists: Boolean
-  firstFixtureDate_ne: String
-  Name_ne: String
-  SeasonId_gt: String
-  firstFixtureDate_in: [String]
-  OrganisationId_lte: String
-  firstFixtureDate_gte: String
-  _id_gte: ObjectId
-  lastResultDate_gt: String
-  firstFixtureDate_nin: [String]
-  _id_ne: ObjectId
-  Id: String
   firstFixtureDate_lt: String
-  OR: [CompetitionQueryInput!]
-  Provider_lt: Int
-  _id_in: [ObjectId]
-  Provider_gt: Int
-  Name_gte: String
-  SportName_in: [String]
-  OrganisationId: String
-  Provider: Int
-  SportName: String
-  _id_lte: ObjectId
-  Name_exists: Boolean
-  Id_lte: String
-  lastResultDate_exists: Boolean
+  OrganisationId_lt: String
+  SportName_exists: Boolean
+  SportId_gte: String
+  firstFixtureDate_ne: String
+  Id_gt: String
   OrganisationId_gte: String
-  _id_exists: Boolean
-  SportName_nin: [String]
-  OrganisationId_nin: [String]
-  lastResultDate_ne: String
-  SeasonId_exists: Boolean
+  SportId_exists: Boolean
+  fixtures_in: [String]
+  _id_ne: ObjectId
+  firstFixtureDate_nin: [String]
+  OrganisationId_in: [String]
+  Grades: [CompetitionGradeQueryInput]
+  Grades_in: [CompetitionGradeQueryInput]
+  firstFixtureDate_in: [String]
+  _id_gte: ObjectId
+  SeasonId_gte: String
+  lastResultDate_lt: String
+  SportId_nin: [String]
+  SportName_in: [String]
+  SeasonId_lte: String
+  _id_in: [ObjectId]
+  lastResultDate_nin: [String]
+  firstFixtureDate_exists: Boolean
+  Id: String
+  lastResultDate_in: [String]
   SeasonId_lt: String
+  firstFixtureDate_gt: String
+  Provider_gt: Int
+  Grades_nin: [CompetitionGradeQueryInput]
+  SeasonId: String
+  Id_exists: Boolean
+  firstFixtureDate_lte: String
+  SeasonId_nin: [String]
+  SeasonId_exists: Boolean
+  SportId: String
+  _id_lte: ObjectId
+  Provider_lte: Int
+  Id_lte: String
+  Name_lte: String
+  SportName_nin: [String]
+  lastResultDate_gte: String
+  _id_lt: ObjectId
+  Name_lt: String
+  fixtures_nin: [String]
+  lastResultDate: String
+  Name_gte: String
+  Grades_exists: Boolean
+  SeasonId_in: [String]
+  OrganisationId_nin: [String]
+  SportName_lte: String
+  OrganisationId_exists: Boolean
+  fixtures_exists: Boolean
+  SportId_ne: String
+  Name_exists: Boolean
+  Provider_ne: Int
+  SportName: String
+  lastResultDate_gt: String
+  Id_nin: [String]
+  SeasonId_ne: String
+  _id_nin: [ObjectId]
+  Name_nin: [String]
+  OrganisationId_lte: String
+  Name_in: [String]
+  Id_ne: String
+  fixtures: [String]
+  SportId_lt: String
+  lastResultDate_exists: Boolean
+  SportName_lt: String
+  OR: [CompetitionQueryInput!]
+  SportName_gt: String
+  firstFixtureDate_gte: String
+  _id_gt: ObjectId
+  OrganisationId: String
+  _id: ObjectId
+  Name_gt: String
+  lastResultDate_ne: String
+  Provider_lt: Int
+  Provider: Int
+  Provider_exists: Boolean
+  SportName_gte: String
 }
 
 enum CompetitionSortByInput {
-  SEASONID_DESC
-  NAME_ASC
-  NAME_DESC
-  PROVIDER_DESC
-  _ID_DESC
-  SEASONID_ASC
   SPORTNAME_ASC
-  SPORTNAME_DESC
-  ORGANISATIONID_ASC
-  FIRSTFIXTUREDATE_ASC
-  FIRSTFIXTUREDATE_DESC
-  LASTRESULTDATE_ASC
-  ID_ASC
-  PROVIDER_ASC
-  SPORTID_DESC
-  LASTRESULTDATE_DESC
-  ID_DESC
   ORGANISATIONID_DESC
   SPORTID_ASC
+  NAME_ASC
+  FIRSTFIXTUREDATE_ASC
+  FIRSTFIXTUREDATE_DESC
+  ID_DESC
+  SEASONID_DESC
+  SPORTID_DESC
+  SPORTNAME_DESC
+  LASTRESULTDATE_ASC
+  PROVIDER_ASC
+  PROVIDER_DESC
+  ID_ASC
+  ORGANISATIONID_ASC
+  SEASONID_ASC
   _ID_ASC
+  _ID_DESC
+  NAME_DESC
+  LASTRESULTDATE_DESC
 }
 
 input CompetitionUpdateInput {
-  OrganisationId_unset: Boolean
-  Provider_inc: Int
   firstFixtureDate: String
-  Grades: [CompetitionGradeUpdateInput]
-  Name: String
-  firstFixtureDate_unset: Boolean
-  Provider_unset: Boolean
   SportId_unset: Boolean
-  SeasonId_unset: Boolean
-  lastResultDate: String
-  Id: String
-  SportName: String
-  Name_unset: Boolean
-  SeasonId: String
-  SportName_unset: Boolean
-  Provider: Int
-  fixtures_unset: Boolean
   lastResultDate_unset: Boolean
+  Grades: [CompetitionGradeUpdateInput]
+  Provider: Int
+  SportName: String
+  SportName_unset: Boolean
+  Name: String
+  SeasonId_unset: Boolean
+  fixtures: [String]
+  firstFixtureDate_unset: Boolean
   Id_unset: Boolean
   _id_unset: Boolean
-  OrganisationId: String
+  fixtures_unset: Boolean
   SportId: String
-  _id: ObjectId
-  fixtures: [String]
+  Name_unset: Boolean
+  Provider_inc: Int
+  Provider_unset: Boolean
+  SeasonId: String
+  OrganisationId_unset: Boolean
+  lastResultDate: String
+  Id: String
   Grades_unset: Boolean
+  _id: ObjectId
+  OrganisationId: String
 }
 
 type DeleteManyPayload {
@@ -310,601 +310,601 @@ type Fixture {
 }
 
 input FixtureInsertInput {
-  GradeSortOrder: Int
-  Provider: Int
   SportName: String
-  AwayTeamId: String
-  RoundName: String
-  Status: String
-  ResultStatus: Int
-  HomeScore: String
-  VenueNameAbbr: String
-  LocationLng: Int
+  GradeId: String
   Round: String
-  Date: String
-  IsSuperForm: Boolean
-  Longitude: String
-  PublishResults: Boolean
-  InGame: Boolean
-  From: String
-  PublishTeamsheetOnWidget: Boolean
-  AwayOrganisationId: String
-  competitionId: String
+  SectionSortOrder: Int
+  _id: ObjectId
   GradeName: String
+  Status: String
   PublishVenue: Boolean
+  LocationLng: Int
+  AwayScore: String
+  AwayOrganisationId: String
+  AwayOrganisationName: String
+  IsSuperForm: Boolean
+  AwayOrganisationLogo: String
+  Latitude: String
+  AwayTeamName: String
+  Longitude: String
+  ResultStatus: Int
+  HomeOrganisationName: String
+  VenueName: String
   SportId: String
   LocationLat: Int
-  Address: String
-  _id: ObjectId
-  AwayOrganisationLogo: String
-  GradeId: String
-  HomeOrganisationName: String
-  HomeTeamId: String
-  SectionSortOrder: Int
-  HomeOrganisationLogo: String
-  AwayTeamName: String
-  HomeOrganisationId: String
   To: String
-  HomeTeamName: String
-  Id: String
-  AwayOrganisationName: String
-  MatchSummary: String
-  SectionId: Int
-  VenueName: String
+  GradeSortOrder: Int
+  HomeScore: String
+  VenueNameAbbr: String
+  InGame: Boolean
+  HomeOrganisationLogo: String
+  PublishResults: Boolean
+  competitionId: String
+  HomeTeamId: String
   matchDay: Int
-  AwayScore: String
-  Latitude: String
+  AwayTeamId: String
+  Date: String
+  Address: String
+  From: String
+  Provider: Int
+  Id: String
+  PublishTeamsheetOnWidget: Boolean
+  HomeOrganisationId: String
+  MatchSummary: String
+  HomeTeamName: String
+  SectionId: Int
+  RoundName: String
 }
 
 input FixtureQueryInput {
-  To: String
-  GradeSortOrder_in: [Int]
-  AwayTeamId_exists: Boolean
-  HomeOrganisationLogo: String
-  HomeTeamName_nin: [String]
-  AND: [FixtureQueryInput!]
-  HomeScore_gt: String
-  competitionId_in: [String]
-  _id_gte: ObjectId
-  matchDay_gte: Int
-  GradeName_nin: [String]
-  LocationLat_in: [Int]
-  VenueNameAbbr_gt: String
-  HomeOrganisationId_exists: Boolean
-  HomeOrganisationName_gte: String
-  SportName_gt: String
-  HomeTeamId_gte: String
-  HomeOrganisationId_in: [String]
-  GradeId_nin: [String]
-  HomeOrganisationName_nin: [String]
-  AwayOrganisationId_ne: String
-  AwayScore_ne: String
-  To_gt: String
-  Address_nin: [String]
-  LocationLat_ne: Int
-  SectionId_ne: Int
-  To_gte: String
-  AwayScore_gte: String
-  AwayTeamId_gt: String
-  Id_lte: String
-  SportName: String
-  GradeSortOrder: Int
-  Longitude_exists: Boolean
-  To_lt: String
-  RoundName_gt: String
-  AwayOrganisationLogo_gt: String
-  IsSuperForm_exists: Boolean
-  LocationLat_gt: Int
-  HomeTeamName_lte: String
-  HomeScore_exists: Boolean
-  Status_exists: Boolean
-  AwayScore_lt: String
-  SportId_lte: String
-  AwayOrganisationName_nin: [String]
-  RoundName_in: [String]
-  SectionId_nin: [Int]
-  _id: ObjectId
-  AwayTeamName_ne: String
-  AwayOrganisationName_gte: String
-  VenueName_gte: String
-  ResultStatus: Int
-  LocationLat: Int
-  Address_in: [String]
-  Date_lte: String
-  ResultStatus_gt: Int
-  GradeSortOrder_lte: Int
-  _id_exists: Boolean
-  LocationLng_gte: Int
-  VenueNameAbbr_lt: String
-  HomeOrganisationId_gte: String
-  InGame_exists: Boolean
-  VenueNameAbbr_in: [String]
-  ResultStatus_lte: Int
-  AwayOrganisationName: String
   SectionId_exists: Boolean
-  ResultStatus_ne: Int
-  PublishResults: Boolean
-  To_lte: String
-  VenueNameAbbr: String
-  matchDay_exists: Boolean
-  HomeTeamName_gt: String
-  GradeName: String
-  To_nin: [String]
-  From_ne: String
-  AwayOrganisationName_exists: Boolean
-  Id_exists: Boolean
-  VenueName_ne: String
-  PublishResults_exists: Boolean
-  VenueName_nin: [String]
-  InGame: Boolean
-  Provider_lte: Int
-  SportId_exists: Boolean
-  Latitude_exists: Boolean
-  AwayOrganisationName_lte: String
-  Provider_in: [Int]
-  HomeOrganisationLogo_gte: String
-  Round_gt: String
-  MatchSummary_gte: String
-  Longitude_lte: String
-  HomeOrganisationName_exists: Boolean
-  AwayTeamId_in: [String]
-  AwayTeamName_nin: [String]
-  GradeName_gte: String
-  AwayScore_in: [String]
-  PublishTeamsheetOnWidget_exists: Boolean
-  AwayOrganisationId_nin: [String]
-  From_lte: String
-  HomeOrganisationName_in: [String]
-  LocationLat_exists: Boolean
-  GradeName_lte: String
-  Status_in: [String]
-  LocationLat_lte: Int
-  Latitude_gt: String
-  HomeScore_lt: String
-  AwayTeamId_nin: [String]
-  _id_lt: ObjectId
-  SportName_lt: String
-  SectionSortOrder_lte: Int
-  RoundName_ne: String
-  AwayTeamName_lt: String
-  HomeTeamId_nin: [String]
-  AwayScore_gt: String
-  _id_lte: ObjectId
-  Latitude_ne: String
-  HomeScore_lte: String
-  SportName_nin: [String]
-  HomeOrganisationName_gt: String
-  matchDay_ne: Int
-  Provider: Int
-  VenueNameAbbr_exists: Boolean
-  SectionSortOrder_lt: Int
-  Status_gt: String
-  HomeScore_in: [String]
-  HomeTeamName: String
-  AwayTeamId_ne: String
-  HomeOrganisationName: String
-  Id: String
-  Round_ne: String
-  LocationLng_ne: Int
-  HomeOrganisationLogo_nin: [String]
-  HomeOrganisationId_nin: [String]
-  Latitude_lt: String
-  Status_lte: String
-  Date_gt: String
-  LocationLng_lte: Int
-  Provider_lt: Int
-  GradeId_gt: String
-  GradeSortOrder_lt: Int
-  RoundName_lt: String
-  Provider_exists: Boolean
-  Round_exists: Boolean
-  HomeTeamId_lte: String
-  AwayOrganisationId_exists: Boolean
-  Status_gte: String
-  GradeId_lt: String
-  RoundName: String
-  HomeScore_ne: String
-  GradeId_lte: String
-  HomeOrganisationLogo_gt: String
-  matchDay_lte: Int
-  Address_exists: Boolean
-  GradeId_gte: String
-  VenueNameAbbr_nin: [String]
-  Address: String
-  GradeId_in: [String]
-  ResultStatus_exists: Boolean
-  SportId_in: [String]
-  Date_ne: String
-  Round_lt: String
-  AwayOrganisationName_gt: String
-  competitionId_gt: String
-  HomeTeamId_lt: String
-  Status_lt: String
-  HomeTeamName_lt: String
-  HomeTeamId_in: [String]
-  To_in: [String]
-  Longitude_in: [String]
-  AwayOrganisationName_in: [String]
-  AwayOrganisationId_gte: String
-  VenueNameAbbr_lte: String
-  SportId_ne: String
-  MatchSummary_gt: String
-  GradeSortOrder_nin: [Int]
-  VenueName: String
-  AwayTeamName: String
-  SectionId_lt: Int
-  VenueName_in: [String]
-  HomeOrganisationLogo_lte: String
-  Latitude_lte: String
-  Provider_gt: Int
-  Status: String
-  Longitude_ne: String
-  Date_exists: Boolean
-  OR: [FixtureQueryInput!]
-  HomeTeamName_ne: String
-  HomeScore_nin: [String]
-  HomeTeamName_gte: String
-  SectionSortOrder_in: [Int]
-  GradeSortOrder_gt: Int
-  AwayTeamName_in: [String]
-  HomeTeamName_exists: Boolean
-  Round_gte: String
-  LocationLng_nin: [Int]
-  Id_gte: String
-  LocationLat_gte: Int
-  SectionId_lte: Int
-  _id_gt: ObjectId
-  competitionId_exists: Boolean
-  PublishTeamsheetOnWidget: Boolean
-  VenueName_lt: String
-  Round_in: [String]
-  AwayOrganisationLogo_ne: String
-  matchDay_in: [Int]
-  VenueNameAbbr_gte: String
-  HomeScore: String
-  competitionId_ne: String
-  _id_nin: [ObjectId]
-  Id_lt: String
-  LocationLng_lt: Int
-  SportId_gte: String
-  Address_gte: String
-  RoundName_nin: [String]
-  matchDay_gt: Int
-  PublishTeamsheetOnWidget_ne: Boolean
-  Longitude_gte: String
-  Id_ne: String
-  AwayOrganisationId: String
-  HomeOrganisationId_gt: String
-  Address_ne: String
-  IsSuperForm: Boolean
-  MatchSummary_ne: String
-  From_in: [String]
-  RoundName_exists: Boolean
-  HomeOrganisationName_lt: String
-  matchDay: Int
-  From_lt: String
-  Round: String
-  SportName_in: [String]
-  Date_in: [String]
-  AwayTeamId_lt: String
-  AwayOrganisationName_ne: String
-  PublishResults_ne: Boolean
-  competitionId_nin: [String]
-  Date_gte: String
-  AwayOrganisationLogo_lte: String
-  Longitude: String
-  HomeOrganisationId_lte: String
-  GradeSortOrder_gte: Int
-  SportName_lte: String
-  GradeId_ne: String
-  SectionSortOrder_gt: Int
-  Id_nin: [String]
-  VenueName_lte: String
-  SportId: String
-  GradeName_lt: String
-  competitionId_lte: String
-  Id_gt: String
-  GradeSortOrder_exists: Boolean
-  competitionId: String
-  AwayOrganisationLogo: String
-  MatchSummary_lt: String
-  To_exists: Boolean
-  Date_nin: [String]
-  RoundName_gte: String
-  _id_in: [ObjectId]
-  HomeTeamId_ne: String
-  AwayScore_lte: String
-  Address_lte: String
-  Provider_gte: Int
-  VenueNameAbbr_ne: String
-  AwayOrganisationId_lt: String
-  LocationLng_exists: Boolean
-  AwayScore_nin: [String]
-  From: String
-  AwayTeamId_lte: String
-  LocationLat_lt: Int
-  matchDay_nin: [Int]
-  ResultStatus_nin: [Int]
-  GradeId: String
-  AwayOrganisationLogo_in: [String]
-  RoundName_lte: String
-  Latitude_in: [String]
-  From_gte: String
-  Status_ne: String
-  VenueName_gt: String
-  AwayOrganisationLogo_lt: String
-  SportName_exists: Boolean
-  Latitude: String
-  GradeName_ne: String
-  SportId_gt: String
-  AwayOrganisationLogo_nin: [String]
-  PublishVenue_ne: Boolean
   HomeOrganisationId_ne: String
-  SectionSortOrder_gte: Int
-  Provider_ne: Int
-  Provider_nin: [Int]
-  SectionSortOrder_exists: Boolean
-  HomeScore_gte: String
-  AwayOrganisationId_in: [String]
-  GradeSortOrder_ne: Int
-  SectionId: Int
-  SportId_nin: [String]
-  Longitude_lt: String
-  Address_lt: String
-  Round_lte: String
-  HomeOrganisationLogo_exists: Boolean
-  AwayTeamId: String
-  VenueName_exists: Boolean
-  GradeName_in: [String]
-  SectionSortOrder_ne: Int
-  LocationLng_gt: Int
-  InGame_ne: Boolean
-  MatchSummary_lte: String
-  MatchSummary_nin: [String]
-  AwayOrganisationId_gt: String
-  HomeOrganisationName_ne: String
-  competitionId_lt: String
-  From_exists: Boolean
-  _id_ne: ObjectId
-  AwayOrganisationName_lt: String
-  From_gt: String
-  Longitude_nin: [String]
-  SportId_lt: String
+  LocationLng_gte: Int
+  LocationLat_in: [Int]
+  ResultStatus_nin: [Int]
+  VenueName: String
+  AwayOrganisationName_gte: String
+  RoundName_in: [String]
   AwayTeamName_exists: Boolean
-  Address_gt: String
-  AwayScore_exists: Boolean
-  SectionId_in: [Int]
-  MatchSummary_exists: Boolean
-  LocationLng: Int
-  HomeOrganisationName_lte: String
-  SectionId_gt: Int
-  AwayTeamName_lte: String
-  GradeName_gt: String
-  competitionId_gte: String
+  MatchSummary_lte: String
+  matchDay_lt: Int
+  HomeOrganisationLogo_lt: String
+  GradeId_in: [String]
+  SectionId_gte: Int
   MatchSummary_in: [String]
-  SectionSortOrder_nin: [Int]
-  MatchSummary: String
-  ResultStatus_in: [Int]
-  Date_lt: String
+  _id_in: [ObjectId]
+  _id_ne: ObjectId
+  Id_gte: String
+  AwayOrganisationId_lt: String
+  To_in: [String]
+  SectionSortOrder_gte: Int
+  Status_ne: String
+  Round_lt: String
+  SectionId_ne: Int
   AwayOrganisationLogo_gte: String
+  Provider_lt: Int
+  AwayTeamId: String
+  HomeScore_nin: [String]
+  Status_lt: String
+  InGame: Boolean
+  IsSuperForm: Boolean
+  AwayOrganisationLogo_nin: [String]
+  LocationLat_exists: Boolean
+  From: String
+  HomeTeamId_gt: String
+  SportId_exists: Boolean
+  HomeOrganisationId_lt: String
+  AwayOrganisationName_exists: Boolean
+  SectionSortOrder_lt: Int
+  SectionSortOrder: Int
+  AwayOrganisationLogo_lt: String
+  Status_gte: String
+  HomeScore_in: [String]
+  SportName_gte: String
+  HomeTeamName_gte: String
+  Latitude_exists: Boolean
+  GradeName_lte: String
+  MatchSummary: String
+  LocationLng_lte: Int
+  Provider_gt: Int
+  AwayTeamId_gt: String
+  SportId: String
+  AwayScore_gte: String
+  HomeScore_gte: String
+  HomeScore_exists: Boolean
+  HomeTeamName: String
+  competitionId_gt: String
+  LocationLng_in: [Int]
+  Longitude: String
+  LocationLat_lte: Int
+  Round_nin: [String]
+  _id_gte: ObjectId
+  VenueNameAbbr_ne: String
+  SectionId_in: [Int]
+  GradeId_nin: [String]
+  _id_lt: ObjectId
+  GradeId_lt: String
+  ResultStatus_in: [Int]
+  AwayOrganisationLogo_in: [String]
+  LocationLat_gte: Int
+  competitionId_gte: String
+  competitionId: String
+  matchDay_gte: Int
+  competitionId_exists: Boolean
+  competitionId_in: [String]
+  HomeTeamId_lte: String
+  From_lt: String
+  To_lt: String
+  Date_gte: String
+  VenueName_lt: String
+  Round_gte: String
+  GradeSortOrder_lte: Int
+  matchDay_in: [Int]
+  To_lte: String
+  VenueName_in: [String]
+  To: String
+  Id: String
+  GradeName_lt: String
+  MatchSummary_ne: String
+  SportId_nin: [String]
+  Date_gt: String
+  HomeTeamName_lte: String
+  InGame_ne: Boolean
+  SectionId: Int
+  GradeId: String
+  Date_nin: [String]
+  Address_ne: String
+  PublishVenue_exists: Boolean
+  VenueNameAbbr_nin: [String]
+  GradeId_ne: String
+  AwayTeamId_gte: String
+  HomeScore_lt: String
+  GradeSortOrder_ne: Int
+  Date_in: [String]
+  AwayOrganisationName_lte: String
+  OR: [FixtureQueryInput!]
+  AwayTeamId_exists: Boolean
+  From_ne: String
+  Date_lte: String
+  SportName: String
+  matchDay_lte: Int
+  Latitude_in: [String]
+  SectionId_gt: Int
+  From_in: [String]
+  AwayOrganisationId_nin: [String]
+  HomeOrganisationName: String
+  HomeOrganisationName_lte: String
+  HomeOrganisationId_gt: String
+  ResultStatus: Int
+  GradeName_exists: Boolean
+  HomeTeamName_exists: Boolean
+  Address_lt: String
+  From_gte: String
+  AND: [FixtureQueryInput!]
+  Date_exists: Boolean
+  Status_lte: String
+  Longitude_exists: Boolean
+  HomeOrganisationLogo_gt: String
+  GradeId_lte: String
+  AwayScore_ne: String
+  GradeName_ne: String
+  Id_gt: String
+  Latitude: String
+  AwayScore_lt: String
+  Provider_nin: [Int]
+  VenueName_gte: String
+  RoundName_ne: String
+  SectionId_nin: [Int]
+  SportId_gt: String
+  AwayOrganisationName_lt: String
+  LocationLng: Int
+  Provider_lte: Int
+  AwayOrganisationId_gt: String
+  SportName_nin: [String]
+  matchDay_nin: [Int]
+  Longitude_ne: String
+  AwayScore_gt: String
+  AwayScore: String
+  VenueName_gt: String
+  IsSuperForm_ne: Boolean
+  SectionSortOrder_nin: [Int]
+  Provider: Int
+  To_gte: String
+  AwayOrganisationName: String
+  VenueName_ne: String
+  LocationLat_gt: Int
+  Id_in: [String]
+  SectionSortOrder_in: [Int]
+  HomeOrganisationName_ne: String
+  HomeOrganisationId: String
   HomeOrganisationLogo_ne: String
+  HomeTeamId: String
+  LocationLng_nin: [Int]
+  VenueNameAbbr_exists: Boolean
+  AwayOrganisationId_gte: String
+  ResultStatus_ne: Int
+  SportName_exists: Boolean
+  RoundName_lt: String
+  AwayScore_exists: Boolean
+  _id_gt: ObjectId
+  InGame_exists: Boolean
+  HomeTeamName_gt: String
+  AwayTeamName_gte: String
+  AwayTeamName_in: [String]
+  LocationLat: Int
+  Address_nin: [String]
+  Latitude_lt: String
+  Round: String
+  AwayOrganisationId_in: [String]
   Latitude_gte: String
   HomeTeamName_in: [String]
-  HomeTeamId: String
-  IsSuperForm_ne: Boolean
-  LocationLng_in: [Int]
-  Id_in: [String]
-  AwayOrganisationId_lte: String
-  Longitude_gt: String
-  HomeTeamId_exists: Boolean
-  SectionSortOrder: Int
-  AwayScore: String
-  PublishVenue: Boolean
-  SectionId_gte: Int
-  PublishVenue_exists: Boolean
-  GradeName_exists: Boolean
-  Round_nin: [String]
-  LocationLat_nin: [Int]
-  matchDay_lt: Int
+  HomeOrganisationLogo_exists: Boolean
+  Longitude_lte: String
+  SportName_gt: String
+  Longitude_in: [String]
+  VenueName_exists: Boolean
+  SportId_lt: String
   Status_nin: [String]
-  AwayTeamName_gt: String
-  From_nin: [String]
-  GradeId_exists: Boolean
-  Latitude_nin: [String]
-  SportName_ne: String
-  AwayTeamName_gte: String
-  HomeOrganisationId_lt: String
-  Date: String
-  ResultStatus_gte: Int
-  HomeOrganisationLogo_lt: String
-  HomeOrganisationId: String
-  SportName_gte: String
-  To_ne: String
+  _id: ObjectId
+  HomeOrganisationLogo_nin: [String]
+  Round_gt: String
+  ResultStatus_lte: Int
+  To_exists: Boolean
+  LocationLat_lt: Int
+  HomeScore_gt: String
+  MatchSummary_lt: String
+  Round_exists: Boolean
+  Address_in: [String]
+  HomeOrganisationName_gt: String
+  HomeTeamName_nin: [String]
+  AwayScore_in: [String]
+  HomeOrganisationName_in: [String]
+  Id_nin: [String]
+  HomeTeamName_lt: String
+  RoundName_gt: String
+  AwayTeamName: String
   ResultStatus_lt: Int
-  AwayTeamId_gte: String
-  HomeTeamId_gt: String
-  AwayOrganisationLogo_exists: Boolean
+  _id_exists: Boolean
+  HomeOrganisationId_in: [String]
+  Latitude_lte: String
+  HomeOrganisationLogo_gte: String
+  HomeOrganisationId_exists: Boolean
+  HomeOrganisationId_lte: String
+  SportName_lt: String
+  Status_gt: String
+  ResultStatus_gte: Int
+  HomeOrganisationName_gte: String
+  HomeTeamId_gte: String
+  Longitude_lt: String
+  Provider_ne: Int
+  AwayTeamName_ne: String
+  SectionSortOrder_exists: Boolean
+  GradeSortOrder_exists: Boolean
+  From_nin: [String]
+  AwayScore_nin: [String]
+  VenueNameAbbr_lt: String
+  RoundName_lte: String
+  HomeTeamId_exists: Boolean
+  HomeOrganisationId_nin: [String]
+  AwayOrganisationName_ne: String
+  Longitude_nin: [String]
+  HomeTeamName_ne: String
+  Address_gt: String
+  AwayOrganisationLogo_ne: String
+  Round_lte: String
+  competitionId_lte: String
+  MatchSummary_nin: [String]
+  VenueNameAbbr_gte: String
+  competitionId_nin: [String]
+  HomeScore_ne: String
+  PublishResults_ne: Boolean
+  GradeId_gt: String
+  matchDay_exists: Boolean
+  AwayOrganisationName_gt: String
+  SportName_lte: String
+  Address_exists: Boolean
+  AwayOrganisationName_in: [String]
+  HomeOrganisationLogo_lte: String
+  AwayTeamId_nin: [String]
+  GradeSortOrder_gte: Int
+  SportId_gte: String
+  MatchSummary_gt: String
+  HomeScore_lte: String
+  AwayOrganisationLogo_gt: String
+  PublishTeamsheetOnWidget: Boolean
+  Address_lte: String
+  From_exists: Boolean
+  AwayTeamName_nin: [String]
+  HomeOrganisationName_exists: Boolean
+  Latitude_gt: String
+  VenueNameAbbr_in: [String]
+  AwayOrganisationName_nin: [String]
+  HomeOrganisationLogo: String
+  _id_nin: [ObjectId]
+  Latitude_ne: String
+  LocationLng_gt: Int
+  PublishVenue_ne: Boolean
+  Provider_in: [Int]
+  SectionSortOrder_gt: Int
+  HomeOrganisationId_gte: String
+  RoundName_exists: Boolean
+  AwayOrganisationId_lte: String
+  Id_lt: String
+  GradeName_nin: [String]
+  HomeScore: String
+  AwayOrganisationLogo: String
+  GradeSortOrder_nin: [Int]
+  GradeId_exists: Boolean
+  Date_ne: String
+  SectionSortOrder_ne: Int
+  To_gt: String
+  MatchSummary_gte: String
+  GradeSortOrder_gt: Int
+  HomeOrganisationName_lt: String
+  Date_lt: String
+  AwayTeamName_gt: String
+  From_gt: String
+  Round_in: [String]
+  matchDay_gt: Int
+  VenueNameAbbr_gt: String
+  AwayScore_lte: String
+  Address: String
+  VenueNameAbbr: String
+  SectionId_lt: Int
+  SportName_in: [String]
+  SectionId_lte: Int
+  GradeSortOrder_lt: Int
+  ResultStatus_gt: Int
+  LocationLat_ne: Int
+  From_lte: String
+  GradeSortOrder: Int
+  Status_exists: Boolean
+  PublishResults_exists: Boolean
   HomeOrganisationLogo_in: [String]
+  AwayTeamId_lte: String
+  GradeName: String
+  SportId_lte: String
+  Date: String
+  HomeTeamId_lt: String
+  competitionId_lt: String
+  LocationLng_exists: Boolean
+  GradeName_gt: String
+  SportName_ne: String
+  AwayTeamName_lte: String
+  GradeName_gte: String
+  Id_exists: Boolean
+  HomeTeamId_ne: String
+  Longitude_gt: String
+  IsSuperForm_exists: Boolean
+  HomeOrganisationName_nin: [String]
+  Longitude_gte: String
+  VenueName_lte: String
+  VenueName_nin: [String]
+  AwayOrganisationId_exists: Boolean
+  HomeTeamId_in: [String]
+  MatchSummary_exists: Boolean
+  GradeId_gte: String
+  AwayTeamId_ne: String
+  SportId_in: [String]
+  VenueNameAbbr_lte: String
+  AwayOrganisationLogo_exists: Boolean
+  Id_lte: String
+  _id_lte: ObjectId
+  Id_ne: String
+  SportId_ne: String
+  To_nin: [String]
+  Provider_exists: Boolean
+  matchDay_ne: Int
+  PublishTeamsheetOnWidget_exists: Boolean
+  Status_in: [String]
+  GradeSortOrder_in: [Int]
+  To_ne: String
+  SectionSortOrder_lte: Int
+  PublishTeamsheetOnWidget_ne: Boolean
+  Provider_gte: Int
+  PublishResults: Boolean
+  competitionId_ne: String
+  AwayTeamName_lt: String
+  Latitude_nin: [String]
+  Status: String
+  AwayOrganisationLogo_lte: String
+  AwayOrganisationId_ne: String
+  RoundName: String
+  matchDay: Int
+  GradeName_in: [String]
+  PublishVenue: Boolean
+  HomeTeamId_nin: [String]
+  LocationLng_lt: Int
+  RoundName_gte: String
+  LocationLat_nin: [Int]
+  AwayOrganisationId: String
+  Round_ne: String
+  AwayTeamId_in: [String]
+  AwayTeamId_lt: String
+  RoundName_nin: [String]
+  LocationLng_ne: Int
+  Address_gte: String
+  ResultStatus_exists: Boolean
 }
 
 enum FixtureSortByInput {
-  ROUNDNAME_ASC
-  LATITUDE_ASC
-  VENUENAMEABBR_ASC
-  GRADEID_ASC
-  AWAYTEAMNAME_DESC
+  SPORTID_DESC
+  SECTIONSORTORDER_ASC
+  HOMEORGANISATIONLOGO_DESC
+  MATCHSUMMARY_DESC
+  SPORTID_ASC
+  ADDRESS_ASC
+  ADDRESS_DESC
+  TO_ASC
+  ID_DESC
+  AWAYTEAMID_DESC
   HOMEORGANISATIONID_DESC
-  HOMESCORE_DESC
-  HOMETEAMID_ASC
-  GRADESORTORDER_DESC
-  _ID_DESC
-  HOMEORGANISATIONLOGO_ASC
+  PROVIDER_ASC
+  ID_ASC
+  SPORTNAME_DESC
   AWAYSCORE_DESC
+  AWAYTEAMID_ASC
+  HOMETEAMNAME_DESC
+  COMPETITIONID_ASC
+  DATE_ASC
+  GRADENAME_ASC
+  _ID_DESC
+  LOCATIONLNG_DESC
+  AWAYORGANISATIONNAME_DESC
+  TO_DESC
+  GRADESORTORDER_ASC
+  _ID_ASC
+  AWAYTEAMNAME_DESC
+  HOMEORGANISATIONID_ASC
+  HOMETEAMID_DESC
+  SPORTNAME_ASC
+  HOMESCORE_ASC
+  AWAYORGANISATIONLOGO_DESC
+  GRADENAME_DESC
+  LATITUDE_ASC
+  ROUND_ASC
+  VENUENAME_ASC
+  LOCATIONLAT_DESC
+  SECTIONID_DESC
+  FROM_ASC
+  GRADESORTORDER_DESC
+  ROUND_DESC
+  LOCATIONLAT_ASC
+  RESULTSTATUS_ASC
+  AWAYORGANISATIONID_ASC
+  HOMEORGANISATIONNAME_ASC
+  MATCHSUMMARY_ASC
+  SECTIONID_ASC
+  AWAYORGANISATIONID_DESC
+  AWAYORGANISATIONNAME_ASC
+  MATCHDAY_DESC
+  AWAYSCORE_ASC
+  FROM_DESC
+  HOMEORGANISATIONNAME_DESC
+  HOMETEAMID_ASC
+  AWAYTEAMNAME_ASC
+  LATITUDE_DESC
+  ROUNDNAME_ASC
   ROUNDNAME_DESC
   LOCATIONLNG_ASC
-  ID_DESC
-  AWAYORGANISATIONNAME_ASC
-  RESULTSTATUS_DESC
-  HOMETEAMNAME_DESC
-  AWAYORGANISATIONID_ASC
-  LATITUDE_DESC
-  VENUENAME_DESC
   VENUENAMEABBR_DESC
-  MATCHDAY_DESC
-  AWAYORGANISATIONID_DESC
-  SECTIONSORTORDER_ASC
-  MATCHDAY_ASC
-  HOMETEAMID_DESC
-  LOCATIONLNG_DESC
-  VENUENAME_ASC
-  STATUS_DESC
-  HOMETEAMNAME_ASC
-  AWAYSCORE_ASC
-  GRADENAME_ASC
-  AWAYORGANISATIONLOGO_DESC
-  AWAYTEAMID_DESC
-  PROVIDER_DESC
-  STATUS_ASC
-  AWAYORGANISATIONLOGO_ASC
-  HOMEORGANISATIONID_ASC
-  MATCHSUMMARY_ASC
-  COMPETITIONID_ASC
   DATE_DESC
-  HOMEORGANISATIONLOGO_DESC
-  PROVIDER_ASC
-  SPORTNAME_DESC
-  ID_ASC
-  LOCATIONLAT_ASC
-  LOCATIONLAT_DESC
-  FROM_DESC
-  SECTIONID_ASC
-  SECTIONID_DESC
-  ROUND_DESC
-  SPORTID_DESC
   LONGITUDE_DESC
-  TO_DESC
-  HOMESCORE_ASC
-  GRADENAME_DESC
-  _ID_ASC
-  ADDRESS_DESC
-  AWAYTEAMNAME_ASC
-  MATCHSUMMARY_DESC
+  HOMEORGANISATIONLOGO_ASC
+  HOMETEAMNAME_ASC
+  PROVIDER_DESC
+  VENUENAMEABBR_ASC
+  AWAYORGANISATIONLOGO_ASC
+  HOMESCORE_DESC
+  VENUENAME_DESC
+  MATCHDAY_ASC
+  GRADEID_ASC
+  RESULTSTATUS_DESC
   COMPETITIONID_DESC
-  HOMEORGANISATIONNAME_DESC
-  LONGITUDE_ASC
-  GRADESORTORDER_ASC
-  AWAYTEAMID_ASC
-  DATE_ASC
-  FROM_ASC
-  SPORTID_ASC
-  SPORTNAME_ASC
-  ADDRESS_ASC
-  AWAYORGANISATIONNAME_DESC
-  RESULTSTATUS_ASC
-  GRADEID_DESC
-  HOMEORGANISATIONNAME_ASC
-  ROUND_ASC
   SECTIONSORTORDER_DESC
-  TO_ASC
+  LONGITUDE_ASC
+  STATUS_ASC
+  STATUS_DESC
+  GRADEID_DESC
 }
 
 input FixtureUpdateInput {
-  IsSuperForm: Boolean
-  LocationLat_unset: Boolean
-  GradeId: String
-  Id_unset: Boolean
-  VenueNameAbbr_unset: Boolean
-  HomeTeamId_unset: Boolean
-  InGame_unset: Boolean
-  HomeScore: String
-  LocationLng_inc: Int
-  Address_unset: Boolean
-  SectionSortOrder_inc: Int
-  ResultStatus: Int
-  AwayOrganisationLogo: String
-  VenueNameAbbr: String
-  HomeTeamName: String
-  SportName_unset: Boolean
-  AwayOrganisationId_unset: Boolean
-  Provider_unset: Boolean
-  HomeOrganisationId_unset: Boolean
-  PublishResults_unset: Boolean
-  Latitude_unset: Boolean
+  AwayTeamName: String
   matchDay_unset: Boolean
-  LocationLng_unset: Boolean
-  matchDay_inc: Int
-  AwayScore: String
-  SectionId_inc: Int
-  To: String
-  GradeSortOrder: Int
-  PublishResults: Boolean
-  HomeOrganisationLogo: String
-  Latitude: String
-  GradeName: String
-  AwayOrganisationLogo_unset: Boolean
-  PublishVenue: Boolean
-  AwayOrganisationName_unset: Boolean
-  MatchSummary: String
-  IsSuperForm_unset: Boolean
-  GradeSortOrder_inc: Int
-  Status_unset: Boolean
-  competitionId_unset: Boolean
-  InGame: Boolean
-  HomeTeamId: String
-  To_unset: Boolean
-  MatchSummary_unset: Boolean
-  HomeOrganisationId: String
-  Date_unset: Boolean
+  HomeScore_unset: Boolean
+  SectionId_unset: Boolean
   AwayScore_unset: Boolean
-  Status: String
-  AwayOrganisationId: String
+  HomeOrganisationId_unset: Boolean
+  MatchSummary_unset: Boolean
+  LocationLng_inc: Int
+  GradeName: String
+  ResultStatus: Int
+  To_unset: Boolean
   _id_unset: Boolean
-  SectionSortOrder_unset: Boolean
-  From_unset: Boolean
-  SportId_unset: Boolean
-  competitionId: String
-  VenueName: String
-  HomeOrganisationName_unset: Boolean
-  LocationLat_inc: Int
-  HomeOrganisationLogo_unset: Boolean
-  GradeSortOrder_unset: Boolean
-  AwayTeamId: String
-  HomeOrganisationName: String
-  VenueName_unset: Boolean
+  PublishResults_unset: Boolean
+  HomeTeamName: String
   LocationLng: Int
-  SportId: String
-  GradeId_unset: Boolean
-  AwayTeamName_unset: Boolean
-  Date: String
-  ResultStatus_unset: Boolean
-  _id: ObjectId
-  Longitude: String
-  SectionSortOrder: Int
-  PublishVenue_unset: Boolean
-  SectionId: Int
-  ResultStatus_inc: Int
-  Round: String
-  Id: String
-  AwayOrganisationName: String
-  matchDay: Int
   PublishTeamsheetOnWidget_unset: Boolean
-  From: String
-  RoundName_unset: Boolean
   SportName: String
+  AwayOrganisationLogo_unset: Boolean
+  IsSuperForm: Boolean
+  GradeId: String
+  LocationLat_inc: Int
+  AwayOrganisationName_unset: Boolean
+  SportId: String
+  Round_unset: Boolean
+  VenueName_unset: Boolean
+  AwayOrganisationId_unset: Boolean
+  InGame_unset: Boolean
   RoundName: String
+  HomeOrganisationLogo_unset: Boolean
+  HomeOrganisationName: String
+  PublishVenue: Boolean
+  LocationLat: Int
+  Longitude: String
+  Round: String
+  HomeTeamName_unset: Boolean
+  HomeOrganisationName_unset: Boolean
+  From_unset: Boolean
+  AwayTeamId: String
+  HomeOrganisationLogo: String
+  Provider: Int
+  ResultStatus_inc: Int
+  PublishTeamsheetOnWidget: Boolean
+  matchDay: Int
+  matchDay_inc: Int
+  SectionSortOrder: Int
+  SectionId: Int
+  Provider_unset: Boolean
+  AwayTeamName_unset: Boolean
+  PublishResults: Boolean
+  Latitude: String
+  AwayOrganisationId: String
+  From: String
+  ResultStatus_unset: Boolean
+  SportName_unset: Boolean
+  SportId_unset: Boolean
+  InGame: Boolean
+  HomeScore: String
+  competitionId: String
+  GradeSortOrder_unset: Boolean
+  _id: ObjectId
+  HomeOrganisationId: String
+  PublishVenue_unset: Boolean
+  Id: String
+  GradeName_unset: Boolean
+  Date: String
+  HomeTeamId_unset: Boolean
+  HomeTeamId: String
+  SectionSortOrder_inc: Int
+  competitionId_unset: Boolean
+  IsSuperForm_unset: Boolean
+  Status: String
+  VenueNameAbbr: String
+  GradeId_unset: Boolean
+  MatchSummary: String
   Longitude_unset: Boolean
   Address: String
-  SectionId_unset: Boolean
-  Provider: Int
-  PublishTeamsheetOnWidget: Boolean
+  LocationLng_unset: Boolean
+  RoundName_unset: Boolean
+  GradeSortOrder_inc: Int
+  LocationLat_unset: Boolean
+  SectionId_inc: Int
+  To: String
+  Latitude_unset: Boolean
+  Date_unset: Boolean
   Provider_inc: Int
-  AwayTeamName: String
+  Address_unset: Boolean
+  GradeSortOrder: Int
+  AwayOrganisationName: String
+  Status_unset: Boolean
+  VenueNameAbbr_unset: Boolean
+  VenueName: String
+  Id_unset: Boolean
   AwayTeamId_unset: Boolean
-  Round_unset: Boolean
-  HomeScore_unset: Boolean
-  GradeName_unset: Boolean
-  LocationLat: Int
-  HomeTeamName_unset: Boolean
+  AwayOrganisationLogo: String
+  SectionSortOrder_unset: Boolean
+  AwayScore: String
 }
 
 type Ground {
@@ -918,101 +918,101 @@ type Ground {
 }
 
 input GroundInsertInput {
+  _id: ObjectId
   address: String
   fixtures: [String]
   homeTeams: [String]
   lat: String
   lon: String
   name: String
-  _id: ObjectId
 }
 
 input GroundQueryInput {
-  name: String
-  lat_nin: [String]
-  address_nin: [String]
-  lat_exists: Boolean
-  fixtures: [String]
-  _id_gte: ObjectId
-  address_exists: Boolean
+  _id_lte: ObjectId
   address_lte: String
+  _id_exists: Boolean
+  address_gte: String
+  lon_nin: [String]
+  _id_gte: ObjectId
+  lon_gt: String
+  homeTeams_exists: Boolean
+  lat_lt: String
+  address_exists: Boolean
+  lon_lte: String
+  name_nin: [String]
+  _id: ObjectId
+  _id_lt: ObjectId
+  address_nin: [String]
+  address_lt: String
+  lon_ne: String
+  lat_exists: Boolean
+  homeTeams: [String]
+  lon_exists: Boolean
+  fixtures_nin: [String]
+  lat_in: [String]
+  lon_gte: String
   lon: String
+  lat_ne: String
+  _id_nin: [ObjectId]
+  OR: [GroundQueryInput!]
+  lon_in: [String]
+  AND: [GroundQueryInput!]
+  name_gt: String
+  name_lte: String
+  fixtures_in: [String]
+  homeTeams_in: [String]
+  homeTeams_nin: [String]
+  _id_in: [ObjectId]
+  lat_gte: String
+  _id_ne: ObjectId
+  lat_nin: [String]
+  name: String
+  name_gte: String
+  address: String
+  lon_lt: String
+  fixtures_exists: Boolean
+  name_ne: String
+  address_in: [String]
+  address_gt: String
+  _id_gt: ObjectId
   lat: String
   lat_gt: String
-  lon_lt: String
-  address_gt: String
-  _id_lt: ObjectId
-  lon_exists: Boolean
-  AND: [GroundQueryInput!]
-  name_ne: String
-  address: String
-  lon_gt: String
-  name_gte: String
+  fixtures: [String]
   name_lt: String
-  lat_lte: String
-  lat_lt: String
-  lon_ne: String
-  address_in: [String]
-  _id_nin: [ObjectId]
-  name_gt: String
-  lon_gte: String
-  address_lt: String
-  lat_in: [String]
-  lat_ne: String
-  _id_lte: ObjectId
   name_exists: Boolean
-  _id_exists: Boolean
-  _id_ne: ObjectId
+  lat_lte: String
   address_ne: String
-  fixtures_exists: Boolean
-  homeTeams_in: [String]
-  lon_nin: [String]
-  address_gte: String
-  fixtures_in: [String]
-  OR: [GroundQueryInput!]
-  _id_gt: ObjectId
-  _id: ObjectId
-  fixtures_nin: [String]
-  homeTeams_nin: [String]
-  lat_gte: String
-  _id_in: [ObjectId]
-  homeTeams: [String]
-  lon_lte: String
   name_in: [String]
-  homeTeams_exists: Boolean
-  name_nin: [String]
-  lon_in: [String]
-  name_lte: String
 }
 
 enum GroundSortByInput {
   LAT_DESC
-  LON_ASC
-  LON_DESC
+  _ID_DESC
+  ADDRESS_ASC
   NAME_ASC
   NAME_DESC
   _ID_ASC
-  ADDRESS_ASC
   ADDRESS_DESC
   LAT_ASC
-  _ID_DESC
+  LON_ASC
+  LON_DESC
 }
 
 input GroundUpdateInput {
-  homeTeams: [String]
-  lon: String
-  address_unset: Boolean
-  lat: String
-  lat_unset: Boolean
-  lon_unset: Boolean
-  fixtures_unset: Boolean
-  fixtures: [String]
-  homeTeams_unset: Boolean
-  _id_unset: Boolean
-  name_unset: Boolean
-  address: String
-  name: String
   _id: ObjectId
+  lon_unset: Boolean
+  lat_unset: Boolean
+  fixtures_unset: Boolean
+  name_unset: Boolean
+  _id_unset: Boolean
+  homeTeams: [String]
+  name: String
+  fixtures: [String]
+  lon: String
+  homeTeams_unset: Boolean
+  address: String
+  lat: String
+  address_unset: Boolean
 }
 
 type InsertManyPayload {
@@ -1042,23 +1042,23 @@ type Mutation {
   insertOneTeam(data: TeamInsertInput!): Team
   replaceOneCompetition(query: CompetitionQueryInput, data: CompetitionInsertInput!): Competition
   replaceOneFixture(query: FixtureQueryInput, data: FixtureInsertInput!): Fixture
-  replaceOneGround(data: GroundInsertInput!, query: GroundQueryInput): Ground
-  replaceOneOrganisation(query: OrganisationQueryInput, data: OrganisationInsertInput!): Organisation
+  replaceOneGround(query: GroundQueryInput, data: GroundInsertInput!): Ground
+  replaceOneOrganisation(data: OrganisationInsertInput!, query: OrganisationQueryInput): Organisation
   replaceOneTeam(query: TeamQueryInput, data: TeamInsertInput!): Team
   updateManyCompetitions(query: CompetitionQueryInput, set: CompetitionUpdateInput!): UpdateManyPayload
-  updateManyFixtures(set: FixtureUpdateInput!, query: FixtureQueryInput): UpdateManyPayload
-  updateManyGrounds(query: GroundQueryInput, set: GroundUpdateInput!): UpdateManyPayload
+  updateManyFixtures(query: FixtureQueryInput, set: FixtureUpdateInput!): UpdateManyPayload
+  updateManyGrounds(set: GroundUpdateInput!, query: GroundQueryInput): UpdateManyPayload
   updateManyOrganisations(query: OrganisationQueryInput, set: OrganisationUpdateInput!): UpdateManyPayload
   updateManyTeams(query: TeamQueryInput, set: TeamUpdateInput!): UpdateManyPayload
   updateOneCompetition(query: CompetitionQueryInput, set: CompetitionUpdateInput!): Competition
-  updateOneFixture(set: FixtureUpdateInput!, query: FixtureQueryInput): Fixture
+  updateOneFixture(query: FixtureQueryInput, set: FixtureUpdateInput!): Fixture
   updateOneGround(query: GroundQueryInput, set: GroundUpdateInput!): Ground
   updateOneOrganisation(query: OrganisationQueryInput, set: OrganisationUpdateInput!): Organisation
-  updateOneTeam(query: TeamQueryInput, set: TeamUpdateInput!): Team
+  updateOneTeam(set: TeamUpdateInput!, query: TeamQueryInput): Team
   upsertOneCompetition(query: CompetitionQueryInput, data: CompetitionInsertInput!): Competition
   upsertOneFixture(query: FixtureQueryInput, data: FixtureInsertInput!): Fixture
-  upsertOneGround(data: GroundInsertInput!, query: GroundQueryInput): Ground
-  upsertOneOrganisation(data: OrganisationInsertInput!, query: OrganisationQueryInput): Organisation
+  upsertOneGround(query: GroundQueryInput, data: GroundInsertInput!): Ground
+  upsertOneOrganisation(query: OrganisationQueryInput, data: OrganisationInsertInput!): Organisation
   upsertOneTeam(query: TeamQueryInput, data: TeamInsertInput!): Team
 }
 
@@ -1069,85 +1069,86 @@ type Organisation {
   Name: String
   Provider: Int
   _id: ObjectId
+  teamInfo: [Team]
   teams: [String]
 }
 
 input OrganisationInsertInput {
-  Name: String
-  Provider: Int
   _id: ObjectId
   teams: [String]
   Id: String
+  Name: String
+  Provider: Int
 }
 
 input OrganisationQueryInput {
-  _id_ne: ObjectId
-  teams_exists: Boolean
-  Id_lt: String
-  Provider_gt: Int
-  _id_nin: [ObjectId]
-  Provider_exists: Boolean
-  _id_gt: ObjectId
-  AND: [OrganisationQueryInput!]
-  Id_ne: String
-  Provider_gte: Int
-  OR: [OrganisationQueryInput!]
-  Name_lt: String
-  Id_gt: String
-  _id_in: [ObjectId]
-  Id_nin: [String]
-  Provider_lte: Int
-  Id_in: [String]
-  Name: String
-  teams: [String]
-  _id_exists: Boolean
-  Name_lte: String
-  Id_gte: String
-  Name_gte: String
-  Name_gt: String
-  Name_ne: String
-  Provider_lt: Int
-  teams_in: [String]
-  Id: String
-  Id_lte: String
-  Name_in: [String]
-  Provider_ne: Int
-  _id_gte: ObjectId
-  _id: ObjectId
   _id_lt: ObjectId
-  teams_nin: [String]
-  _id_lte: ObjectId
-  Provider: Int
-  Name_nin: [String]
+  _id_gte: ObjectId
+  teams: [String]
+  Provider_gt: Int
+  Id: String
+  Name_lt: String
+  Id_lte: String
+  Name: String
+  OR: [OrganisationQueryInput!]
+  Id_nin: [String]
+  Provider_lt: Int
   Name_exists: Boolean
-  Provider_in: [Int]
-  Id_exists: Boolean
+  teams_exists: Boolean
+  _id_ne: ObjectId
   Provider_nin: [Int]
+  Id_exists: Boolean
+  Provider_in: [Int]
+  Name_ne: String
+  _id_nin: [ObjectId]
+  AND: [OrganisationQueryInput!]
+  Name_in: [String]
+  Name_nin: [String]
+  _id_exists: Boolean
+  Id_in: [String]
+  Provider: Int
+  Provider_ne: Int
+  _id_lte: ObjectId
+  _id_gt: ObjectId
+  Provider_lte: Int
+  Id_gt: String
+  Name_gte: String
+  Provider_exists: Boolean
+  Id_ne: String
+  _id: ObjectId
+  _id_in: [ObjectId]
+  teams_nin: [String]
+  Id_lt: String
+  Provider_gte: Int
+  Id_gte: String
+  teams_in: [String]
+  Name_lte: String
+  Name_gt: String
 }
 
 enum OrganisationSortByInput {
-  _ID_DESC
-  ID_ASC
   ID_DESC
   NAME_ASC
   NAME_DESC
   PROVIDER_ASC
   PROVIDER_DESC
   _ID_ASC
+  _ID_DESC
+  ID_ASC
 }
 
 input OrganisationUpdateInput {
-  Id: String
-  Provider_inc: Int
-  Provider_unset: Boolean
-  Id_unset: Boolean
   Name: String
   _id_unset: Boolean
-  teams_unset: Boolean
-  Name_unset: Boolean
-  teams: [String]
+  Id_unset: Boolean
   _id: ObjectId
+  teams: [String]
+  Name_unset: Boolean
   Provider: Int
+  Provider_inc: Int
+  Provider_unset: Boolean
+  teams_unset: Boolean
+  Id: String
 }
 
 type Query {
@@ -1158,97 +1159,99 @@ type Query {
   ground(query: GroundQueryInput): Ground
   grounds(query: GroundQueryInput, limit: Int = 100, sortBy: GroundSortByInput): [Ground]!
   organisation(query: OrganisationQueryInput): Organisation
-  organisations(query: OrganisationQueryInput, limit: Int = 100, sortBy: OrganisationSortByInput): [Organisation]!
+  organisations(limit: Int = 100, sortBy: OrganisationSortByInput, query: OrganisationQueryInput): [Organisation]!
   team(query: TeamQueryInput): Team
-  teams(sortBy: TeamSortByInput, query: TeamQueryInput, limit: Int = 100): [Team]!
+  teams(query: TeamQueryInput, limit: Int = 100, sortBy: TeamSortByInput): [Team]!
 }
 
 type Team {
   Id: String
   _id: ObjectId
   awayFixtures: [String]
-  competitions: [String]
+  competitions: [Competition]
   fixtures: [String]
   homeFixtures: [String]
   homeGrounds: [String]
   name: String
   organisation: String
+  organisationInfo: Organisation
 }
 
 input TeamInsertInput {
-  awayFixtures: [String]
-  fixtures: [String]
-  organisation: String
-  homeGrounds: [String]
-  Id: String
-  homeFixtures: [String]
   competitions: [String]
+  homeFixtures: [String]
+  fixtures: [String]
   name: String
   _id: ObjectId
+  organisation: String
+  Id: String
+  homeGrounds: [String]
+  awayFixtures: [String]
 }
 
 input TeamQueryInput {
-  homeGrounds_nin: [String]
-  name: String
-  organisation_nin: [String]
-  Id_in: [String]
-  name_ne: String
-  _id: ObjectId
-  name_in: [String]
-  Id_ne: String
-  Id_lte: String
-  _id_gt: ObjectId
-  name_lte: String
-  competitions_nin: [String]
-  organisation_exists: Boolean
-  awayFixtures_nin: [String]
-  competitions_exists: Boolean
-  _id_gte: ObjectId
   Id_lt: String
-  homeGrounds_exists: Boolean
-  organisation_lte: String
-  name_lt: String
-  fixtures_in: [String]
-  name_exists: Boolean
-  _id_exists: Boolean
-  fixtures_exists: Boolean
-  fixtures: [String]
-  organisation_gt: String
-  _id_lt: ObjectId
-  awayFixtures_exists: Boolean
-  homeFixtures: [String]
-  _id_ne: ObjectId
-  homeGrounds_in: [String]
-  awayFixtures_in: [String]
   awayFixtures: [String]
-  name_gt: String
-  competitions: [String]
-  competitions_in: [String]
+  _id_ne: ObjectId
+  Id_gt: String
+  fixtures_exists: Boolean
+  homeFixtures_exists: Boolean
+  organisation_lte: String
+  _id_gt: ObjectId
+  _id_nin: [ObjectId]
+  name_ne: String
+  organisation_nin: [String]
+  homeFixtures_in: [String]
+  Id_nin: [String]
+  homeGrounds_in: [String]
+  competitions_exists: Boolean
+  organisation_gt: String
+  fixtures: [String]
   name_nin: [String]
+  organisation_gte: String
+  competitions: [String]
+  homeFixtures_nin: [String]
+  name_in: [String]
+  organisation: String
+  name_exists: Boolean
+  Id_lte: String
+  fixtures_in: [String]
+  Id_exists: Boolean
+  Id_ne: String
   AND: [TeamQueryInput!]
+  name_gt: String
+  name: String
+  homeGrounds: [String]
+  awayFixtures_in: [String]
+  organisation_lt: String
+  Id_in: [String]
+  fixtures_nin: [String]
+  homeFixtures: [String]
+  _id_lt: ObjectId
+  _id_in: [ObjectId]
+  Id: String
+  awayFixtures_nin: [String]
   Id_gte: String
   name_gte: String
-  homeGrounds: [String]
-  organisation: String
-  Id_exists: Boolean
-  _id_lte: ObjectId
-  homeFixtures_nin: [String]
-  Id: String
-  Id_gt: String
-  homeFixtures_in: [String]
-  _id_nin: [ObjectId]
-  OR: [TeamQueryInput!]
-  organisation_lt: String
-  _id_in: [ObjectId]
-  organisation_gte: String
-  homeFixtures_exists: Boolean
+  _id_gte: ObjectId
+  organisation_exists: Boolean
   organisation_in: [String]
-  fixtures_nin: [String]
   organisation_ne: String
-  Id_nin: [String]
+  competitions_in: [String]
+  _id_lte: ObjectId
+  _id_exists: Boolean
+  homeGrounds_nin: [String]
+  awayFixtures_exists: Boolean
+  _id: ObjectId
+  homeGrounds_exists: Boolean
+  name_lt: String
+  competitions_nin: [String]
+  OR: [TeamQueryInput!]
+  name_lte: String
 }
 
 enum TeamSortByInput {
+  _ID_ASC
   _ID_DESC
   NAME_ASC
   NAME_DESC
@@ -1256,28 +1259,27 @@ enum TeamSortByInput {
   ORGANISATION_DESC
   ID_ASC
   ID_DESC
-  _ID_ASC
 }
 
 input TeamUpdateInput {
   homeGrounds_unset: Boolean
-  organisation_unset: Boolean
-  Id_unset: Boolean
-  _id_unset: Boolean
   awayFixtures_unset: Boolean
+  name: String
+  Id_unset: Boolean
+  homeFixtures_unset: Boolean
+  homeFixtures: [String]
+  organisation: String
+  organisation_unset: Boolean
   homeGrounds: [String]
+  fixtures: [String]
+  _id_unset: Boolean
+  fixtures_unset: Boolean
+  name_unset: Boolean
+  competitions: [String]
+  competitions_unset: Boolean
   Id: String
   awayFixtures: [String]
-  homeFixtures_unset: Boolean
-  name_unset: Boolean
   _id: ObjectId
-  name: String
-  fixtures: [String]
-  competitions: [String]
-  fixtures_unset: Boolean
-  homeFixtures: [String]
-  competitions_unset: Boolean
-  organisation: String
 }
 
 type UpdateManyPayload {

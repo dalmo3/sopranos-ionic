@@ -19,13 +19,29 @@ import {
   useGetUserDataQuery,
   UserData,
 } from '../database/localData';
-import { useApolloClient } from '@apollo/client';
+import { gql, useApolloClient, useQuery } from '@apollo/client';
+import { Team } from '../database/types/generated';
+import './SettingsPage.scss';
 
 const Settings: FC = () => {
   const { data } = useGetUserDataQuery();
-  const client = useApolloClient()
+  const client = useApolloClient();
+  const teams = useQuery(gql`
+    query teams {
+      teams(sortBy: NAME_ASC, limit: 0) {
+        Id
+        name
+        competitions {
+          Name
+        }
+      }
+    }
+  `);
 
-  const handleSelection = (data: UserData | undefined, favouriteTeams: string[]) => {
+  const handleSelection = (
+    data: UserData | undefined,
+    favouriteTeams: string[]
+  ) => {
     // data?.User.favouriteTeams = teams;
     console.log('handleSelection', data);
     client.writeQuery({
@@ -34,29 +50,42 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams: ['1']
-        }
-      }
-    })
-  
+          favouriteTeams,
+        },
+      },
+    });
   };
   console.log('USER_DATA', data);
   return (
     <IonContent>
       <IonText>Hello, {data?.User.name}</IonText>
       <IonText>Favourite Teams:</IonText>
-      {data?.User.favouriteTeams?.join(', ')}
-      {data && 
-      <IonSelect
-      value={data.User.favouriteTeams}
-      multiple={true}
-      onIonChange={(e) => handleSelection(data, e.detail.value)}
-      >
-        <IonSelectOption value="aaa">aaa</IonSelectOption>
-        <IonSelectOption value="b">b</IonSelectOption>
-        <IonSelectOption value="c">c</IonSelectOption>
-      </IonSelect>
-    }
+      {teams.data?.teams
+        .filter(({ Id }: Team) => data?.User.favouriteTeams.includes(Id!))
+        .map((team: Team) => team.name)
+        .join(', ')}
+      {/* // .data?.User.favouriteTeams?.join(', ')} */}
+      {data && teams?.data && (
+        <IonSelect
+          value={data.User.favouriteTeams}
+          multiple={true}
+          interface="alert"
+          interfaceOptions={{
+            cssClass: 'team-selection-alert',
+            // cssClass
+          }}
+          onIonChange={(e) => handleSelection(data, e.detail.value)}
+        >
+          {/* {console.log('teams data', teams.data.teams)} */}
+          {teams.data.teams.map((team: Team) => {
+            return (
+              <IonSelectOption value={team.Id} key={team.Id}>
+                {team.name}
+              </IonSelectOption>
+            );
+          })}
+        </IonSelect>
+      )}
     </IonContent>
   );
 };

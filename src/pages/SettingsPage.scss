@@ -1,0 +1,22 @@
+.team-selection-alert {
+  .alert-wrapper {
+    --min-width: 30%;
+    --max-width: 90%;
+    --width: 600px;
+  }
+  .alert-checkbox-group {
+    /* --min-width: 70%; */
+    max-height: unset;
+  }
+
+  .select-interface-option {
+    border-bottom: 1px solid var(--ion-color-light);
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    .alert-checkbox-label {
+      font-size: small;
+    }
+  }
+}

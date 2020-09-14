@@ -10,6 +10,7 @@ import { IonContent, IonLoading, IonText } from '@ionic/react';
 import FixturesTable from './FixtureTable';
 import FixtureList from './FixtureList';
 import FixtureGrid from './FixtureGrid';
+import { useGetUserDataQuery } from '../database/localData';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
@@ -17,11 +18,13 @@ import FixtureGrid from './FixtureGrid';
 
 const MakeTestQuery: React.FC = () => {
   // const { loading, error, data } = useGetAllCompetitionsQuery();
-  const comp = useGetCompetitionByIdQuery({
-    variables: {
-      Id: '566058906',
-    },
-  });
+
+  const userData = useGetUserDataQuery();
+  // const comp = useGetCompetitionByIdQuery({
+  //   variables: {
+  //     Id: '566058906',
+  //   },
+  // });
   // console.log(comp);
 
   const { loading, error, data } = useGetFixturesQuery({
@@ -29,10 +32,10 @@ const MakeTestQuery: React.FC = () => {
       q: {
         OR: [
           {
-            HomeTeamName: 'KCU Sopranos',
+            HomeTeamId_in: userData.data?.User.favouriteTeams || [],
           },
           {
-            AwayTeamName: 'KCU Sopranos',
+            AwayTeamId_in: userData.data?.User.favouriteTeams || [],
           },
         ],
         // HomeTeamName: 'KCU Sopranos',
