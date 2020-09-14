@@ -10,6 +10,10 @@ import {
   IonMenuButton,
   IonSelect,
   IonSelectOption,
+  IonReorderGroup,
+  IonItem,
+  IonLabel,
+  IonReorder,
 } from '@ionic/react';
 import './Tab1.css';
 import {
@@ -19,13 +23,13 @@ import {
   useGetUserDataQuery,
   UserData,
 } from '../database/localData';
-import { gql, useApolloClient, useQuery } from '@apollo/client';
+import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client';
 import { Team } from '../database/types/generated';
 import './SettingsPage.scss';
 
 const Settings: FC = () => {
-  const { data } = useGetUserDataQuery();
   const client = useApolloClient();
+  const { data } = useGetUserDataQuery();
   const teams = useQuery(gql`
     query teams {
       teams(sortBy: NAME_ASC, limit: 0) {
@@ -44,6 +48,7 @@ const Settings: FC = () => {
   ) => {
     // data?.User.favouriteTeams = teams;
     console.log('handleSelection', data);
+
     client.writeQuery({
       query: GetUserData,
       data: {
@@ -55,21 +60,57 @@ const Settings: FC = () => {
       },
     });
   };
+
+  const FavouriteTeams: FC<{ teams: Team[] }> = ({ teams }) => {
+    console.log('fav teams', teams);
+    return (
+      <IonReorderGroup disabled={false} onIonItemReorder={doReorder}>
+        {teams.map((team) => {
+          return (
+            <IonItem key={team.Id}>
+              <IonLabel>{team.name}</IonLabel>
+              <IonReorder slot="end" />
+            </IonItem>
+          );
+        })}
+      </IonReorderGroup>
+    );
+  };
+
+  const doReorder = (event: CustomEvent) => {
+    console.log(event);
+    const clone = [...data!.User.favouriteTeams];
+    client.writeQuery({
+      query: GetUserData,
+      data: {
+        User: {
+          // ...DEFAULT_USER_DATA.User,
+          ...data?.User,
+          favouriteTeams: event.detail.complete(clone),
+        },
+      },
+    });
+  };
+
   console.log('USER_DATA', data);
   return (
     <IonContent>
       <IonText>Hello, {data?.User.name}</IonText>
+      <br />
       <IonText>Favourite Teams:</IonText>
-      {teams.data?.teams
-        .filter(({ Id }: Team) => data?.User.favouriteTeams.includes(Id!))
-        .map((team: Team) => team.name)
-        .join(', ')}
-      {/* // .data?.User.favouriteTeams?.join(', ')} */}
+      {data && teams?.data && (
+        <FavouriteTeams
+          teams={data?.User.favouriteTeams.map((id) =>
+            teams.data.teams.find((team: Team) => team.Id === id)
+          )}
+        />
+      )}
       {data && teams?.data && (
         <IonSelect
           value={data.User.favouriteTeams}
           multiple={true}
           interface="alert"
+          class="team-selection-ionselect"
           interfaceOptions={{
             cssClass: 'team-selection-alert',
             // cssClass
