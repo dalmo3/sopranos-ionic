@@ -10,6 +10,8 @@ import {
   IonLabel,
   IonMenuButton,
   IonPage,
+  IonRefresher,
+  IonRefresherContent,
   IonRouterOutlet,
   IonSplitPane,
   IonTabBar,
@@ -47,6 +49,7 @@ import Menu from './components/Menu';
 import SettingsPage from './pages/SettingsPage';
 import RealmProvider from './database/RealmProvider';
 import RealmApolloProvider from './database/RealmApolloProvider';
+import Refresher from './database/Refresher';
 
 const App: React.FC = () => (
   <IonApp>
@@ -59,6 +62,7 @@ const App: React.FC = () => (
             <Menu />
             <IonPage id="main">
               <IonContent>
+                <Refresher/>
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route path="/tab1" component={Tab1} exact={true} />
