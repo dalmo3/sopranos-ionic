@@ -10,7 +10,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { persistCache } from 'apollo-cache-persist';
-import { useRealmProvider, IRealmProvider } from './RealmProvider';
+import { useRealmContext, IRealmContext } from './RealmProvider';
 import { Plugins } from '@capacitor/core';
 import {
   DEFAULT_USER_DATA,
@@ -20,6 +20,7 @@ import {
 } from './localData';
 import { PersistentStorage } from 'apollo-cache-persist/types';
 
+// capacitor storage
 const { Storage } = Plugins;
 
 // capacitor's Storage offer a different interface than the one peristCache wants, so we define translator functions
@@ -33,79 +34,84 @@ const capacitorStorage: PersistentStorage<string | null> = {
 const cache = new InMemoryCache();
 
 const RealmApolloProvider: FC = ({ children }) => {
-  const { id, user } = useRealmProvider();
-  const [client, setClient] = useState(createApolloClient(id, user, cache));
+  const RealmContext = useRealmContext();
+  const [client, setClient] = useState(createApolloClient(RealmContext, cache));
+
+  // when Realm is ready, init apollo with proper settings
   useEffect(() => {
     const initApollo = async (
       cache: InMemoryCache,
       storage: PersistentStorage<string | null>
     ) => {
-      const updatedClient = createApolloClient(id, user, cache);
+      const updatedClient = createApolloClient(RealmContext, cache);
 
-      const exsitingUserData = await cache.readQuery({
+      // check if local data exists, initialises it otherwise
+      const exsitingUserData = (await cache.readQuery({
         query: GetUserData,
-      }) as UserData;
+      })) as UserData;
       if (!exsitingUserData?.User) {
         cache.writeQuery({
           query: GetUserData,
           data: DEFAULT_USER_DATA,
         });
       }
-      await persistCache({
-        cache,
-        storage,
-        debug: true,
-      });
-
+      // Also initialise local data when resettinsg the store
       updatedClient.onResetStore(async () => {
         return cache.writeQuery({
           query: GetUserData,
           data: DEFAULT_USER_DATA,
         });
       });
+
+      // persists cache to local storage
+      await persistCache({
+        cache,
+        storage,
+      });
+
       setClient(updatedClient);
-
-      // initLocalUser({ client, query: GetUserData });
     };
-    //@ts-ignore Type definitions for StitchUser are missing the ['auth'] property, that contain the accessToken
-    if (user?.id) initApollo(cache, capacitorStorage);
-    // console.log('realmapolloprovider-useeffect--user', user);
-    console.log('realmapolloprovider-useeffect--user', user?.id);
-  }, [id, user]);
 
-  // useEffect(() => {
-  //   console.log('apollo client', client);
-  // }, [client]);
+    if (RealmContext.isReady) initApollo(cache, capacitorStorage);
+    // console.log('realmapolloprovider-useeffect--user', user);
+    console.log('realmapolloprovider-useeffect--user', RealmContext.user?.id);
+  }, [RealmContext.isReady]);
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
 export default RealmApolloProvider;
 
-function createApolloClient(
-  realmAppId: string,
-  user: IRealmProvider['user'],
+/**
+ * Creates the Apollo Client
+ *
+ * @param realmProvider
+ * @param cache
+ */
+const createApolloClient = (
+  realmProvider: IRealmContext,
   cache: InMemoryCache
-) {
-  const graphql_url = `https://realm.mongodb.com/api/client/v2.0/app/${realmAppId}/graphql`;
+) => {
+  // Initially Realm won't be ready, so we define a customFetch to reject all requests. That prevents making illegal requests to the server.
   const customFetch = (input: RequestInfo, init?: RequestInit | undefined) => {
-    return user ? fetch(input, init) : Promise.reject(new Response());
+    return realmProvider.isReady
+      ? fetch(input, init)
+      : Promise.reject(new Response());
   };
+
   const httpLink = createHttpLink({
-    uri: graphql_url,
+    uri: `https://realm.mongodb.com/api/client/v2.0/app/${realmProvider.appId}/graphql`,
     fetch: customFetch,
   });
+
   const authorizationHeaderLink = setContext(async (_, { headers }) => ({
     headers: {
       ...headers,
-      //@ts-ignore Type definitions for RealmUser are missing the ['auth'] property, that contain the accessToken
-      Authorization: `Bearer ${user?.accessToken}`,
+      Authorization: `Bearer ${realmProvider.user?.accessToken}`,
     },
   }));
 
   return new ApolloClient({
-    //@ts-ignore
     link: authorizationHeaderLink.concat(httpLink),
-    // link: httpLink,
     cache,
   });
-}
+};
