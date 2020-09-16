@@ -62,7 +62,7 @@ const Settings: FC = () => {
   };
 
   const FavouriteTeams: FC<{ teams: Team[] }> = ({ teams }) => {
-    console.log('fav teams', teams);
+    // console.log('fav teams', teams);
     return (
       <IonReorderGroup
         disabled={false}
@@ -93,7 +93,7 @@ const Settings: FC = () => {
     });
   };
 
-  console.log('USER_DATA', data);
+  // console.log('USER_DATA', data);
   return (
     <IonContent>
       <IonText>Hello, {data?.User.name}</IonText>
@@ -114,7 +114,6 @@ const Settings: FC = () => {
           class="team-selection-ionselect"
           interfaceOptions={{
             cssClass: 'team-selection-alert',
-            // cssClass
           }}
           onIonChange={(e) => handleSelection(data, e.detail.value)}
         >
@@ -155,4 +154,4 @@ const SettingsPage: React.FC = () => {
   );
 };
 
-export default SettingsPage;
+export default React.memo(SettingsPage);
