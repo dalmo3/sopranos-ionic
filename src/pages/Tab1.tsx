@@ -12,18 +12,12 @@ import {
 import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 import MakeTestQuery from '../components/MakeTestQuery';
+import Header from '../components/Header';
 
 const Tab1: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Tab 1</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Fixtures"/>
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>

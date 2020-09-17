@@ -26,6 +26,7 @@ import {
 import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client';
 import { Team } from '../database/types/generated';
 import './SettingsPage.scss';
+import Header from '../components/Header';
 
 const Settings: FC = () => {
   const client = useApolloClient();
@@ -134,14 +135,7 @@ const Settings: FC = () => {
 const SettingsPage: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonMenuButton />
-          </IonButtons>
-          <IonTitle>Settings</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header title="Settings"/>
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
