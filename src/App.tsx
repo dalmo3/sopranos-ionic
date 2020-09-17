@@ -20,7 +20,7 @@ import {
   IonTabButton,
   IonTabs,
   IonTitle,
-  IonToolbar,
+  IonToolbar
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
@@ -52,6 +52,7 @@ import SettingsPage from './pages/SettingsPage';
 import RealmProvider from './database/RealmProvider';
 import RealmApolloProvider from './database/RealmApolloProvider';
 import Refresher from './database/Refresher';
+import TeamView from './containers/TeamView';
 
 const App: React.FC = () => (
   <IonApp>
@@ -71,32 +72,15 @@ const App: React.FC = () => (
               <IonContent>
                 <Refresher />
                 <IonRouterOutlet>
+                  <Route exact path="/" component={SettingsPage} />
                   <Route path="/settings" component={SettingsPage} />
                   <Route path="/about" component={SettingsPage} />
                   <Route path="/competitions" component={SettingsPage} />
                   <Route path="/teams" component={SettingsPage} />
                   <Route path="/help" component={SettingsPage} />
-                  <IonTabs>
-                    <IonRouterOutlet>
-                      <Route path="/tab1" component={Tab1} exact={true} />
-                      <Route path="/tab3" component={Tab3} />
-                      <Route
-                        path="/"
-                        render={() => <Redirect to="/tab1" />}
-                        exact={true}
-                      />
-                    </IonRouterOutlet>
-                    <IonTabBar slot="bottom">
-                      <IonTabButton tab="tab1" href="/tab1">
-                        <IonIcon icon={triangle} />
-                        <IonLabel>Tab 1</IonLabel>
-                      </IonTabButton>
-                      <IonTabButton tab="tab3" href="/tab3">
-                        <IonIcon icon={square} />
-                        <IonLabel>Tab 3</IonLabel>
-                      </IonTabButton>
-                    </IonTabBar>
-                  </IonTabs>
+                  <Route exact path="/teams" component={TeamView} />
+                  <Route path="/team/:id" component={TeamView} />
+                  <Route component={SettingsPage} />
                 </IonRouterOutlet>
               </IonContent>
             </IonPage>
