@@ -6,22 +6,25 @@ import {
   IonMenuButton,
   IonTitle,
   IonText,
-  IonButton
+  IonButton, useIonRouter, IonBackButton
 } from '@ionic/react';
-import { useHistory } from 'react-router';
+import { chevronBack } from 'ionicons/icons';
 
 const Header: FC<{ title: string }> = ({ title }) => {
-  const history = useHistory();
+  const history = useIonRouter();
   return (
     <IonHeader>
       <IonToolbar>
         <IonButtons slot="primary">
+          <IonBackButton icon={chevronBack} disabled={false}/>
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot="secondary">
-          <IonButton onClick={history.goBack}> {'< Back'} </IonButton>
+          {/* <IonButton onClick={() => history.back()}> {'< Back'} </IonButton>
+           */}
+           <IonBackButton icon={chevronBack} disabled={false}/>
         </IonButtons>
-        <IonTitle slot="start">{title}</IonTitle>
+          <IonTitle slot="start">{title}</IonTitle>
       </IonToolbar>
     </IonHeader>
   );
