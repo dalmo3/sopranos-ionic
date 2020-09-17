@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
   IonContent,
   IonHeader,
@@ -14,6 +14,9 @@ import {
   IonItem,
   IonLabel,
   IonReorder,
+  IonButton,
+  IonIcon,
+  IonToast
 } from '@ionic/react';
 import './Tab1.css';
 import {
@@ -21,12 +24,13 @@ import {
   GetUserData,
   GetUserDataQueryResult,
   useGetUserDataQuery,
-  UserData,
+  UserData
 } from '../database/localData';
 import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client';
 import { Team } from '../database/types/generated';
 import './SettingsPage.scss';
 import Header from '../components/Header';
+import { checkmark, reorderTwo, reorderTwoOutline } from 'ionicons/icons';
 
 const Settings: FC = () => {
   const client = useApolloClient();
@@ -56,28 +60,53 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams,
-        },
-      },
+          favouriteTeams
+        }
+      }
     });
   };
+
+  const [enableReorder, setEnableReorder] = useState(false);
+  const [showReorderToast, setShowReorderToast] = useState(false);
 
   const FavouriteTeams: FC<{ teams: Team[] }> = ({ teams }) => {
     // console.log('fav teams', teams);
     return (
-      <IonReorderGroup
-        disabled={false}
-        onIonItemReorder={(e) => doReorder(e, teams)}
-      >
-        {teams.map((team) => {
-          return (
-            <IonItem key={team.Id}>
-              <IonLabel>{team.name}</IonLabel>
-              <IonReorder slot="end" />
-            </IonItem>
-          );
-        })}
-      </IonReorderGroup>
+      <>
+        <IonReorderGroup
+          disabled={!enableReorder}
+          onIonItemReorder={(e) => doReorder(e, teams)}
+        >
+          {teams.map((team) => {
+            return (
+              <IonItem key={team.Id}>
+                <IonLabel>{team.name}</IonLabel>
+                <IonReorder slot="end" />
+              </IonItem>
+            );
+          })}
+        </IonReorderGroup>
+        <IonButtons>
+          <IonButton
+            slot="end"
+            onClick={() => {
+              if (!enableReorder) setShowReorderToast(true);
+              setEnableReorder((enableReorder) => !enableReorder);
+            }}
+          >
+            {enableReorder ? (
+              <IonIcon icon={checkmark} color="primary" />
+            ) : (
+              <IonIcon md={reorderTwo} ios={reorderTwoOutline} color="dark" />
+            )}
+          </IonButton>
+        </IonButtons>
+        <IonToast
+          isOpen={showReorderToast}
+          onWillDismiss={() => setShowReorderToast(false)}
+          message="Drag teams in the list to reorder, then confirm. The team at the top of the list will be the first one shown on your home page."
+        />
+      </>
     );
   };
 
@@ -88,9 +117,9 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams: event.detail.complete(teams.map((t) => t.Id)),
-        },
-      },
+          favouriteTeams: event.detail.complete(teams.map((t) => t.Id))
+        }
+      }
     });
   };
 
@@ -114,7 +143,10 @@ const Settings: FC = () => {
           interface="alert"
           class="team-selection-ionselect"
           interfaceOptions={{
+            header: 'Favourite Teams',
+            subHeader: 'Pick as many teams as you want to follow.',
             cssClass: 'team-selection-alert',
+            translucent: true
           }}
           onIonChange={(e) => handleSelection(data, e.detail.value)}
         >
@@ -135,7 +167,7 @@ const Settings: FC = () => {
 const SettingsPage: React.FC = () => {
   return (
     <IonPage>
-      <Header title="Settings"/>
+      <Header title="Settings" />
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
