@@ -5,6 +5,8 @@ import {
   IonButton,
   IonButtons,
   IonContent,
+  IonFab,
+  IonFabButton,
   IonHeader,
   IonIcon,
   IonLabel,
@@ -17,6 +19,7 @@ import {
   IonTabBar,
   IonTabButton,
   IonTabs,
+  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -61,8 +64,13 @@ const App: React.FC = () => (
           <IonSplitPane contentId="main">
             <Menu />
             <IonPage id="main">
+              <IonFab vertical="top" horizontal="end">
+                <IonFabButton size="small">
+                    <IonMenuButton />
+                </IonFabButton>
+              </IonFab>
               <IonContent>
-                <Refresher/>
+                <Refresher />
                 <IonTabs>
                   <IonRouterOutlet>
                     <Route path="/tab1" component={Tab1} exact={true} />
