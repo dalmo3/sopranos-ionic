@@ -33,7 +33,7 @@ const FixtureDate: FC<{ dateString: string }> = (props) => {
   );
 };
 
-const SingleFixture: FC<{fixture: Fixture}> = (props) => {
+const FixtureSingle: FC<{fixture: Fixture}> = (props) => {
   const { fixture } = props;
 
   return (
@@ -68,4 +68,4 @@ const SingleFixture: FC<{fixture: Fixture}> = (props) => {
   );
 };
 
-export default SingleFixture;
+export default FixtureSingle;
