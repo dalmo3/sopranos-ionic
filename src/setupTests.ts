@@ -6,6 +6,8 @@ import '@testing-library/jest-dom/extend-expect';
 import { mockIonicReact } from '@ionic/react-test-utils';
 mockIonicReact();
 
+// workaround to TypeError: window.matchMedia is not a function
+// as per https://stackoverflow.com/questions/39830580/jest-test-fails-typeerror-window-matchmedia-is-not-a-function
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation(query => ({
