@@ -8,6 +8,7 @@ import {
   useGetFixturesLiteQuery,
   useGetFixturesQuery,
 } from '../database/graphql-operations';
+import { useGetUserDataQuery } from '../database/localData';
 import {
   Fixture,
   FixtureQueryInput,
@@ -16,7 +17,7 @@ import {
 import QueryHandlerContainer from './QueryHandlerContainer';
 import { IRouteTeam } from './TeamView';
 
-type ViewPath = 'competition' | 'team';
+type ViewPath = 'competition' | 'team' | 'user';
 export type GetFixturesQueryParams = Parameters<typeof useGetFixturesQuery>[0];
 
 const FixturesTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
@@ -27,27 +28,63 @@ const FixturesTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
 
   const parentPath = path.split('/')[1] as ViewPath;
 
-  const q: FixtureQueryInput =
-    parentPath === 'competition'
-      ? {
-          competitionId: id,
-        }
-      : {
-          OR: [
-            {
-              HomeTeamId: id,
-            },
-            {
-              AwayTeamId: id,
-            },
-          ],
-          // HomeTeamName: 'KCU Sopranos',
-          // Id_in: comp.data?.competition?.fixtures
-          // HomeTeamName: 'Kapiti Coast United',
-          // HomeTeamName: 'KCU Sopranos',
-          // HomeTeamName: 'KCU Thirds',
-          // HomeScore: "2",
-        };
+  const userData = useGetUserDataQuery();
+  console.log(parentPath, id);
+
+  let q: FixtureQueryInput;
+
+  switch (parentPath) {
+    case 'competition':
+      q = {
+        competitionId: id,
+      };
+      break;
+    case 'team':
+      q = {
+        OR: [
+          {
+            HomeTeamId: id,
+          },
+          {
+            AwayTeamId: id,
+          },
+        ],
+      };
+      break;
+
+    default:
+      q = {
+        OR: [
+          {
+            HomeTeamId_in: userData.data?.User.favouriteTeams || [],
+          },
+          {
+            AwayTeamId_in: userData.data?.User.favouriteTeams || [],
+          },
+        ],
+      };
+      break;
+  }
+  // parentPath === 'competition'
+  //   ? {
+  //       competitionId: id,
+  //     }
+  //   : {
+  //       OR: [
+  //         {
+  //           HomeTeamId: id,
+  //         },
+  //         {
+  //           AwayTeamId: id,
+  //         },
+  //       ],
+  //       // HomeTeamName: 'KCU Sopranos',
+  //       // Id_in: comp.data?.competition?.fixtures
+  //       // HomeTeamName: 'Kapiti Coast United',
+  //       // HomeTeamName: 'KCU Sopranos',
+  //       // HomeTeamName: 'KCU Thirds',
+  //       // HomeScore: "2",
+  //     };
 
   //https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html
   const queryParams: GetFixturesQueryParams = {

@@ -58,6 +58,7 @@ import CompetitionsPage from './pages/CompetitionsPage';
 import TeamsPage from './pages/TeamsPage';
 import HelpPage from './pages/HelpPage';
 import CompetitionView from './containers/CompetitionView';
+import HomeView from './containers/HomeView';
 
 const App: React.FC = () => (
   <IonApp>
@@ -79,7 +80,8 @@ const App: React.FC = () => (
                 <IonRouterOutlet>
                   {/* activate switch if routing behaves weird */}
                   <Switch>
-                    <Route exact path='/' component={Tab1} />
+                    <Route exact path='/' component={HomeView} />
+                    <Route path='/user/:smth' component={HomeView} />
                     <Route path='/settings' component={SettingsPage} />
                     <Route path='/about' component={AboutPage} />
                     <Route path='/help' component={HelpPage} />
@@ -90,7 +92,7 @@ const App: React.FC = () => (
                     />
                     <Route path='/teams' component={TeamsPage} />
                     <Route path='/team/:id' component={TeamView} />
-                    <Route component={Tab1} />
+                    <Route component={HomeView} />
                   </Switch>
                 </IonRouterOutlet>
               </IonContent>
