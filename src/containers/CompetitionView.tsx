@@ -34,27 +34,30 @@ const CompetitionView: FC<RouteChildrenProps<IRouteCompetition>> = ({
 }) => {
   const {
     params: { id },
+    url,
+    path,
   } = match!;
 
+  console.log(match);
   return (
     <>
       {/* <Header title="" /> */}
       <IonTabs>
         <IonRouterOutlet>
           <Route
-            path='/competition/:id/fixtures'
+            path={`${path}/fixtures`}
             component={FixturesTab}
             exact={true}
           />
-          <Route path='/competition/:id/standings' component={StandingsTab} />
+          <Route path={`${path}/standings`} component={StandingsTab} />
           <Route path='' component={StandingsTab} />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
-          <IonTabButton tab='fixtures' href={`/competition/${id}/fixtures`}>
+          <IonTabButton tab='fixtures' href={`${url}/fixtures`}>
             <IonIcon icon={calendar} />
             <IonLabel>Fixtures</IonLabel>
           </IonTabButton>
-          <IonTabButton tab='standings' href={`/competition/${id}/standings`}>
+          <IonTabButton tab='standings' href={`${url}/standings`}>
             <IonIcon icon={podium} />
             <IonLabel>Standings</IonLabel>
           </IonTabButton>
