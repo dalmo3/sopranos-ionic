@@ -44,7 +44,7 @@ const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
             exact={true}
           />
           <Route path='/team/:id/standings' component={StandingsTab} />
-          <Route path='' component={StandingsTab} />
+          <Route path='' component={FixturesTab} />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
           <IonTabButton tab='fixtures' href={`/team/${id}/fixtures`}>
