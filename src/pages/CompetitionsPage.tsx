@@ -1,9 +1,27 @@
 import { IonPage } from '@ionic/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import QueryHandlerContainer from '../containers/QueryHandlerContainer';
+import {
+  useGetAllCompetitionsLiteQuery,
+  useGetAllCompetitionsQuery,
+} from '../database/graphql-operations';
 
-export default () => (
-  <IonPage>
-    <Link to='/competition/57953/fixtures'>CompetitionView</Link>
-  </IonPage>
-);
+const CompetitionsPage = () => {
+  const queryResult = useGetAllCompetitionsLiteQuery();
+  const { data } = queryResult;
+
+  return (
+    <QueryHandlerContainer queryResult={queryResult}>
+      <IonPage>
+        {data?.competitions.map((comp) => {
+          return (
+            <Link to={`/competition/${comp?.Id}/fixtures`}>{comp?.Name}</Link>
+          );
+        })}
+      </IonPage>
+    </QueryHandlerContainer>
+  );
+};
+
+export default CompetitionsPage;
