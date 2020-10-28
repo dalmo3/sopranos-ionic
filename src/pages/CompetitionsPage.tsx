@@ -16,7 +16,9 @@ const CompetitionsPage = () => {
       <IonPage>
         {data?.competitions.map((comp) => {
           return (
-            <Link to={`/competition/${comp?.Id}/fixtures`}>{comp?.Name}</Link>
+            <Link to={`/competition/${comp?.Id}/fixtures`} key={comp?.Id}>
+              {comp?.Name}
+            </Link>
           );
         })}
       </IonPage>
