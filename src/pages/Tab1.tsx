@@ -7,14 +7,43 @@ import {
   IonToolbar,
   IonText,
   IonButtons,
-  IonMenuButton
+  IonMenuButton,
 } from '@ionic/react';
 import './Tab1.css';
 import MakeTestQuery from '../components/MakeTestQuery';
 import Header from '../components/Header';
+import { useGetUserDataQuery } from '../database/localData';
 
 const Tab1: React.FC = () => {
   console.log('rendered Tab1');
+
+  const userData = useGetUserDataQuery();
+
+  const queryParams = {
+    variables: {
+      q: {
+        OR: [
+          {
+            HomeTeamId_in: userData.data?.User.favouriteTeams || [],
+          },
+          {
+            AwayTeamId_in: userData.data?.User.favouriteTeams || [],
+          },
+        ],
+        // HomeTeamName: 'KCU Sopranos',
+        // Id_in: comp.data?.competition?.fixtures
+        // HomeTeamName: 'Kapiti Coast United',
+        // HomeTeamName: 'KCU Sopranos',
+        // HomeTeamName: 'KCU Thirds',
+        // HomeScore: "2",
+      },
+    },
+    // pollInterval: 0
+    // skip: !comp.data?.competition?.fixtures,
+    // fetchPolicy: 'network-only',
+    // notifyOnNetworkStatusChange: true
+  };
+
   return (
     <IonPage>
       <Header title='Fixtures' />
@@ -24,7 +53,7 @@ const Tab1: React.FC = () => {
             <IonTitle size='large'>Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <MakeTestQuery />
+        <MakeTestQuery queryParams={queryParams} />
       </IonContent>
     </IonPage>
   );

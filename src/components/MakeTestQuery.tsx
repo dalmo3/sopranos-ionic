@@ -3,7 +3,7 @@ import {
   useGetAllCompetitionsQuery,
   useGetCompetitionByIdQuery,
   // useGetFixturesByIdsQuery,
-  useGetFixturesQuery
+  useGetFixturesQuery,
 } from '../database/graphql-operations';
 import { Competition, Fixture } from '../database/types/generated';
 import { IonContent, IonLoading, IonText } from '@ionic/react';
@@ -11,15 +11,25 @@ import FixturesTable from './FixtureTable';
 import FixtureList from './FixtureList';
 import FixtureGrid from './FixtureGrid';
 import { useGetUserDataQuery } from '../database/localData';
+import { GetFixturesQueryVariables } from '../database/types/generatedold';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
 // import { ScrollView } from 'react-native';
 
-const MakeTestQuery: React.FC = () => {
+import * as ApolloReactHooks from '@apollo/client';
+import * as Types from '../database/types/generated';
+
+export type MakeTestQueryParams =
+  //https://www.typescriptlang.org/docs/handbook/utility-types.html#parameterstype
+  Parameters<typeof useGetFixturesQuery>[0];
+const MakeTestQuery: React.FC<{ queryParams: MakeTestQueryParams }> = ({
+  queryParams,
+  ...children
+}) => {
   // const { loading, error, data } = useGetAllCompetitionsQuery();
 
-  const userData = useGetUserDataQuery();
+  // const userData = useGetUserDataQuery();
   // const comp = useGetCompetitionByIdQuery({
   //   variables: {
   //     Id: '566058906',
@@ -27,30 +37,31 @@ const MakeTestQuery: React.FC = () => {
   // });
   // console.log(comp);
 
-  const { loading, error, data } = useGetFixturesQuery({
-    variables: {
-      q: {
-        OR: [
-          {
-            HomeTeamId_in: userData.data?.User.favouriteTeams || []
-          },
-          {
-            AwayTeamId_in: userData.data?.User.favouriteTeams || []
-          }
-        ]
-        // HomeTeamName: 'KCU Sopranos',
-        // Id_in: comp.data?.competition?.fixtures
-        // HomeTeamName: 'Kapiti Coast United',
-        // HomeTeamName: 'KCU Sopranos',
-        // HomeTeamName: 'KCU Thirds',
-        // HomeScore: "2",
-      }
-    }
-    // pollInterval: 0
-    // skip: !comp.data?.competition?.fixtures,
-    // fetchPolicy: 'network-only',
-    // notifyOnNetworkStatusChange: true
-  });
+  // const { loading, error, data } = useGetFixturesQuery({
+  //   variables: {
+  //     q: {
+  //       OR: [
+  //         {
+  //           HomeTeamId_in: userData.data?.User.favouriteTeams || [],
+  //         },
+  //         {
+  //           AwayTeamId_in: userData.data?.User.favouriteTeams || [],
+  //         },
+  //       ],
+  //       // HomeTeamName: 'KCU Sopranos',
+  //       // Id_in: comp.data?.competition?.fixtures
+  //       // HomeTeamName: 'Kapiti Coast United',
+  //       // HomeTeamName: 'KCU Sopranos',
+  //       // HomeTeamName: 'KCU Thirds',
+  //       // HomeScore: "2",
+  //     },
+  //   },
+  //   // pollInterval: 0
+  //   // skip: !comp.data?.competition?.fixtures,
+  //   // fetchPolicy: 'network-only',
+  //   // notifyOnNetworkStatusChange: true
+  // });
+  const { loading, error, data } = useGetFixturesQuery(queryParams);
   const [showLoading, setShowLoading] = React.useState(true);
 
   setTimeout(() => {
