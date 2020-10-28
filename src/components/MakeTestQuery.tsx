@@ -3,7 +3,7 @@ import {
   useGetAllCompetitionsQuery,
   useGetCompetitionByIdQuery,
   // useGetFixturesByIdsQuery,
-  useGetFixturesQuery,
+  useGetFixturesQuery
 } from '../database/graphql-operations';
 import { Competition, Fixture } from '../database/types/generated';
 import { IonContent, IonLoading, IonText } from '@ionic/react';
@@ -14,7 +14,7 @@ import { useGetUserDataQuery } from '../database/localData';
 // import { IonText, View } from './Themed';
 // import FixturesTable from './FixturesTable';
 // import useOldNetInfo from '../database/useOldNetInfo';
-// import { ScrollView } from 'react-native'; 
+// import { ScrollView } from 'react-native';
 
 const MakeTestQuery: React.FC = () => {
   // const { loading, error, data } = useGetAllCompetitionsQuery();
@@ -32,20 +32,20 @@ const MakeTestQuery: React.FC = () => {
       q: {
         OR: [
           {
-            HomeTeamId_in: userData.data?.User.favouriteTeams || [],
+            HomeTeamId_in: userData.data?.User.favouriteTeams || []
           },
           {
-            AwayTeamId_in: userData.data?.User.favouriteTeams || [],
-          },
-        ],
+            AwayTeamId_in: userData.data?.User.favouriteTeams || []
+          }
+        ]
         // HomeTeamName: 'KCU Sopranos',
         // Id_in: comp.data?.competition?.fixtures
         // HomeTeamName: 'Kapiti Coast United',
         // HomeTeamName: 'KCU Sopranos',
         // HomeTeamName: 'KCU Thirds',
         // HomeScore: "2",
-      },
-    },
+      }
+    }
     // pollInterval: 0
     // skip: !comp.data?.competition?.fixtures,
     // fetchPolicy: "network-only"
@@ -61,9 +61,9 @@ const MakeTestQuery: React.FC = () => {
   // console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
+  console.log(JSON.stringify(error));
   if (error) {
-    // console.log(error)
-    return <IonText>Error fetching... `${error.message}`</IonText>;
+    return <IonText>Error fetching... `${JSON.stringify(error)}`</IonText>;
   }
   if (!data?.fixtures)
     return (
