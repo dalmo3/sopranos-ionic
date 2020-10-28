@@ -78,17 +78,20 @@ const App: React.FC = () => (
                 <Refresher />
                 <IonRouterOutlet>
                   {/* activate switch if routing behaves weird */}
-                  {/* <Switch>  */}
-                  <Route exact path='/' component={Tab1} />
-                  <Route path='/settings' component={SettingsPage} />
-                  <Route path='/about' component={AboutPage} />
-                  <Route path='/competitions' component={CompetitionsPage} />
-                  <Route path='/competition/:id' component={CompetitionView} />
-                  <Route path='/teams' component={TeamsPage} />
-                  <Route path='/team/:id' component={TeamView} />
-                  <Route path='/help' component={HelpPage} />
-                  <Route component={Tab1} />
-                  {/* </Switch> */}
+                  <Switch>
+                    <Route exact path='/' component={Tab1} />
+                    <Route path='/settings' component={SettingsPage} />
+                    <Route path='/about' component={AboutPage} />
+                    <Route path='/help' component={HelpPage} />
+                    <Route path='/competitions' component={CompetitionsPage} />
+                    <Route
+                      path='/competition/:id'
+                      component={CompetitionView}
+                    />
+                    <Route path='/teams' component={TeamsPage} />
+                    <Route path='/team/:id' component={TeamView} />
+                    <Route component={Tab1} />
+                  </Switch>
                 </IonRouterOutlet>
               </IonContent>
             </IonPage>
