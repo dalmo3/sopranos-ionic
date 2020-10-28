@@ -75,36 +75,34 @@ const Settings: FC = () => {
       <>
         <IonReorderGroup
           disabled={!enableReorder}
-          onIonItemReorder={(e) => doReorder(e, teams)}
-        >
+          onIonItemReorder={(e) => doReorder(e, teams)}>
           {teams.map((team) => {
             return (
               <IonItem key={team.Id}>
                 <IonLabel>{team.name}</IonLabel>
-                <IonReorder slot="end" />
+                <IonReorder slot='end' />
               </IonItem>
             );
           })}
         </IonReorderGroup>
         <IonButtons>
           <IonButton
-            slot="end"
+            slot='end'
             onClick={() => {
               if (!enableReorder) setShowReorderToast(true);
               setEnableReorder((enableReorder) => !enableReorder);
-            }}
-          >
+            }}>
             {enableReorder ? (
-              <IonIcon icon={checkmark} color="primary" />
+              <IonIcon icon={checkmark} color='primary' />
             ) : (
-              <IonIcon md={reorderTwo} ios={reorderTwoOutline} color="dark" />
+              <IonIcon md={reorderTwo} ios={reorderTwoOutline} color='dark' />
             )}
           </IonButton>
         </IonButtons>
         <IonToast
           isOpen={showReorderToast}
           onWillDismiss={() => setShowReorderToast(false)}
-          message="Drag teams in the list to reorder, then confirm. The team at the top of the list will be the first one shown on your home page."
+          message='Drag teams in the list to reorder, then confirm. The team at the top of the list will be the first one shown on your home page.'
         />
       </>
     );
@@ -140,16 +138,15 @@ const Settings: FC = () => {
         <IonSelect
           value={data.User.favouriteTeams}
           multiple={true}
-          interface="alert"
-          class="team-selection-ionselect"
+          interface='alert'
+          class='team-selection-ionselect'
           interfaceOptions={{
             header: 'Favourite Teams',
             subHeader: 'Pick as many teams as you want to follow.',
             cssClass: 'team-selection-alert',
             translucent: true
           }}
-          onIonChange={(e) => handleSelection(data, e.detail.value)}
-        >
+          onIonChange={(e) => handleSelection(data, e.detail.value)}>
           {/* {console.log('teams data', teams.data.teams)} */}
           {teams.data.teams.map((team: Team) => {
             return (
@@ -165,13 +162,14 @@ const Settings: FC = () => {
 };
 
 const SettingsPage: React.FC = () => {
+  console.log('rendered settings');
   return (
     <IonPage>
-      <Header title="Settings" />
+      <Header title='Settings' />
       <IonContent>
-        <IonHeader collapse="condense">
+        <IonHeader collapse='condense'>
           <IonToolbar>
-            <IonTitle size="large">Settings</IonTitle>
+            <IonTitle size='large'>Settings</IonTitle>
           </IonToolbar>
         </IonHeader>
         <Settings />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import {
   IonApp,
   IonButton,
@@ -76,15 +76,18 @@ const App: React.FC = () => (
               <IonContent>
                 <Refresher />
                 <IonRouterOutlet>
-                  <Route exact path='/' component={Tab1} />
+                  {/* activate switch if routing behaves weird */}
+                  {/* <Switch>  */}
                   <Route path='/settings' component={SettingsPage} />
                   <Route path='/about' component={AboutPage} />
                   <Route path='/competitions' component={CompetitionsPage} />
                   <Route path='/teams' component={TeamsPage} />
                   <Route path='/help' component={HelpPage} />
-                  <Route exact path='/teams' component={TeamView} />
+                  {/* <Route exact path='/teams' component={TeamView} /> */}
                   <Route path='/team/:id' component={TeamView} />
-                  <Route component={Tab1} />
+                  <Route exact path='/' component={Tab1} />
+                  {/* </Switch> */}
+                  {/* <Route component={Tab1} /> */}
                 </IonRouterOutlet>
               </IonContent>
             </IonPage>

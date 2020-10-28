@@ -36,27 +36,27 @@ const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
   return (
     <>
       {/* <Header title="" /> */}
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route
-              path="/team/:id/fixtures"
-              component={FixturesTab}
-              exact={true}
-            />
-            <Route path="/team/:id/standings" component={StandingsTab} />
-            <Route path="" component={StandingsTab} />
-          </IonRouterOutlet>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="fixtures" href={`/team/${id}/fixtures`}>
-              <IonIcon icon={calendar} />
-              <IonLabel>Fixtures</IonLabel>
-            </IonTabButton>
-            <IonTabButton tab="standings" href={`/team/${id}/standings`}>
-              <IonIcon icon={podium} />
-              <IonLabel>Standings</IonLabel>
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
+      <IonTabs>
+        <IonRouterOutlet>
+          <Route
+            path='/team/:id/fixtures'
+            component={FixturesTab}
+            exact={true}
+          />
+          <Route path='/team/:id/standings' component={StandingsTab} />
+          <Route path='' component={StandingsTab} />
+        </IonRouterOutlet>
+        <IonTabBar slot='bottom'>
+          <IonTabButton tab='fixtures' href={`/team/${id}/fixtures`}>
+            <IonIcon icon={calendar} />
+            <IonLabel>Fixtures</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab='standings' href={`/team/${id}/standings`}>
+            <IonIcon icon={podium} />
+            <IonLabel>Standings</IonLabel>
+          </IonTabButton>
+        </IonTabBar>
+      </IonTabs>
     </>
   );
 };

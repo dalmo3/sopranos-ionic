@@ -48,7 +48,7 @@ const MakeTestQuery: React.FC = () => {
     }
     // pollInterval: 0
     // skip: !comp.data?.competition?.fixtures,
-    // fetchPolicy: "network-only"
+    // fetchPolicy: 'network-only',
     // notifyOnNetworkStatusChange: true
   });
   const [showLoading, setShowLoading] = React.useState(true);
@@ -61,8 +61,8 @@ const MakeTestQuery: React.FC = () => {
   // console.log('data? ', data)
   // const netInfo = useOldNetInfo();
   // console.log(loading, error, data);\
-  console.log(JSON.stringify(error));
   if (error) {
+    console.log(JSON.stringify(error));
     return <IonText>Error fetching... `${JSON.stringify(error)}`</IonText>;
   }
   if (!data?.fixtures)

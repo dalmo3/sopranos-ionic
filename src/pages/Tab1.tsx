@@ -14,6 +14,7 @@ import MakeTestQuery from '../components/MakeTestQuery';
 import Header from '../components/Header';
 
 const Tab1: React.FC = () => {
+  console.log('rendered Tab1');
   return (
     <IonPage>
       <Header title='Fixtures' />
@@ -23,7 +24,6 @@ const Tab1: React.FC = () => {
             <IonTitle size='large'>Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-
         <MakeTestQuery />
       </IonContent>
     </IonPage>

@@ -10,13 +10,12 @@ const StandingsTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
   } = match!;
 
   return (
-    <>
-    <Header title="" />
+    <IonPage>
+      <Header title='' />
       <IonContent>
         <IonText>Standings</IonText>
       </IonContent>
-      
-    </>
+    </IonPage>
   );
 };
 
