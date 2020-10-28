@@ -5,14 +5,14 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonText,
-  IonButtons,
-  IonMenuButton,
 } from '@ionic/react';
 import './Tab1.css';
-import MakeTestQuery from '../components/MakeTestQuery';
 import Header from '../components/Header';
 import { useGetUserDataQuery } from '../database/localData';
+import { useGetFixturesQuery } from '../database/graphql-operations';
+import QueryHandlerContainer from '../containers/QueryHandlerContainer';
+import FixtureGrid from '../components/FixtureGrid';
+import { Fixture } from '../database/types/generated';
 
 const Tab1: React.FC = () => {
   console.log('rendered Tab1');
@@ -44,6 +44,9 @@ const Tab1: React.FC = () => {
     // notifyOnNetworkStatusChange: true
   };
 
+  const queryResult = useGetFixturesQuery(queryParams);
+  const { loading, error, data } = queryResult;
+
   return (
     <IonPage>
       <Header title='Fixtures' />
@@ -53,7 +56,14 @@ const Tab1: React.FC = () => {
             <IonTitle size='large'>Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <MakeTestQuery queryParams={queryParams} />
+        <QueryHandlerContainer queryResult={queryResult}>
+          <IonContent>
+            <FixtureGrid fixtures={data?.fixtures as Fixture[]} />
+            {/* <FixtureList fixtures={data.fixtures as Fixture[] } /> */}
+            {/* <FixturesTable fixtures={data.fixtures as Fixture[] } /> */}
+          </IonContent>
+        </QueryHandlerContainer>
+        {/* <MakeTestQuery queryParams={queryParams} /> */}
       </IonContent>
     </IonPage>
   );
