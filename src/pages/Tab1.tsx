@@ -9,7 +9,7 @@ import {
 import './Tab1.css';
 import Header from '../components/Header';
 import { useGetUserDataQuery } from '../database/localData';
-import { useGetFixturesQuery } from '../database/graphql-operations';
+import { useGetFixturesLiteQuery } from '../database/graphql-operations';
 import QueryHandlerContainer from '../containers/QueryHandlerContainer';
 import FixtureGrid from '../components/FixtureGrid';
 import { Fixture } from '../database/types/generated';
@@ -44,8 +44,8 @@ const Tab1: React.FC = () => {
     // notifyOnNetworkStatusChange: true
   };
 
-  const queryResult = useGetFixturesQuery(queryParams);
-  const { loading, error, data } = queryResult;
+  const queryResult = useGetFixturesLiteQuery(queryParams);
+  const { data } = queryResult;
 
   return (
     <IonPage>
