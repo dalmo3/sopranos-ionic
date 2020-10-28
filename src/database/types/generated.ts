@@ -1594,14 +1594,25 @@ export type GetAllCompetitionsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetAllCompetitionsQuery = (
   { __typename?: 'Query' }
-  & { competition?: Maybe<(
+  & { competitions: Array<Maybe<(
     { __typename?: 'Competition' }
     & Pick<Competition, 'Id' | 'Name' | 'OrganisationId' | 'Provider' | 'SeasonId' | 'SportId' | 'SportName' | '_id' | 'firstFixtureDate' | 'fixtures' | 'lastResultDate'>
     & { Grades?: Maybe<Array<Maybe<(
       { __typename?: 'CompetitionGrade' }
       & Pick<CompetitionGrade, 'Id'>
     )>>> }
-  )> }
+  )>> }
+);
+
+export type GetAllCompetitionsLiteQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllCompetitionsLiteQuery = (
+  { __typename?: 'Query' }
+  & { competitions: Array<Maybe<(
+    { __typename?: 'Competition' }
+    & Pick<Competition, 'Id' | 'Name' | '_id' | 'firstFixtureDate' | 'fixtures' | 'lastResultDate'>
+  )>> }
 );
 
 export type GetCompetitionByIdQueryVariables = Exact<{
@@ -1631,5 +1642,18 @@ export type GetFixturesQuery = (
   & { fixtures: Array<Maybe<(
     { __typename?: 'Fixture' }
     & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayOrganisationName' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'From' | 'GradeId' | 'GradeName' | 'GradeSortOrder' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeOrganisationName' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'InGame' | 'IsSuperForm' | 'Latitude' | 'LocationLat' | 'LocationLng' | 'Longitude' | 'MatchSummary' | 'Provider' | 'PublishResults' | 'PublishTeamsheetOnWidget' | 'PublishVenue' | 'ResultStatus' | 'Round' | 'RoundName' | 'SectionId' | 'SectionSortOrder' | 'SportId' | 'SportName' | 'Status' | 'To' | 'VenueName' | 'VenueNameAbbr' | '_id' | 'competitionId' | 'matchDay'>
+  )>> }
+);
+
+export type GetFixturesLiteQueryVariables = Exact<{
+  q?: Maybe<FixtureQueryInput>;
+}>;
+
+
+export type GetFixturesLiteQuery = (
+  { __typename?: 'Query' }
+  & { fixtures: Array<Maybe<(
+    { __typename?: 'Fixture' }
+    & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'ResultStatus' | 'Round' | 'RoundName' | 'Status' | 'VenueName' | '_id' | 'competitionId' | 'matchDay'>
   )>> }
 );

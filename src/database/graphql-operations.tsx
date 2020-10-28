@@ -6,7 +6,7 @@ import * as ApolloReactHooks from '@apollo/client';
 
 export const GetAllCompetitionsDocument = gql`
     query GetAllCompetitions {
-  competition {
+  competitions {
     Grades {
       Id
     }
@@ -49,6 +49,43 @@ export function useGetAllCompetitionsLazyQuery(baseOptions?: ApolloReactHooks.La
 export type GetAllCompetitionsQueryHookResult = ReturnType<typeof useGetAllCompetitionsQuery>;
 export type GetAllCompetitionsLazyQueryHookResult = ReturnType<typeof useGetAllCompetitionsLazyQuery>;
 export type GetAllCompetitionsQueryResult = ApolloReactCommon.QueryResult<Types.GetAllCompetitionsQuery, Types.GetAllCompetitionsQueryVariables>;
+export const GetAllCompetitionsLiteDocument = gql`
+    query GetAllCompetitionsLite {
+  competitions {
+    Id
+    Name
+    _id
+    firstFixtureDate
+    fixtures
+    lastResultDate
+  }
+}
+    `;
+
+/**
+ * __useGetAllCompetitionsLiteQuery__
+ *
+ * To run a query within a React component, call `useGetAllCompetitionsLiteQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllCompetitionsLiteQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllCompetitionsLiteQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllCompetitionsLiteQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<Types.GetAllCompetitionsLiteQuery, Types.GetAllCompetitionsLiteQueryVariables>) {
+        return ApolloReactHooks.useQuery<Types.GetAllCompetitionsLiteQuery, Types.GetAllCompetitionsLiteQueryVariables>(GetAllCompetitionsLiteDocument, baseOptions);
+      }
+export function useGetAllCompetitionsLiteLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<Types.GetAllCompetitionsLiteQuery, Types.GetAllCompetitionsLiteQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<Types.GetAllCompetitionsLiteQuery, Types.GetAllCompetitionsLiteQueryVariables>(GetAllCompetitionsLiteDocument, baseOptions);
+        }
+export type GetAllCompetitionsLiteQueryHookResult = ReturnType<typeof useGetAllCompetitionsLiteQuery>;
+export type GetAllCompetitionsLiteLazyQueryHookResult = ReturnType<typeof useGetAllCompetitionsLiteLazyQuery>;
+export type GetAllCompetitionsLiteQueryResult = ApolloReactCommon.QueryResult<Types.GetAllCompetitionsLiteQuery, Types.GetAllCompetitionsLiteQueryVariables>;
 export const GetCompetitionByIdDocument = gql`
     query GetCompetitionById($Id: String!) {
   competition(query: {Id: $Id}) {
@@ -171,3 +208,56 @@ export function useGetFixturesLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetFixturesQueryHookResult = ReturnType<typeof useGetFixturesQuery>;
 export type GetFixturesLazyQueryHookResult = ReturnType<typeof useGetFixturesLazyQuery>;
 export type GetFixturesQueryResult = ApolloReactCommon.QueryResult<Types.GetFixturesQuery, Types.GetFixturesQueryVariables>;
+export const GetFixturesLiteDocument = gql`
+    query GetFixturesLite($q: FixtureQueryInput) {
+  fixtures(query: $q) {
+    Address
+    AwayOrganisationId
+    AwayOrganisationLogo
+    AwayScore
+    AwayTeamId
+    AwayTeamName
+    Date
+    HomeOrganisationId
+    HomeOrganisationLogo
+    HomeScore
+    HomeTeamId
+    HomeTeamName
+    Id
+    ResultStatus
+    Round
+    RoundName
+    Status
+    VenueName
+    _id
+    competitionId
+    matchDay
+  }
+}
+    `;
+
+/**
+ * __useGetFixturesLiteQuery__
+ *
+ * To run a query within a React component, call `useGetFixturesLiteQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetFixturesLiteQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetFixturesLiteQuery({
+ *   variables: {
+ *      q: // value for 'q'
+ *   },
+ * });
+ */
+export function useGetFixturesLiteQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>) {
+        return ApolloReactHooks.useQuery<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>(GetFixturesLiteDocument, baseOptions);
+      }
+export function useGetFixturesLiteLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>(GetFixturesLiteDocument, baseOptions);
+        }
+export type GetFixturesLiteQueryHookResult = ReturnType<typeof useGetFixturesLiteQuery>;
+export type GetFixturesLiteLazyQueryHookResult = ReturnType<typeof useGetFixturesLiteLazyQuery>;
+export type GetFixturesLiteQueryResult = ApolloReactCommon.QueryResult<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>;

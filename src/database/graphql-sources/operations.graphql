@@ -1,5 +1,5 @@
 query GetAllCompetitions {
-  competition {
+  competitions {
     Grades {
       Id
     }
@@ -10,6 +10,17 @@ query GetAllCompetitions {
     SeasonId
     SportId
     SportName
+    _id
+    firstFixtureDate
+    fixtures
+    lastResultDate
+  }
+}
+
+query GetAllCompetitionsLite {
+  competitions {
+    Id
+    Name
     _id
     firstFixtureDate
     fixtures
@@ -36,7 +47,7 @@ query GetCompetitionById($Id: String!) {
   }
 }
 
-query GetFixtures($q: FixtureQueryInput){
+query GetFixtures($q: FixtureQueryInput) {
   fixtures(query: $q) {
     Address
     AwayOrganisationId
@@ -79,6 +90,32 @@ query GetFixtures($q: FixtureQueryInput){
     To
     VenueName
     VenueNameAbbr
+    _id
+    competitionId
+    matchDay
+  }
+}
+
+query GetFixturesLite($q: FixtureQueryInput) {
+  fixtures(query: $q) {
+    Address
+    AwayOrganisationId
+    AwayOrganisationLogo
+    AwayScore
+    AwayTeamId
+    AwayTeamName
+    Date
+    HomeOrganisationId
+    HomeOrganisationLogo
+    HomeScore
+    HomeTeamId
+    HomeTeamName
+    Id
+    ResultStatus
+    Round
+    RoundName
+    Status
+    VenueName
     _id
     competitionId
     matchDay
