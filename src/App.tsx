@@ -53,6 +53,10 @@ import RealmProvider from './database/RealmProvider';
 import RealmApolloProvider from './database/RealmApolloProvider';
 import Refresher from './database/Refresher';
 import TeamView from './containers/TeamView';
+import AboutPage from './pages/AboutPage';
+import CompetitionsPage from './pages/CompetitionsPage';
+import TeamsPage from './pages/TeamsPage';
+import HelpPage from './pages/HelpPage';
 
 const App: React.FC = () => (
   <IonApp>
@@ -61,9 +65,9 @@ const App: React.FC = () => (
     <RealmProvider>
       <RealmApolloProvider>
         <IonReactRouter>
-          <IonSplitPane contentId="main">
+          <IonSplitPane contentId='main'>
             <Menu />
-            <IonPage id="main">
+            <IonPage id='main'>
               {/* <IonFab vertical="top" horizontal="end">
                 <IonFabButton size="small">
                   <IonMenuButton />
@@ -72,15 +76,15 @@ const App: React.FC = () => (
               <IonContent>
                 <Refresher />
                 <IonRouterOutlet>
-                  <Route exact path="/" component={SettingsPage} />
-                  <Route path="/settings" component={SettingsPage} />
-                  <Route path="/about" component={SettingsPage} />
-                  <Route path="/competitions" component={SettingsPage} />
-                  <Route path="/teams" component={SettingsPage} />
-                  <Route path="/help" component={SettingsPage} />
-                  <Route exact path="/teams" component={TeamView} />
-                  <Route path="/team/:id" component={TeamView} />
-                  <Route component={SettingsPage} />
+                  <Route exact path='/' component={Tab1} />
+                  <Route path='/settings' component={SettingsPage} />
+                  <Route path='/about' component={AboutPage} />
+                  <Route path='/competitions' component={CompetitionsPage} />
+                  <Route path='/teams' component={TeamsPage} />
+                  <Route path='/help' component={HelpPage} />
+                  <Route exact path='/teams' component={TeamView} />
+                  <Route path='/team/:id' component={TeamView} />
+                  <Route component={Tab1} />
                 </IonRouterOutlet>
               </IonContent>
             </IonPage>
