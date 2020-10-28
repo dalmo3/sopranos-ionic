@@ -24,11 +24,14 @@ import FixturesTab from './FixturesTab';
 import StandingsTab from './StandingsTab';
 import Header from '../components/Header';
 
-export interface IRouteTeam {
+export interface IRouteCompetition {
   id: string;
 }
 
-const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
+const CompetitionView: FC<RouteChildrenProps<IRouteCompetition>> = ({
+  location,
+  match,
+}) => {
   const {
     params: { id },
   } = match!;
@@ -39,19 +42,19 @@ const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
       <IonTabs>
         <IonRouterOutlet>
           <Route
-            path='/team/:id/fixtures'
+            path='/competition/:id/fixtures'
             component={FixturesTab}
             exact={true}
           />
-          <Route path='/team/:id/standings' component={StandingsTab} />
+          <Route path='/competition/:id/standings' component={StandingsTab} />
           <Route path='' component={StandingsTab} />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
-          <IonTabButton tab='fixtures' href={`/team/${id}/fixtures`}>
+          <IonTabButton tab='fixtures' href={`/competition/${id}/fixtures`}>
             <IonIcon icon={calendar} />
             <IonLabel>Fixtures</IonLabel>
           </IonTabButton>
-          <IonTabButton tab='standings' href={`/team/${id}/standings`}>
+          <IonTabButton tab='standings' href={`/competition/${id}/standings`}>
             <IonIcon icon={podium} />
             <IonLabel>Standings</IonLabel>
           </IonTabButton>
@@ -60,4 +63,4 @@ const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
     </>
   );
 };
-export default TeamView;
+export default CompetitionView;

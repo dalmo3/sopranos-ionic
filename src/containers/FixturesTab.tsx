@@ -12,7 +12,7 @@ import { IRouteTeam } from './TeamView';
 const FixturesTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
   const {
     params: { id },
-  } = match!;
+  } = match!; //#TODO handle null case
 
   //https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-1.html
   const queryParams: MakeTestQueryParams = {

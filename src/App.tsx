@@ -20,7 +20,7 @@ import {
   IonTabButton,
   IonTabs,
   IonTitle,
-  IonToolbar
+  IonToolbar,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
@@ -57,6 +57,7 @@ import AboutPage from './pages/AboutPage';
 import CompetitionsPage from './pages/CompetitionsPage';
 import TeamsPage from './pages/TeamsPage';
 import HelpPage from './pages/HelpPage';
+import CompetitionView from './containers/CompetitionView';
 
 const App: React.FC = () => (
   <IonApp>
@@ -78,16 +79,16 @@ const App: React.FC = () => (
                 <IonRouterOutlet>
                   {/* activate switch if routing behaves weird */}
                   {/* <Switch>  */}
+                  <Route exact path='/' component={Tab1} />
                   <Route path='/settings' component={SettingsPage} />
                   <Route path='/about' component={AboutPage} />
                   <Route path='/competitions' component={CompetitionsPage} />
+                  <Route path='/competition/:id' component={CompetitionView} />
                   <Route path='/teams' component={TeamsPage} />
-                  <Route path='/help' component={HelpPage} />
-                  {/* <Route exact path='/teams' component={TeamView} /> */}
                   <Route path='/team/:id' component={TeamView} />
-                  <Route exact path='/' component={Tab1} />
+                  <Route path='/help' component={HelpPage} />
+                  <Route component={Tab1} />
                   {/* </Switch> */}
-                  {/* <Route component={Tab1} /> */}
                 </IonRouterOutlet>
               </IonContent>
             </IonPage>
