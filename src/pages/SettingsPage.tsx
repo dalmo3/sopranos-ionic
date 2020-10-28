@@ -16,7 +16,8 @@ import {
   IonReorder,
   IonButton,
   IonIcon,
-  IonToast
+  IonToast,
+  IonGrid,
 } from '@ionic/react';
 import './Tab1.css';
 import {
@@ -24,7 +25,7 @@ import {
   GetUserData,
   GetUserDataQueryResult,
   useGetUserDataQuery,
-  UserData
+  UserData,
 } from '../database/localData';
 import { gql, useApolloClient, useMutation, useQuery } from '@apollo/client';
 import { Team } from '../database/types/generated';
@@ -60,9 +61,9 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams
-        }
-      }
+          favouriteTeams,
+        },
+      },
     });
   };
 
@@ -80,6 +81,7 @@ const Settings: FC = () => {
             return (
               <IonItem key={team.Id}>
                 <IonLabel>{team.name}</IonLabel>
+                <IonText>{team.competitions?.[0]?.Name}</IonText>
                 <IonReorder slot='end' />
               </IonItem>
             );
@@ -115,9 +117,9 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams: event.detail.complete(teams.map((t) => t.Id))
-        }
-      }
+          favouriteTeams: event.detail.complete(teams.map((t) => t.Id)),
+        },
+      },
     });
   };
 
@@ -144,14 +146,23 @@ const Settings: FC = () => {
             header: 'Favourite Teams',
             subHeader: 'Pick as many teams as you want to follow.',
             cssClass: 'team-selection-alert',
-            translucent: true
+            translucent: true,
           }}
           onIonChange={(e) => handleSelection(data, e.detail.value)}>
           {/* {console.log('teams data', teams.data.teams)} */}
           {teams.data.teams.map((team: Team) => {
             return (
-              <IonSelectOption value={team.Id} key={team.Id}>
-                {team.name}
+              <IonSelectOption
+                value={team.Id}
+                key={team.Id}
+                className='team-selection-option'>
+                <IonLabel>{team.name}</IonLabel>
+                {/* styling is not working here #TODO*/}
+                <IonText className={'team-selection-competition'}>
+                  <br />
+                  {` - ${team.competitions?.[0]?.Name}`}
+                </IonText>
+                {/* <IonReorder slot='end' /> */}
               </IonSelectOption>
             );
           })}

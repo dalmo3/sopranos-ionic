@@ -24,7 +24,8 @@
 
 .team-selection-ionselect {
   // this matches the .select-text that is rendered in the shadow dom
-  &::part(text),&::part(placeholder) {
+  &::part(text),
+  &::part(placeholder) {
     display: none;
     flex: 0 0 auto;
   }
