@@ -44,6 +44,21 @@ query GetCompetitionById($Id: String!) {
     firstFixtureDate
     fixtures
     lastResultDate
+    standings {
+      TeamId
+      TeamName
+      Played
+      Wins
+      Draws
+      Byes
+      Losses
+      DefaultLosses
+      ForPoints
+      AgainstPoints
+      Differential
+      Total
+      OrgLogo
+    }
   }
 }
 
