@@ -1,0 +1,23 @@
+.team-button {
+  // --ion-color-light: #fff;
+  margin: 30px 30px !important;
+  &::part(native) {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-shadow: 0 0;
+    border-radius: 5px;
+    text-transform: capitalize;
+    // &:hover {
+    //   box-shadow: 0px 0px 2px var(--ion-color-dark-tint);
+    // }
+  }
+  .team-button-name {
+    // text-align: left;
+    // margin-right: auto;
+    // text-transform: capitalize;
+  }
+  .team-button-comp {
+    color: var(--ion-color-medium);
+    font-size: smaller;
+  }
+}
