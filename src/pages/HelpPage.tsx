@@ -1,4 +1,10 @@
-import { IonPage } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import React from 'react';
+import Header from '../components/Header';
 
-export default () => <IonPage>{console.log('rendered help')}Help</IonPage>;
+export default () => (
+  <IonPage>
+    <Header title='Help' />
+    <IonContent>Coming soon...</IonContent>
+  </IonPage>
+);
