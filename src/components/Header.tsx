@@ -6,7 +6,9 @@ import {
   IonMenuButton,
   IonTitle,
   IonText,
-  IonButton, useIonRouter, IonBackButton
+  IonButton,
+  useIonRouter,
+  IonBackButton,
 } from '@ionic/react';
 import { chevronBack } from 'ionicons/icons';
 
@@ -15,16 +17,14 @@ const Header: FC<{ title: string }> = ({ title }) => {
   return (
     <IonHeader>
       <IonToolbar>
-        <IonButtons slot="primary">
-          <IonBackButton icon={chevronBack} disabled={false}/>
+        <IonTitle slot='start'>{title}</IonTitle>
+        <IonButtons slot='primary'>
+          <IonBackButton icon={chevronBack} disabled={false} />
           <IonMenuButton />
         </IonButtons>
-        <IonButtons slot="secondary">
-          {/* <IonButton onClick={() => history.back()}> {'< Back'} </IonButton>
-           */}
-           <IonBackButton icon={chevronBack} disabled={false}/>
+        <IonButtons slot='secondary'>
+          <IonButton onClick={() => history.back()}> {'< Back'} </IonButton>
         </IonButtons>
-          <IonTitle slot="start">{title}</IonTitle>
       </IonToolbar>
     </IonHeader>
   );
