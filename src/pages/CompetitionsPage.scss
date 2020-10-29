@@ -1,0 +1,12 @@
+.competition-button {
+  // --ion-color-light: #fff;
+  margin: 20px 20px !important;
+  &::part(native) {
+    box-shadow: 0 0;
+    border-radius: 5px;
+    text-transform: capitalize;
+    // &:hover {
+    //   box-shadow: 0px 0px 2px var(--ion-color-dark-tint);
+    // }
+  }
+}
