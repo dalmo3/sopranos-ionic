@@ -33,7 +33,7 @@ const RealmProvider: FC = ({ children }) => {
     } else anonLogin();
 
     return () => {
-      console.log('effect cleanup running');
+      // console.log('effect cleanup running');
       const logout = async () => {
         // console.log('user logged in is ', user);
         await RealmAppClient.currentUser?.logOut();

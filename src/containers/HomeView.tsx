@@ -20,7 +20,7 @@ const HomeView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
   const {
     params: { id },
   } = match!;
-  console.log(match);
+  // console.log(match);
   return (
     <>
       {/* <Header title="" /> */}

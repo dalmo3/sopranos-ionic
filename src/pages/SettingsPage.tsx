@@ -5,7 +5,7 @@ import Settings from '../containers/Settings';
 import './SettingsPage.scss';
 
 const SettingsPage: React.FC = () => {
-  console.log('rendered settings');
+  // console.log('rendered settings');
   return (
     <IonPage>
       <Header title='Settings' />

@@ -25,7 +25,7 @@ const FixturesTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
   const parentPath = path.split('/')[1] as ViewPath;
 
   const userData = useGetUserDataQuery();
-  console.log(parentPath, id);
+  // console.log(parentPath, id);
 
   let q: FixtureQueryInput;
 

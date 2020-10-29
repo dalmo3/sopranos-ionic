@@ -26,7 +26,7 @@ const CompetitionView: FC<RouteChildrenProps<IRouteCompetition>> = ({
     path,
   } = match!;
 
-  console.log(match);
+  // console.log(match);
   return (
     <>
       {/* <Header title="" /> */}

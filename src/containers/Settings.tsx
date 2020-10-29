@@ -42,7 +42,7 @@ const Settings: FC = () => {
     teamSelection: string[]
   ) => {
     // data?.User.favouriteTeams = teams;
-    console.log('handleSelection', data);
+    // console.log('handleSelection', data);
 
     client.writeQuery({
       query: GetUserData,

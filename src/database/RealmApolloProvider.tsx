@@ -66,7 +66,7 @@ const RealmApolloProvider: FC = ({ children }) => {
 
     if (RealmContext.isReady) initApollo(cache, capacitorStorage);
     // console.log('realmapolloprovider-useeffect--user', user);
-    console.log('realmapolloprovider-useeffect--user', RealmContext.user?.id);
+    // console.log('realmapolloprovider-useeffect--user', RealmContext.user?.id);
   }, [RealmContext]);
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
