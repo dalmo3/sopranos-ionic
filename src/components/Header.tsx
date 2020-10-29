@@ -17,12 +17,14 @@ const Header: FC<{ title: string }> = ({ title }) => {
     <IonHeader>
       <IonToolbar>
         <IonTitle slot='start'>{title}</IonTitle>
+
+        {/* #TODO find out why backbuttons aren't working */}
         <IonButtons slot='primary'>
-          <IonBackButton icon={chevronBack} disabled={false} />
           <IonMenuButton />
         </IonButtons>
         <IonButtons slot='secondary'>
-          <IonButton onClick={() => history.back()}> {'< Back'} </IonButton>
+          <IonBackButton icon={chevronBack} disabled={false} />
+          {/* <IonButton onClick={() => history.back()}> {'< Back'} </IonButton> */}
         </IonButtons>
       </IonToolbar>
     </IonHeader>

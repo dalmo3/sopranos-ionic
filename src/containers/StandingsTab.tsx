@@ -11,7 +11,7 @@ const StandingsTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
 
   return (
     <IonPage>
-      <Header title='' />
+      <Header title='Standings' />
       <IonContent>
         <IonText>Standings</IonText>
       </IonContent>
