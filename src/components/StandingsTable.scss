@@ -1,0 +1,24 @@
+tr:nth-child(even) {
+  background-color: var(--ion-color-light);
+}
+
+table {
+  border-collapse: collapse;
+
+  border-spacing: 0;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 8px;
+
+  &:nth-of-type(2) {
+    min-width: 200px;
+  }
+}
+
+.table-parent {
+  overflow-x: auto;
+}
