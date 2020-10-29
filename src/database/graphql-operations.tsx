@@ -261,3 +261,39 @@ export function useGetFixturesLiteLazyQuery(baseOptions?: ApolloReactHooks.LazyQ
 export type GetFixturesLiteQueryHookResult = ReturnType<typeof useGetFixturesLiteQuery>;
 export type GetFixturesLiteLazyQueryHookResult = ReturnType<typeof useGetFixturesLiteLazyQuery>;
 export type GetFixturesLiteQueryResult = ApolloReactCommon.QueryResult<Types.GetFixturesLiteQuery, Types.GetFixturesLiteQueryVariables>;
+export const GetAllTeamsLiteDocument = gql`
+    query GetAllTeamsLite {
+  teams(sortBy: NAME_ASC, limit: 0) {
+    Id
+    name
+    competitions {
+      Name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetAllTeamsLiteQuery__
+ *
+ * To run a query within a React component, call `useGetAllTeamsLiteQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllTeamsLiteQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllTeamsLiteQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllTeamsLiteQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<Types.GetAllTeamsLiteQuery, Types.GetAllTeamsLiteQueryVariables>) {
+        return ApolloReactHooks.useQuery<Types.GetAllTeamsLiteQuery, Types.GetAllTeamsLiteQueryVariables>(GetAllTeamsLiteDocument, baseOptions);
+      }
+export function useGetAllTeamsLiteLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<Types.GetAllTeamsLiteQuery, Types.GetAllTeamsLiteQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<Types.GetAllTeamsLiteQuery, Types.GetAllTeamsLiteQueryVariables>(GetAllTeamsLiteDocument, baseOptions);
+        }
+export type GetAllTeamsLiteQueryHookResult = ReturnType<typeof useGetAllTeamsLiteQuery>;
+export type GetAllTeamsLiteLazyQueryHookResult = ReturnType<typeof useGetAllTeamsLiteLazyQuery>;
+export type GetAllTeamsLiteQueryResult = ApolloReactCommon.QueryResult<Types.GetAllTeamsLiteQuery, Types.GetAllTeamsLiteQueryVariables>;

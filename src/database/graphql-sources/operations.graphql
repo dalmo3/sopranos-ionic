@@ -121,3 +121,13 @@ query GetFixturesLite($q: FixtureQueryInput) {
     matchDay
   }
 }
+
+query GetAllTeamsLite {
+  teams(sortBy: NAME_ASC, limit: 0) {
+    Id
+    name
+    competitions {
+      Name
+    }
+  }
+}

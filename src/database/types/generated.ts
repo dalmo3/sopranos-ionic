@@ -1657,3 +1657,18 @@ export type GetFixturesLiteQuery = (
     & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'ResultStatus' | 'Round' | 'RoundName' | 'Status' | 'VenueName' | '_id' | 'competitionId' | 'matchDay'>
   )>> }
 );
+
+export type GetAllTeamsLiteQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllTeamsLiteQuery = (
+  { __typename?: 'Query' }
+  & { teams: Array<Maybe<(
+    { __typename?: 'Team' }
+    & Pick<Team, 'Id' | 'name'>
+    & { competitions?: Maybe<Array<Maybe<(
+      { __typename?: 'Competition' }
+      & Pick<Competition, 'Name'>
+    )>>> }
+  )>> }
+);
