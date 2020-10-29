@@ -109,8 +109,17 @@ const Settings: FC = () => {
           {orderedTeams.map((team) => {
             return (
               <IonItem key={team.Id}>
-                <IonLabel>{team.name}</IonLabel>
+                {/* <IonLabel>{team.name}</IonLabel>
                 <IonText>{team.competitions?.[0]?.Name}</IonText>
+              */}
+
+                <IonText className={'team-button-name'}>
+                  {team?.name}
+                  <IonText className={'team-button-comp'}>
+                    <br />
+                    {team?.competitions?.[0]?.Name}
+                  </IonText>
+                </IonText>
                 <IonReorder slot='end' />
               </IonItem>
             );
