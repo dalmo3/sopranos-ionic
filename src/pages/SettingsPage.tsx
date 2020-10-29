@@ -178,11 +178,6 @@ const SettingsPage: React.FC = () => {
     <IonPage>
       <Header title='Settings' />
       <IonContent>
-        <IonHeader collapse='condense'>
-          <IonToolbar>
-            <IonTitle size='large'>Settings</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <Settings />
       </IonContent>
     </IonPage>
