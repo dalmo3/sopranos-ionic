@@ -8,7 +8,7 @@ import {
 } from '@ionic/react';
 import { calendar, podium } from 'ionicons/icons';
 import React, { FC } from 'react';
-import { Route, RouteChildrenProps } from 'react-router-dom';
+import { Route, RouteChildrenProps, Switch } from 'react-router-dom';
 import FixturesTab from './FixturesTab';
 import StandingsTab from './StandingsTab';
 
@@ -26,9 +26,11 @@ const HomeView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
       {/* <Header title="" /> */}
       <IonTabs>
         <IonRouterOutlet>
-          <Route path='/user/fixtures' component={FixturesTab} exact={true} />
-          <Route path='/user/standings' component={StandingsTab} />
-          <Route path='' component={FixturesTab} />
+          <Switch>
+            <Route path='/user/fixtures' component={FixturesTab} exact={true} />
+            <Route path='/user/standings' component={StandingsTab} />
+            <Route path='' component={FixturesTab} />
+          </Switch>
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>
           <IonTabButton tab='fixtures' href={`/user/fixtures`}>
