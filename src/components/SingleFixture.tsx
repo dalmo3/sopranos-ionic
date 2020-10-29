@@ -2,6 +2,7 @@ import { IonCol, IonGrid, IonItem, IonRow, IonText } from '@ionic/react';
 import moment from 'moment';
 import React, { FC } from 'react';
 import { Fixture } from '../database/types/generated';
+import './SingleFixture.scss';
 
 const FixtureDate: FC<{ dateString: string }> = (props) => {
   const { dateString } = props;
@@ -29,7 +30,7 @@ const SingleFixture: FC<{ fixture: Fixture }> = (props) => {
   const { fixture } = props;
 
   return (
-    <IonItem>
+    <IonItem className={'fixture-item'}>
       <IonGrid>
         <IonRow
           className='ion-align-items-center ion-justify-content-center'
