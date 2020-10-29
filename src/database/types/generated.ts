@@ -1733,3 +1733,17 @@ export type GetAllTeamsLiteQuery = { __typename?: 'Query' } & {
     >
   >;
 };
+
+export type GetTeamByIdQueryVariables = Exact<{
+  Id: Scalars['String'];
+}>;
+
+export type GetTeamByIdQuery = { __typename?: 'Query' } & {
+  team?: Maybe<
+    { __typename?: 'Team' } & Pick<Team, 'Id' | 'name'> & {
+        organisationInfo?: Maybe<
+          { __typename?: 'Organisation' } & Pick<Organisation, 'Name'>
+        >;
+      }
+  >;
+};
