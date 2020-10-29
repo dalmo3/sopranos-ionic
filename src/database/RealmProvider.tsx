@@ -35,9 +35,9 @@ const RealmProvider: FC = ({ children }) => {
     return () => {
       console.log('effect cleanup running');
       const logout = async () => {
-        console.log('user logged in is ', user);
+        // console.log('user logged in is ', user);
         await RealmAppClient.currentUser?.logOut();
-        console.log('user logged out? ', user);
+        // console.log('user logged out? ', user);
       };
       logout();
     };
