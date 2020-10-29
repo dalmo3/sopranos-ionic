@@ -1,28 +1,16 @@
-import React, { FC } from 'react';
 import {
-  Route,
-  Redirect,
-  useRouteMatch,
-  RouteChildrenProps,
-  match,
-} from 'react-router-dom';
-import {
-  IonTabs,
+  IonIcon,
+  IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
-  IonIcon,
-  IonLabel,
-  useIonRouter,
-  IonPage,
-  IonContent,
+  IonTabs,
 } from '@ionic/react';
-import { triangle, square, calendar, list, podium } from 'ionicons/icons';
-import Tab1 from '../pages/Tab1';
-import Tab3 from '../pages/Tab3';
+import { calendar, podium } from 'ionicons/icons';
+import React, { FC } from 'react';
+import { Route, RouteChildrenProps } from 'react-router-dom';
 import FixturesTab from './FixturesTab';
 import StandingsTab from './StandingsTab';
-import Header from '../components/Header';
 
 export interface IRouteCompetition {
   id: string;

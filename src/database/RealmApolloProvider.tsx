@@ -1,24 +1,16 @@
-import React, { useEffect, FC, useState } from 'react';
 import {
   ApolloClient,
-  HttpLink,
-  InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  DocumentNode,
-  NormalizedCacheObject,
+  InMemoryCache,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { persistCache } from 'apollo-cache-persist';
-import { useRealmContext, IRealmContext } from './RealmProvider';
 import { Plugins } from '@capacitor/core';
-import {
-  DEFAULT_USER_DATA,
-  GetUserData,
-  useGetUserDataQuery,
-  UserData,
-} from './localData';
+import { persistCache } from 'apollo-cache-persist';
 import { PersistentStorage } from 'apollo-cache-persist/types';
+import React, { FC, useEffect, useState } from 'react';
+import { DEFAULT_USER_DATA, GetUserData, UserData } from './localData';
+import { IRealmContext, useRealmContext } from './RealmProvider';
 
 // capacitor storage
 const { Storage } = Plugins;

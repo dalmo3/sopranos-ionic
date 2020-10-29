@@ -1,5 +1,7 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -241,7 +243,7 @@ export enum CompetitionSortByInput {
   _ID_ASC = '_ID_ASC',
   _ID_DESC = '_ID_DESC',
   NAME_DESC = 'NAME_DESC',
-  LASTRESULTDATE_DESC = 'LASTRESULTDATE_DESC'
+  LASTRESULTDATE_DESC = 'LASTRESULTDATE_DESC',
 }
 
 export type CompetitionUpdateInput = {
@@ -821,7 +823,7 @@ export enum FixtureSortByInput {
   LONGITUDE_ASC = 'LONGITUDE_ASC',
   STATUS_ASC = 'STATUS_ASC',
   STATUS_DESC = 'STATUS_DESC',
-  GRADEID_DESC = 'GRADEID_DESC'
+  GRADEID_DESC = 'GRADEID_DESC',
 }
 
 export type FixtureUpdateInput = {
@@ -1012,7 +1014,7 @@ export enum GroundSortByInput {
   ADDRESS_DESC = 'ADDRESS_DESC',
   LAT_ASC = 'LAT_ASC',
   LON_ASC = 'LON_ASC',
-  LON_DESC = 'LON_DESC'
+  LON_DESC = 'LON_DESC',
 }
 
 export type GroundUpdateInput = {
@@ -1081,226 +1083,185 @@ export type Mutation = {
   upsertOneTeam?: Maybe<Team>;
 };
 
-
 export type MutationDeleteManyCompetitionsArgs = {
   query?: Maybe<CompetitionQueryInput>;
 };
-
 
 export type MutationDeleteManyFixturesArgs = {
   query?: Maybe<FixtureQueryInput>;
 };
 
-
 export type MutationDeleteManyGroundsArgs = {
   query?: Maybe<GroundQueryInput>;
 };
-
 
 export type MutationDeleteManyOrganisationsArgs = {
   query?: Maybe<OrganisationQueryInput>;
 };
 
-
 export type MutationDeleteManyTeamsArgs = {
   query?: Maybe<TeamQueryInput>;
 };
-
 
 export type MutationDeleteOneCompetitionArgs = {
   query: CompetitionQueryInput;
 };
 
-
 export type MutationDeleteOneFixtureArgs = {
   query: FixtureQueryInput;
 };
-
 
 export type MutationDeleteOneGroundArgs = {
   query: GroundQueryInput;
 };
 
-
 export type MutationDeleteOneOrganisationArgs = {
   query: OrganisationQueryInput;
 };
-
 
 export type MutationDeleteOneTeamArgs = {
   query: TeamQueryInput;
 };
 
-
 export type MutationInsertManyCompetitionsArgs = {
   data: Array<CompetitionInsertInput>;
 };
-
 
 export type MutationInsertManyFixturesArgs = {
   data: Array<FixtureInsertInput>;
 };
 
-
 export type MutationInsertManyGroundsArgs = {
   data: Array<GroundInsertInput>;
 };
-
 
 export type MutationInsertManyOrganisationsArgs = {
   data: Array<OrganisationInsertInput>;
 };
 
-
 export type MutationInsertManyTeamsArgs = {
   data: Array<TeamInsertInput>;
 };
-
 
 export type MutationInsertOneCompetitionArgs = {
   data: CompetitionInsertInput;
 };
 
-
 export type MutationInsertOneFixtureArgs = {
   data: FixtureInsertInput;
 };
-
 
 export type MutationInsertOneGroundArgs = {
   data: GroundInsertInput;
 };
 
-
 export type MutationInsertOneOrganisationArgs = {
   data: OrganisationInsertInput;
 };
 
-
 export type MutationInsertOneTeamArgs = {
   data: TeamInsertInput;
 };
-
 
 export type MutationReplaceOneCompetitionArgs = {
   query?: Maybe<CompetitionQueryInput>;
   data: CompetitionInsertInput;
 };
 
-
 export type MutationReplaceOneFixtureArgs = {
   query?: Maybe<FixtureQueryInput>;
   data: FixtureInsertInput;
 };
-
 
 export type MutationReplaceOneGroundArgs = {
   query?: Maybe<GroundQueryInput>;
   data: GroundInsertInput;
 };
 
-
 export type MutationReplaceOneOrganisationArgs = {
   data: OrganisationInsertInput;
   query?: Maybe<OrganisationQueryInput>;
 };
-
 
 export type MutationReplaceOneTeamArgs = {
   query?: Maybe<TeamQueryInput>;
   data: TeamInsertInput;
 };
 
-
 export type MutationUpdateManyCompetitionsArgs = {
   query?: Maybe<CompetitionQueryInput>;
   set: CompetitionUpdateInput;
 };
-
 
 export type MutationUpdateManyFixturesArgs = {
   query?: Maybe<FixtureQueryInput>;
   set: FixtureUpdateInput;
 };
 
-
 export type MutationUpdateManyGroundsArgs = {
   set: GroundUpdateInput;
   query?: Maybe<GroundQueryInput>;
 };
-
 
 export type MutationUpdateManyOrganisationsArgs = {
   query?: Maybe<OrganisationQueryInput>;
   set: OrganisationUpdateInput;
 };
 
-
 export type MutationUpdateManyTeamsArgs = {
   query?: Maybe<TeamQueryInput>;
   set: TeamUpdateInput;
 };
-
 
 export type MutationUpdateOneCompetitionArgs = {
   query?: Maybe<CompetitionQueryInput>;
   set: CompetitionUpdateInput;
 };
 
-
 export type MutationUpdateOneFixtureArgs = {
   query?: Maybe<FixtureQueryInput>;
   set: FixtureUpdateInput;
 };
-
 
 export type MutationUpdateOneGroundArgs = {
   query?: Maybe<GroundQueryInput>;
   set: GroundUpdateInput;
 };
 
-
 export type MutationUpdateOneOrganisationArgs = {
   query?: Maybe<OrganisationQueryInput>;
   set: OrganisationUpdateInput;
 };
-
 
 export type MutationUpdateOneTeamArgs = {
   set: TeamUpdateInput;
   query?: Maybe<TeamQueryInput>;
 };
 
-
 export type MutationUpsertOneCompetitionArgs = {
   query?: Maybe<CompetitionQueryInput>;
   data: CompetitionInsertInput;
 };
-
 
 export type MutationUpsertOneFixtureArgs = {
   query?: Maybe<FixtureQueryInput>;
   data: FixtureInsertInput;
 };
 
-
 export type MutationUpsertOneGroundArgs = {
   query?: Maybe<GroundQueryInput>;
   data: GroundInsertInput;
 };
-
 
 export type MutationUpsertOneOrganisationArgs = {
   query?: Maybe<OrganisationQueryInput>;
   data: OrganisationInsertInput;
 };
 
-
 export type MutationUpsertOneTeamArgs = {
   query?: Maybe<TeamQueryInput>;
   data: TeamInsertInput;
 };
-
 
 export type Organisation = {
   __typename?: 'Organisation';
@@ -1373,7 +1334,7 @@ export enum OrganisationSortByInput {
   PROVIDER_DESC = 'PROVIDER_DESC',
   _ID_ASC = '_ID_ASC',
   _ID_DESC = '_ID_DESC',
-  ID_ASC = 'ID_ASC'
+  ID_ASC = 'ID_ASC',
 }
 
 export type OrganisationUpdateInput = {
@@ -1404,11 +1365,9 @@ export type Query = {
   teams: Array<Maybe<Team>>;
 };
 
-
 export type QueryCompetitionArgs = {
   query?: Maybe<CompetitionQueryInput>;
 };
-
 
 export type QueryCompetitionsArgs = {
   query?: Maybe<CompetitionQueryInput>;
@@ -1416,11 +1375,9 @@ export type QueryCompetitionsArgs = {
   sortBy?: Maybe<CompetitionSortByInput>;
 };
 
-
 export type QueryFixtureArgs = {
   query?: Maybe<FixtureQueryInput>;
 };
-
 
 export type QueryFixturesArgs = {
   query?: Maybe<FixtureQueryInput>;
@@ -1428,11 +1385,9 @@ export type QueryFixturesArgs = {
   sortBy?: Maybe<FixtureSortByInput>;
 };
 
-
 export type QueryGroundArgs = {
   query?: Maybe<GroundQueryInput>;
 };
-
 
 export type QueryGroundsArgs = {
   query?: Maybe<GroundQueryInput>;
@@ -1440,11 +1395,9 @@ export type QueryGroundsArgs = {
   sortBy?: Maybe<GroundSortByInput>;
 };
 
-
 export type QueryOrganisationArgs = {
   query?: Maybe<OrganisationQueryInput>;
 };
-
 
 export type QueryOrganisationsArgs = {
   limit?: Maybe<Scalars['Int']>;
@@ -1452,11 +1405,9 @@ export type QueryOrganisationsArgs = {
   query?: Maybe<OrganisationQueryInput>;
 };
 
-
 export type QueryTeamArgs = {
   query?: Maybe<TeamQueryInput>;
 };
-
 
 export type QueryTeamsArgs = {
   query?: Maybe<TeamQueryInput>;
@@ -1559,7 +1510,7 @@ export enum TeamSortByInput {
   ORGANISATION_ASC = 'ORGANISATION_ASC',
   ORGANISATION_DESC = 'ORGANISATION_DESC',
   ID_ASC = 'ID_ASC',
-  ID_DESC = 'ID_DESC'
+  ID_DESC = 'ID_DESC',
 }
 
 export type TeamUpdateInput = {
@@ -1589,86 +1540,196 @@ export type UpdateManyPayload = {
   modifiedCount: Scalars['Int'];
 };
 
-export type GetAllCompetitionsQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetAllCompetitionsQueryVariables = Exact<{ [key: string]: never }>;
 
+export type GetAllCompetitionsQuery = { __typename?: 'Query' } & {
+  competitions: Array<
+    Maybe<
+      { __typename?: 'Competition' } & Pick<
+        Competition,
+        | 'Id'
+        | 'Name'
+        | 'OrganisationId'
+        | 'Provider'
+        | 'SeasonId'
+        | 'SportId'
+        | 'SportName'
+        | '_id'
+        | 'firstFixtureDate'
+        | 'fixtures'
+        | 'lastResultDate'
+      > & {
+          Grades?: Maybe<
+            Array<
+              Maybe<
+                { __typename?: 'CompetitionGrade' } & Pick<
+                  CompetitionGrade,
+                  'Id'
+                >
+              >
+            >
+          >;
+        }
+    >
+  >;
+};
 
-export type GetAllCompetitionsQuery = (
-  { __typename?: 'Query' }
-  & { competitions: Array<Maybe<(
-    { __typename?: 'Competition' }
-    & Pick<Competition, 'Id' | 'Name' | 'OrganisationId' | 'Provider' | 'SeasonId' | 'SportId' | 'SportName' | '_id' | 'firstFixtureDate' | 'fixtures' | 'lastResultDate'>
-    & { Grades?: Maybe<Array<Maybe<(
-      { __typename?: 'CompetitionGrade' }
-      & Pick<CompetitionGrade, 'Id'>
-    )>>> }
-  )>> }
-);
+export type GetAllCompetitionsLiteQueryVariables = Exact<{
+  [key: string]: never;
+}>;
 
-export type GetAllCompetitionsLiteQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllCompetitionsLiteQuery = (
-  { __typename?: 'Query' }
-  & { competitions: Array<Maybe<(
-    { __typename?: 'Competition' }
-    & Pick<Competition, 'Id' | 'Name' | '_id' | 'firstFixtureDate' | 'fixtures' | 'lastResultDate'>
-  )>> }
-);
+export type GetAllCompetitionsLiteQuery = { __typename?: 'Query' } & {
+  competitions: Array<
+    Maybe<
+      { __typename?: 'Competition' } & Pick<
+        Competition,
+        | 'Id'
+        | 'Name'
+        | '_id'
+        | 'firstFixtureDate'
+        | 'fixtures'
+        | 'lastResultDate'
+      >
+    >
+  >;
+};
 
 export type GetCompetitionByIdQueryVariables = Exact<{
   Id: Scalars['String'];
 }>;
 
-
-export type GetCompetitionByIdQuery = (
-  { __typename?: 'Query' }
-  & { competition?: Maybe<(
-    { __typename?: 'Competition' }
-    & Pick<Competition, 'Id' | 'Name' | 'OrganisationId' | 'Provider' | 'SeasonId' | 'SportId' | 'SportName' | '_id' | 'firstFixtureDate' | 'fixtures' | 'lastResultDate'>
-    & { Grades?: Maybe<Array<Maybe<(
-      { __typename?: 'CompetitionGrade' }
-      & Pick<CompetitionGrade, 'Id'>
-    )>>> }
-  )> }
-);
+export type GetCompetitionByIdQuery = { __typename?: 'Query' } & {
+  competition?: Maybe<
+    { __typename?: 'Competition' } & Pick<
+      Competition,
+      | 'Id'
+      | 'Name'
+      | 'OrganisationId'
+      | 'Provider'
+      | 'SeasonId'
+      | 'SportId'
+      | 'SportName'
+      | '_id'
+      | 'firstFixtureDate'
+      | 'fixtures'
+      | 'lastResultDate'
+    > & {
+        Grades?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'CompetitionGrade' } & Pick<CompetitionGrade, 'Id'>
+            >
+          >
+        >;
+      }
+  >;
+};
 
 export type GetFixturesQueryVariables = Exact<{
   q?: Maybe<FixtureQueryInput>;
 }>;
 
-
-export type GetFixturesQuery = (
-  { __typename?: 'Query' }
-  & { fixtures: Array<Maybe<(
-    { __typename?: 'Fixture' }
-    & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayOrganisationName' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'From' | 'GradeId' | 'GradeName' | 'GradeSortOrder' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeOrganisationName' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'InGame' | 'IsSuperForm' | 'Latitude' | 'LocationLat' | 'LocationLng' | 'Longitude' | 'MatchSummary' | 'Provider' | 'PublishResults' | 'PublishTeamsheetOnWidget' | 'PublishVenue' | 'ResultStatus' | 'Round' | 'RoundName' | 'SectionId' | 'SectionSortOrder' | 'SportId' | 'SportName' | 'Status' | 'To' | 'VenueName' | 'VenueNameAbbr' | '_id' | 'competitionId' | 'matchDay'>
-  )>> }
-);
+export type GetFixturesQuery = { __typename?: 'Query' } & {
+  fixtures: Array<
+    Maybe<
+      { __typename?: 'Fixture' } & Pick<
+        Fixture,
+        | 'Address'
+        | 'AwayOrganisationId'
+        | 'AwayOrganisationLogo'
+        | 'AwayOrganisationName'
+        | 'AwayScore'
+        | 'AwayTeamId'
+        | 'AwayTeamName'
+        | 'Date'
+        | 'From'
+        | 'GradeId'
+        | 'GradeName'
+        | 'GradeSortOrder'
+        | 'HomeOrganisationId'
+        | 'HomeOrganisationLogo'
+        | 'HomeOrganisationName'
+        | 'HomeScore'
+        | 'HomeTeamId'
+        | 'HomeTeamName'
+        | 'Id'
+        | 'InGame'
+        | 'IsSuperForm'
+        | 'Latitude'
+        | 'LocationLat'
+        | 'LocationLng'
+        | 'Longitude'
+        | 'MatchSummary'
+        | 'Provider'
+        | 'PublishResults'
+        | 'PublishTeamsheetOnWidget'
+        | 'PublishVenue'
+        | 'ResultStatus'
+        | 'Round'
+        | 'RoundName'
+        | 'SectionId'
+        | 'SectionSortOrder'
+        | 'SportId'
+        | 'SportName'
+        | 'Status'
+        | 'To'
+        | 'VenueName'
+        | 'VenueNameAbbr'
+        | '_id'
+        | 'competitionId'
+        | 'matchDay'
+      >
+    >
+  >;
+};
 
 export type GetFixturesLiteQueryVariables = Exact<{
   q?: Maybe<FixtureQueryInput>;
 }>;
 
+export type GetFixturesLiteQuery = { __typename?: 'Query' } & {
+  fixtures: Array<
+    Maybe<
+      { __typename?: 'Fixture' } & Pick<
+        Fixture,
+        | 'Address'
+        | 'AwayOrganisationId'
+        | 'AwayOrganisationLogo'
+        | 'AwayScore'
+        | 'AwayTeamId'
+        | 'AwayTeamName'
+        | 'Date'
+        | 'HomeOrganisationId'
+        | 'HomeOrganisationLogo'
+        | 'HomeScore'
+        | 'HomeTeamId'
+        | 'HomeTeamName'
+        | 'Id'
+        | 'ResultStatus'
+        | 'Round'
+        | 'RoundName'
+        | 'Status'
+        | 'VenueName'
+        | '_id'
+        | 'competitionId'
+        | 'matchDay'
+      >
+    >
+  >;
+};
 
-export type GetFixturesLiteQuery = (
-  { __typename?: 'Query' }
-  & { fixtures: Array<Maybe<(
-    { __typename?: 'Fixture' }
-    & Pick<Fixture, 'Address' | 'AwayOrganisationId' | 'AwayOrganisationLogo' | 'AwayScore' | 'AwayTeamId' | 'AwayTeamName' | 'Date' | 'HomeOrganisationId' | 'HomeOrganisationLogo' | 'HomeScore' | 'HomeTeamId' | 'HomeTeamName' | 'Id' | 'ResultStatus' | 'Round' | 'RoundName' | 'Status' | 'VenueName' | '_id' | 'competitionId' | 'matchDay'>
-  )>> }
-);
+export type GetAllTeamsLiteQueryVariables = Exact<{ [key: string]: never }>;
 
-export type GetAllTeamsLiteQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllTeamsLiteQuery = (
-  { __typename?: 'Query' }
-  & { teams: Array<Maybe<(
-    { __typename?: 'Team' }
-    & Pick<Team, 'Id' | 'name'>
-    & { competitions?: Maybe<Array<Maybe<(
-      { __typename?: 'Competition' }
-      & Pick<Competition, 'Name'>
-    )>>> }
-  )>> }
-);
+export type GetAllTeamsLiteQuery = { __typename?: 'Query' } & {
+  teams: Array<
+    Maybe<
+      { __typename?: 'Team' } & Pick<Team, 'Id' | 'name'> & {
+          competitions?: Maybe<
+            Array<
+              Maybe<{ __typename?: 'Competition' } & Pick<Competition, 'Name'>>
+            >
+          >;
+        }
+    >
+  >;
+};

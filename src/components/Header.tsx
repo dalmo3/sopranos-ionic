@@ -1,16 +1,15 @@
-import React, { FC } from 'react';
 import {
-  IonHeader,
-  IonToolbar,
+  IonBackButton,
+  IonButton,
   IonButtons,
+  IonHeader,
   IonMenuButton,
   IonTitle,
-  IonText,
-  IonButton,
+  IonToolbar,
   useIonRouter,
-  IonBackButton,
 } from '@ionic/react';
 import { chevronBack } from 'ionicons/icons';
+import React, { FC } from 'react';
 
 const Header: FC<{ title: string }> = ({ title }) => {
   const history = useIonRouter();

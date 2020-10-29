@@ -1,14 +1,14 @@
 import {
-  IonToolbar,
   IonButtons,
   IonItem,
   IonLabel,
   IonSelect,
   IonSelectOption,
   IonText,
+  IonToolbar,
 } from '@ionic/react';
 import React, { FC } from 'react';
-import { TeamSelection, HandleSelection } from '../../containers/Settings';
+import { HandleSelection, TeamSelection } from '../../containers/Settings';
 import { Team } from '../../database/types/generated';
 
 const TeamSelector: FC<

@@ -1,8 +1,8 @@
-import React from 'react';
 import { IonContent, IonPage } from '@ionic/react';
-import './SettingsPage.scss';
+import React from 'react';
 import Header from '../components/Header';
 import Settings from '../containers/Settings';
+import './SettingsPage.scss';
 
 const SettingsPage: React.FC = () => {
   console.log('rendered settings');

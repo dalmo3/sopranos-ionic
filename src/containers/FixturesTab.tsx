@@ -1,5 +1,4 @@
-import { QueryHookOptions } from '@apollo/client';
-import { IonContent, IonPage, IonText } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import React, { FC } from 'react';
 import { RouteChildrenProps } from 'react-router';
 import FixtureGrid from '../components/FixtureGrid';
@@ -9,11 +8,7 @@ import {
   useGetFixturesQuery,
 } from '../database/graphql-operations';
 import { useGetUserDataQuery } from '../database/localData';
-import {
-  Fixture,
-  FixtureQueryInput,
-  GetFixturesQuery,
-} from '../database/types/generated';
+import { Fixture, FixtureQueryInput } from '../database/types/generated';
 import QueryHandlerContainer from './QueryHandlerContainer';
 import { IRouteTeam } from './TeamView';
 

@@ -3,10 +3,10 @@ import { IonRefresher, IonRefresherContent } from '@ionic/react';
 import React, { FC } from 'react';
 
 const refresh = async (e: CustomEvent, client: ApolloClient<object>) => {
-  try{
+  try {
     await client.reFetchObservableQueries(false);
-  }catch (e){
-    console.error('error refetching', e)
+  } catch (e) {
+    console.error('error refetching', e);
   }
   e.detail.complete();
 };
@@ -14,7 +14,7 @@ const refresh = async (e: CustomEvent, client: ApolloClient<object>) => {
 const Refresher: FC = () => {
   const client = useApolloClient();
   return (
-    <IonRefresher slot="fixed" onIonRefresh={(e) => refresh(e, client)}>
+    <IonRefresher slot='fixed' onIonRefresh={(e) => refresh(e, client)}>
       <IonRefresherContent />
     </IonRefresher>
   );

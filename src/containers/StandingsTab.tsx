@@ -6,7 +6,7 @@ import { IRouteTeam } from './TeamView';
 
 const StandingsTab: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
   const {
-    params: { id }
+    params: { id },
   } = match!;
 
   return (

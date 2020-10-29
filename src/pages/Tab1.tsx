@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   IonContent,
   IonHeader,
@@ -6,13 +5,14 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import './Tab1.css';
-import Header from '../components/Header';
-import { useGetUserDataQuery } from '../database/localData';
-import { useGetFixturesLiteQuery } from '../database/graphql-operations';
-import QueryHandlerContainer from '../containers/QueryHandlerContainer';
+import React from 'react';
 import FixtureGrid from '../components/FixtureGrid';
+import Header from '../components/Header';
+import QueryHandlerContainer from '../containers/QueryHandlerContainer';
+import { useGetFixturesLiteQuery } from '../database/graphql-operations';
+import { useGetUserDataQuery } from '../database/localData';
 import { Fixture } from '../database/types/generated';
+import './Tab1.css';
 
 const Tab1: React.FC = () => {
   console.log('rendered Tab1');

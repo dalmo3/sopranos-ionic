@@ -7,26 +7,24 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote
 } from '@ionic/react';
-
-import React from 'react';
-import { useLocation } from 'react-router-dom';
 import {
-  bookmarkOutline,
+  helpCircle,
+  helpCircleOutline,
+  home,
+  homeOutline,
+  informationCircle,
+  informationCircleOutline,
   settings,
   settingsOutline,
   shirt,
   shirtOutline,
   trophy,
   trophyOutline,
-  informationCircleOutline,
-  informationCircle,
-  homeOutline,
-  home,
-  helpCircleOutline,
-  helpCircle
 } from 'ionicons/icons';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
+
 // import './Menu.css';
 
 interface AppPage {
@@ -41,38 +39,38 @@ const appPages: AppPage[] = [
     title: 'Home',
     url: '/',
     iosIcon: homeOutline,
-    mdIcon: home
+    mdIcon: home,
   },
   {
     title: 'Teams',
     url: '/teams',
     iosIcon: shirtOutline,
-    mdIcon: shirt
+    mdIcon: shirt,
   },
   {
     title: 'Competitions',
     url: '/competitions',
     iosIcon: trophyOutline,
-    mdIcon: trophy
+    mdIcon: trophy,
   },
   {
     title: 'About',
     url: '/about',
     iosIcon: informationCircleOutline,
-    mdIcon: informationCircle
+    mdIcon: informationCircle,
   },
   {
     title: 'Settings',
     url: '/settings',
     iosIcon: settingsOutline,
-    mdIcon: settings
+    mdIcon: settings,
   },
   {
     title: 'Help',
     url: '/help',
     iosIcon: helpCircleOutline,
-    mdIcon: helpCircle
-  }
+    mdIcon: helpCircle,
+  },
 ];
 
 const Menu: React.FC = () => {

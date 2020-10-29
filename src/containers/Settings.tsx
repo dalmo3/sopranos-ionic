@@ -1,29 +1,22 @@
-import { ApolloClient, useApolloClient } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
 import {
-  IonReorderGroup,
+  IonButton,
+  IonButtons,
+  IonContent,
+  IonIcon,
   IonItem,
   IonLabel,
-  IonText,
   IonReorder,
-  IonButtons,
-  IonButton,
-  IonIcon,
+  IonReorderGroup,
+  IonText,
   IonToast,
-  IonContent,
-  IonSelect,
-  IonSelectOption,
   IonToolbar,
 } from '@ionic/react';
 import { checkmark, reorderTwo, reorderTwoOutline } from 'ionicons/icons';
 import React, { FC, useState } from 'react';
-import { User } from 'realm-web';
 import TeamSelector from '../components/Settings/TeamSelector';
 import { useGetAllTeamsLiteQuery } from '../database/graphql-operations';
-import {
-  useGetUserDataQuery,
-  UserData,
-  GetUserData,
-} from '../database/localData';
+import { GetUserData, useGetUserDataQuery } from '../database/localData';
 import { Team } from '../database/types/generated';
 import QueryHandlerContainer from './QueryHandlerContainer';
 

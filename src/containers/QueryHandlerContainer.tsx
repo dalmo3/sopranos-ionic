@@ -6,7 +6,7 @@ const QueryHandlerContainer: FC<{ queryResult: QueryResult }> = ({
   queryResult,
   children,
 }) => {
-  const { data, loading, error } = queryResult;
+  const { data, error } = queryResult;
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
