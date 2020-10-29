@@ -32,25 +32,30 @@ import { Team } from '../database/types/generated';
 import './SettingsPage.scss';
 import Header from '../components/Header';
 import { checkmark, reorderTwo, reorderTwoOutline } from 'ionicons/icons';
+import TeamSelector from '../components/Settings/TeamSelector';
+import QueryHandlerContainer from '../containers/QueryHandlerContainer';
+import { useGetAllTeamsLiteQuery } from '../database/graphql-operations';
+
+export type HandleSelection = (favouriteTeams: string[]) => void;
+
+export interface TeamSelection {
+  allTeams: Team[];
+  favouriteTeams: string[];
+}
 
 const Settings: FC = () => {
   const client = useApolloClient();
   const { data } = useGetUserDataQuery();
-  const teams = useQuery(gql`
-    query teams {
-      teams(sortBy: NAME_ASC, limit: 0) {
-        Id
-        name
-        competitions {
-          Name
-        }
-      }
-    }
-  `);
 
-  const handleSelection = (
-    data: UserData | undefined,
-    favouriteTeams: string[]
+  const allTeamsQueryResult = useGetAllTeamsLiteQuery();
+  // const teams = teamData?.data?.teams;
+
+  const favouriteTeams = data?.User.favouriteTeams;
+  const allTeams = allTeamsQueryResult.data?.teams as Team[];
+
+  const handleSelection: HandleSelection = (
+    // data: UserData | undefined,
+    teamSelection: string[]
   ) => {
     // data?.User.favouriteTeams = teams;
     console.log('handleSelection', data);
@@ -61,7 +66,7 @@ const Settings: FC = () => {
         User: {
           // ...DEFAULT_USER_DATA.User,
           ...data?.User,
-          favouriteTeams,
+          favouriteTeams: teamSelection,
         },
       },
     });
@@ -70,14 +75,54 @@ const Settings: FC = () => {
   const [enableReorder, setEnableReorder] = useState(false);
   const [showReorderToast, setShowReorderToast] = useState(false);
 
-  const FavouriteTeams: FC<{ teams: Team[] }> = ({ teams }) => {
-    // console.log('fav teams', teams);
+  const handleReorder = () => {
+    if (!enableReorder) setShowReorderToast(true);
+    setEnableReorder((enableReorder) => !enableReorder);
+  };
+
+  const TeamReorder: FC = () => {
+    return (
+      <IonToolbar>
+        <IonButtons slot='end'>
+          <IonButton onClick={handleReorder}>
+            {enableReorder ? (
+              <>
+                <IonIcon icon={checkmark} color='primary' />
+                Done
+              </>
+            ) : (
+              <>
+                <IonIcon md={reorderTwo} ios={reorderTwoOutline} color='dark' />
+              </>
+            )}
+          </IonButton>
+        </IonButtons>
+      </IonToolbar>
+    );
+  };
+
+  const FavouriteTeams: FC<TeamSelection> = ({ allTeams, favouriteTeams }) => {
+    // sorts list based on user preference
+    const orderedTeams = allTeams
+      .filter(({ Id }) => Id && favouriteTeams.includes(Id))
+      .sort((a, b) => {
+        const rankA = favouriteTeams.indexOf(a.Id!);
+        const rankB = favouriteTeams.indexOf(b.Id!);
+        return rankA - rankB;
+      });
+
     return (
       <>
+        <TeamSelector
+          allTeams={allTeams}
+          favouriteTeams={favouriteTeams}
+          handleSelection={handleSelection}
+        />
         <IonReorderGroup
           disabled={!enableReorder}
-          onIonItemReorder={(e) => doReorder(e, teams)}>
-          {teams.map((team) => {
+          // onIonItemReorder={(e) => doReorder(e, client, teams)}>
+          onIonItemReorder={(e) => doReorder(e, orderedTeams)}>
+          {orderedTeams.map((team) => {
             return (
               <IonItem key={team.Id}>
                 <IonLabel>{team.name}</IonLabel>
@@ -87,20 +132,7 @@ const Settings: FC = () => {
             );
           })}
         </IonReorderGroup>
-        <IonButtons>
-          <IonButton
-            slot='end'
-            onClick={() => {
-              if (!enableReorder) setShowReorderToast(true);
-              setEnableReorder((enableReorder) => !enableReorder);
-            }}>
-            {enableReorder ? (
-              <IonIcon icon={checkmark} color='primary' />
-            ) : (
-              <IonIcon md={reorderTwo} ios={reorderTwoOutline} color='dark' />
-            )}
-          </IonButton>
-        </IonButtons>
+        <TeamReorder />
         <IonToast
           isOpen={showReorderToast}
           onWillDismiss={() => setShowReorderToast(false)}
@@ -110,7 +142,11 @@ const Settings: FC = () => {
     );
   };
 
-  const doReorder = (event: CustomEvent, teams: Team[]) => {
+  const doReorder = (
+    event: CustomEvent,
+    // client: ApolloClient<object>,
+    teams: Team[]
+  ) => {
     client.writeQuery({
       query: GetUserData,
       data: {
@@ -125,50 +161,29 @@ const Settings: FC = () => {
 
   // console.log('USER_DATA', data);
   return (
-    <IonContent>
-      <IonText>Hello, {data?.User.name}</IonText>
-      <br />
-      <IonText>Favourite Teams:</IonText>
-      {data && teams?.data && (
-        <FavouriteTeams
-          teams={data?.User.favouriteTeams.map((id) =>
-            teams.data.teams.find((team: Team) => team.Id === id)
-          )}
-        />
-      )}
-      {data && teams?.data && (
-        <IonSelect
-          value={data.User.favouriteTeams}
-          multiple={true}
-          interface='alert'
-          class='team-selection-ionselect'
-          interfaceOptions={{
-            header: 'Favourite Teams',
-            subHeader: 'Pick as many teams as you want to follow.',
-            cssClass: 'team-selection-alert',
-            translucent: true,
-          }}
-          onIonChange={(e) => handleSelection(data, e.detail.value)}>
-          {/* {console.log('teams data', teams.data.teams)} */}
-          {teams.data.teams.map((team: Team) => {
-            return (
-              <IonSelectOption
-                value={team.Id}
-                key={team.Id}
-                className='team-selection-option'>
-                <IonLabel>{team.name}</IonLabel>
-                {/* styling is not working here #TODO*/}
-                <IonText className={'team-selection-competition'}>
-                  <br />
-                  {` - ${team.competitions?.[0]?.Name}`}
-                </IonText>
-                {/* <IonReorder slot='end' /> */}
-              </IonSelectOption>
-            );
-          })}
-        </IonSelect>
-      )}
-    </IonContent>
+    <QueryHandlerContainer queryResult={allTeamsQueryResult}>
+      <IonContent>
+        {/* <IonText>Hello, {data?.User.name}</IonText> */}
+        {favouriteTeams && allTeams && (
+          <FavouriteTeams
+            favouriteTeams={favouriteTeams}
+            allTeams={
+              allTeams
+              //   favouriteTeams.map(
+              //   (id) => allTeams.find((team: Team) => team.Id === id)
+              // )
+              // allTeams
+              //   .filter(({ Id }) => Id && favouriteTeams.includes(Id))
+              //   .sort((a, b) => {
+              //     const rankA = favouriteTeams.indexOf(a.Id!);
+              //     const rankB = favouriteTeams.indexOf(b.Id!);
+              //     return rankA - rankB;
+              //   })
+            }
+          />
+        )}
+      </IonContent>
+    </QueryHandlerContainer>
   );
 };
 
