@@ -32,7 +32,7 @@ const CompetitionsPage = () => {
                 <IonButton
                   color='light'
                   expand='full'
-                  href={`/competition/${comp?.Id}/fixtures`}
+                  routerLink={`/competition/${comp?.Id}/fixtures`}
                   key={comp?.Id}
                   // size='large'
                   className={'competition-button'}>

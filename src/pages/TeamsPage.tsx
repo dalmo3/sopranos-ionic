@@ -23,7 +23,7 @@ const TeamsPage = () => {
                 <IonButton
                   color='light'
                   expand='full'
-                  href={`/team/${team?.Id}/fixtures`}
+                  routerLink={`/team/${team?.Id}/fixtures`}
                   key={team?.Id}
                   // size='large'
                   className={'team-button'}>
@@ -31,12 +31,10 @@ const TeamsPage = () => {
                   {/* <IonCardHeader> */}
                   <IonText className={'team-button-name'}>
                     {team?.name}
-                    {team?.competitions?.[0] && (
-                      <IonText className={'team-button-comp'}>
-                        <br />
-                        {team?.competitions?.[0].Name}
-                      </IonText>
-                    )}
+                    <IonText className={'team-button-comp'}>
+                      <br />
+                      {team?.competitions?.[0]?.Name}
+                    </IonText>
                   </IonText>
 
                   {/* </IonCardHeader> */}
