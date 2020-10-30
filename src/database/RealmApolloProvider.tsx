@@ -91,7 +91,8 @@ const createApolloClient = (
   };
 
   const httpLink = createHttpLink({
-    uri: `https://realm.mongodb.com/api/client/v2.0/app/${realmProvider.appId}/graphql`,
+    // uri: `https://realm.mongodb.com/api/client/v2.0/app/${realmProvider.appId}/graphql`,
+    uri: `https://ap-southeast-2.aws.realm.mongodb.com/api/client/v2.0/app/${realmProvider.appId}/graphql`,
     fetch: customFetch,
   });
 
