@@ -10,7 +10,7 @@ import { calendar, podium } from 'ionicons/icons';
 import React, { FC } from 'react';
 import { Route, RouteChildrenProps } from 'react-router-dom';
 import FixturesTab from './FixturesTab';
-import StandingsTab from './StandingsTab';
+import TeamStandings from './TeamStandings';
 
 export interface IRouteTeam {
   id: string;
@@ -31,7 +31,7 @@ const TeamView: FC<RouteChildrenProps<IRouteTeam>> = ({ location, match }) => {
             component={FixturesTab}
             exact={true}
           />
-          <Route path='/team/:id/standings' component={StandingsTab} />
+          <Route path='/team/:id/standings' component={TeamStandings} />
           <Route path='' component={FixturesTab} />
         </IonRouterOutlet>
         <IonTabBar slot='bottom'>

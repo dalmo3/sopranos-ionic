@@ -216,6 +216,79 @@ export type GetCompetitionByIdQueryResult = ApolloReactCommon.QueryResult<
   Types.GetCompetitionByIdQuery,
   Types.GetCompetitionByIdQueryVariables
 >;
+export const GetCompetitionsDocument = gql`
+  query GetCompetitions($q: CompetitionQueryInput) {
+    competitions(query: $q) {
+      Id
+      Name
+      _id
+      standings {
+        TeamId
+        TeamName
+        Played
+        Wins
+        Draws
+        Byes
+        Losses
+        DefaultLosses
+        ForPoints
+        AgainstPoints
+        Differential
+        Total
+        OrgLogo
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetCompetitionsQuery__
+ *
+ * To run a query within a React component, call `useGetCompetitionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCompetitionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCompetitionsQuery({
+ *   variables: {
+ *      q: // value for 'q'
+ *   },
+ * });
+ */
+export function useGetCompetitionsQuery(
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
+    Types.GetCompetitionsQuery,
+    Types.GetCompetitionsQueryVariables
+  >
+) {
+  return ApolloReactHooks.useQuery<
+    Types.GetCompetitionsQuery,
+    Types.GetCompetitionsQueryVariables
+  >(GetCompetitionsDocument, baseOptions);
+}
+export function useGetCompetitionsLazyQuery(
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    Types.GetCompetitionsQuery,
+    Types.GetCompetitionsQueryVariables
+  >
+) {
+  return ApolloReactHooks.useLazyQuery<
+    Types.GetCompetitionsQuery,
+    Types.GetCompetitionsQueryVariables
+  >(GetCompetitionsDocument, baseOptions);
+}
+export type GetCompetitionsQueryHookResult = ReturnType<
+  typeof useGetCompetitionsQuery
+>;
+export type GetCompetitionsLazyQueryHookResult = ReturnType<
+  typeof useGetCompetitionsLazyQuery
+>;
+export type GetCompetitionsQueryResult = ApolloReactCommon.QueryResult<
+  Types.GetCompetitionsQuery,
+  Types.GetCompetitionsQueryVariables
+>;
 export const GetFixturesDocument = gql`
   query GetFixtures($q: FixtureQueryInput) {
     fixtures(query: $q) {
@@ -455,6 +528,23 @@ export const GetTeamByIdDocument = gql`
       name
       organisationInfo {
         Name
+      }
+      competitions {
+        standings {
+          TeamId
+          TeamName
+          Played
+          Wins
+          Draws
+          Byes
+          Losses
+          DefaultLosses
+          ForPoints
+          AgainstPoints
+          Differential
+          Total
+          OrgLogo
+        }
       }
     }
   }

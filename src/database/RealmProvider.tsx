@@ -16,7 +16,7 @@ const RealmProvider: FC = ({ children }) => {
   const [user, setUser] = useState(RealmAppClient.currentUser!);
   const [isReady, setIsReady] = useState(false);
 
-  console.log(user);
+  // console.log(user);
   // console.log(user.isLoggedIn);
 
   // establish user session upon app start

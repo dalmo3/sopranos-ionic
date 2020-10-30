@@ -61,6 +61,28 @@ query GetCompetitionById($Id: String!) {
     }
   }
 }
+query GetCompetitions($q: CompetitionQueryInput) {
+  competitions(query: $q) {
+    Id
+    Name
+    _id
+    standings {
+      TeamId
+      TeamName
+      Played
+      Wins
+      Draws
+      Byes
+      Losses
+      DefaultLosses
+      ForPoints
+      AgainstPoints
+      Differential
+      Total
+      OrgLogo
+    }
+  }
+}
 
 query GetFixtures($q: FixtureQueryInput) {
   fixtures(query: $q) {
@@ -153,6 +175,23 @@ query GetTeamById($Id: String!) {
     name
     organisationInfo {
       Name
+    }
+    competitions {
+      standings {
+        TeamId
+        TeamName
+        Played
+        Wins
+        Draws
+        Byes
+        Losses
+        DefaultLosses
+        ForPoints
+        AgainstPoints
+        Differential
+        Total
+        OrgLogo
+      }
     }
   }
 }

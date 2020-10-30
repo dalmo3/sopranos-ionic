@@ -2028,6 +2028,44 @@ export type GetCompetitionByIdQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetCompetitionsQueryVariables = Exact<{
+  q?: Maybe<CompetitionQueryInput>;
+}>;
+
+export type GetCompetitionsQuery = { __typename?: 'Query' } & {
+  competitions: Array<
+    Maybe<
+      { __typename?: 'Competition' } & Pick<
+        Competition,
+        'Id' | 'Name' | '_id'
+      > & {
+          standings?: Maybe<
+            Array<
+              Maybe<
+                { __typename?: 'CompetitionStanding' } & Pick<
+                  CompetitionStanding,
+                  | 'TeamId'
+                  | 'TeamName'
+                  | 'Played'
+                  | 'Wins'
+                  | 'Draws'
+                  | 'Byes'
+                  | 'Losses'
+                  | 'DefaultLosses'
+                  | 'ForPoints'
+                  | 'AgainstPoints'
+                  | 'Differential'
+                  | 'Total'
+                  | 'OrgLogo'
+                >
+              >
+            >
+          >;
+        }
+    >
+  >;
+};
+
 export type GetFixturesQueryVariables = Exact<{
   q?: Maybe<FixtureQueryInput>;
 }>;
@@ -2146,6 +2184,36 @@ export type GetTeamByIdQuery = { __typename?: 'Query' } & {
     { __typename?: 'Team' } & Pick<Team, 'Id' | 'name'> & {
         organisationInfo?: Maybe<
           { __typename?: 'Organisation' } & Pick<Organisation, 'Name'>
+        >;
+        competitions?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'Competition' } & {
+                standings?: Maybe<
+                  Array<
+                    Maybe<
+                      { __typename?: 'CompetitionStanding' } & Pick<
+                        CompetitionStanding,
+                        | 'TeamId'
+                        | 'TeamName'
+                        | 'Played'
+                        | 'Wins'
+                        | 'Draws'
+                        | 'Byes'
+                        | 'Losses'
+                        | 'DefaultLosses'
+                        | 'ForPoints'
+                        | 'AgainstPoints'
+                        | 'Differential'
+                        | 'Total'
+                        | 'OrgLogo'
+                      >
+                    >
+                  >
+                >;
+              }
+            >
+          >
         >;
       }
   >;
