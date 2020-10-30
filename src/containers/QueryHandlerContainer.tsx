@@ -26,8 +26,12 @@ const QueryHandlerContainer: FC<{ queryResult: QueryResult }> = ({
     );
 
   if (data) return <>{children}</>;
-
-  return <IonText>`Error fetching... ${error}`</IonText>;
+  // console.log(error?.extraInfo);
+  // console.log(error?.message);
+  // console.log(error?.graphQLErrors);
+  // console.log(error?.name);
+  // console.log(error?.networkError);
+  return <IonText>{`Error fetching... ${error}`}</IonText>;
 };
 
 export default QueryHandlerContainer;

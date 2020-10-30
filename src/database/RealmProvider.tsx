@@ -16,6 +16,9 @@ const RealmProvider: FC = ({ children }) => {
   const [user, setUser] = useState(RealmAppClient.currentUser!);
   const [isReady, setIsReady] = useState(false);
 
+  console.log(user);
+  // console.log(user.isLoggedIn);
+
   // establish user session upon app start
   useEffect(() => {
     const anonLogin = async () => {
@@ -29,7 +32,12 @@ const RealmProvider: FC = ({ children }) => {
     if (RealmAppClient.currentUser) {
       RealmAppClient.currentUser
         .refreshAccessToken()
-        .then(() => setIsReady(true));
+        .then(() => setIsReady(true)) //session is valid
+        .catch((e) => {
+          //session is invalid for some reason, try new login
+          // console.log(e);
+          anonLogin();
+        });
     } else anonLogin();
 
     return () => {
