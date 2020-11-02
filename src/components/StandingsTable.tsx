@@ -1,5 +1,5 @@
 import { IonContent } from '@ionic/react';
-import React from 'react';
+import React, { memo } from 'react';
 import { FC } from 'react';
 import { CompetitionStanding } from '../database/types/generated';
 import './StandingsTable.scss';
@@ -44,4 +44,4 @@ const StandingsTable: FC<{ standings: CompetitionStanding[] }> = ({
   );
 };
 
-export default StandingsTable;
+export default memo(StandingsTable);

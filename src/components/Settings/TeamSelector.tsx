@@ -7,7 +7,7 @@ import {
   IonText,
   IonToolbar,
 } from '@ionic/react';
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { HandleSelection, TeamSelection } from '../../containers/Settings';
 import { Team } from '../../database/types/generated';
 
@@ -58,4 +58,4 @@ const TeamSelector: FC<
   );
 };
 
-export default TeamSelector;
+export default memo(TeamSelector);

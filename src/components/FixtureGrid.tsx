@@ -1,5 +1,5 @@
 import { IonList } from '@ionic/react';
-import React from 'react';
+import React, { memo } from 'react';
 import { Fixture } from '../database/types/generated';
 import SingleFixture from './SingleFixture';
 
@@ -20,4 +20,4 @@ const sortFixturesByDate = (fixtures: Fixture[]): Fixture[] => {
       Number(new Date(a.Date as string)) - Number(new Date(b.Date as string))
   );
 };
-export default FixtureGrid;
+export default memo(FixtureGrid);
