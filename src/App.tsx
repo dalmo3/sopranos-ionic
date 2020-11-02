@@ -56,7 +56,7 @@ const App: React.FC = () => (
                 <IonRouterOutlet>
                   {/* activate switch if routing behaves weird */}
                   <Switch>
-                    <Route exact path='/' component={HomeView} />
+                    <Route exact path='/' component={CompetitionsPage} />
                     <Route path='/user/:smth' component={HomeView} />
                     <Route path='/settings' component={SettingsPage} />
                     <Route path='/about' component={AboutPage} />
@@ -68,7 +68,7 @@ const App: React.FC = () => (
                     />
                     <Route path='/teams' component={TeamsPage} />
                     <Route path='/team/:id' component={TeamView} />
-                    <Route component={HomeView} />
+                    <Route component={CompetitionsPage} />
                   </Switch>
                 </IonRouterOutlet>
               </IonContent>

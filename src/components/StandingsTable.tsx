@@ -7,7 +7,7 @@ import './StandingsTable.scss';
 const StandingsTable: FC<{ standings: CompetitionStanding[] }> = ({
   standings,
 }) => {
-  console.log(standings);
+  //console.log(standings);
   return (
     <IonContent className={'table-parent'} scrollX={true}>
       <table>

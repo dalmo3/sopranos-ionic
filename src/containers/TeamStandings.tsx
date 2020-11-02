@@ -30,7 +30,7 @@ const TeamStandings: FC<RouteChildrenProps<IRouteTeam>> = ({ match }) => {
 
   // const queryResult = useGetCompetitionByIdQuery({ variables: { Id: id } });
   const { data } = queryResult;
-  console.log(data);
+  //console.log(data);
   const standings = data?.team?.competitions?.[0]?.standings;
   // const standings = data?.competition?.standings as CompetitionStanding[];
 
